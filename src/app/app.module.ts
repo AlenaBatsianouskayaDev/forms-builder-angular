@@ -19,7 +19,7 @@ import { LoginViewComponent } from './views/login-view/login-view.component';
 import { RegistrationViewComponent } from './views/registration-view/registration-view.component';
 
 import { LoginFormComponent } from './components/login-form/login-form.component';
-// import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
+import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 import { InputErrorEmailMatcherComponent } from './shared/input-error-validation/input-error-email-matcher.component';
 import { InputComponent } from './shared/input/input.component';
 import { ButtonSubmitComponent } from './shared/button-submit/button-submit.component';
@@ -37,7 +37,7 @@ import { ButtonSubmitComponent } from './shared/button-submit/button-submit.comp
     LoginViewComponent,
     RegistrationViewComponent,
     LoginFormComponent,
-    // RegistrationFormComponent,
+    RegistrationFormComponent,
     InputErrorEmailMatcherComponent,
     InputComponent,
     ButtonSubmitComponent,

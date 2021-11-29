@@ -1,1 +1,5 @@
-<p>registration-form works!</p>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate class="RegistrationForm">
+  <app-input-error-email-matcher></app-input-error-email-matcher>
+  <app-input *ngFor = "let inputProp of inputProps" [prop]="inputProp"></app-input>
+  <app-button-submit></app-button-submit>
+</form>

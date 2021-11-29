@@ -8,13 +8,16 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginFormComponent implements OnInit {
   
+  inputProps = ['Login'];
+  
   constructor() { }
 
   ngOnInit(): void {
   }
   onSubmit(f: NgForm) {
-    console.log(f.value);  // { first: '', last: '' }
-    console.log(f.valid);  // false
+    console.log('LOGIN')
+    // console.log(f.value);  // { first: '', last: '' }
+    // console.log(f.valid);  // false
   }
 
 }

@@ -1,14 +1,6 @@
 .LoginView {
-  width: 100%;
-  height: 100vh;
   padding: 0 50px;
+  margin-top: 100px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-
-  &__text {
-    font-size: 24px;
-    color: #151515;
-  }
 }

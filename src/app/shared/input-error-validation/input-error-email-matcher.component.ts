@@ -10,7 +10,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'input-error-email-matcher',
+  selector: 'app-input-error-email-matcher',
   templateUrl: 'input-error-email-matcher.component.html',
   styleUrls: ['input-error-email-matcher.component.scss'],
 })

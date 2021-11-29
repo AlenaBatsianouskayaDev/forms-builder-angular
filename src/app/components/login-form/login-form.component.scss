@@ -1,8 +1,4 @@
-// .LoginForm {
-//   &__item {
-//   }
-//   &__input {
-//   }
-//   &__sbmt {
-//   }
-// }
+.LoginForm {
+  display: flex;
+  flex-direction: column;
+}
