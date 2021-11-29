@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-import { MaterialModule } from './shared/button/button.module';
+import { MaterialModule } from './modules/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -10,11 +12,17 @@ import { AppTopBarComponent } from './components/header/app-top-bar/app-top-bar.
 import { LogoComponent } from './components/header/app-top-bar/logo/logo.component';
 import { AppNavComponent } from './components/header/app-top-bar/app-nav/app-nav.component';
 import { AuthNavComponent } from './components/header/app-top-bar/auth-nav/auth-nav.component';
+
 import { HomeViewComponent } from './views/home-view/home-view.component';
 import { FormBuilderViewComponent } from './views/form-builder-view/form-builder-view.component';
 import { LoginViewComponent } from './views/login-view/login-view.component';
 import { RegistrationViewComponent } from './views/registration-view/registration-view.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { LoginFormComponent } from './components/login-form/login-form.component';
+// import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
+import { InputErrorEmailMatcherComponent } from './shared/input-error-validation/input-error-email-matcher.component';
+import { InputComponent } from './shared/input/input.component';
+import { ButtonSubmitComponent } from './shared/button-submit/button-submit.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +36,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormBuilderViewComponent,
     LoginViewComponent,
     RegistrationViewComponent,
+    LoginFormComponent,
+    // RegistrationFormComponent,
+    InputErrorEmailMatcherComponent,
+    InputComponent,
+    ButtonSubmitComponent,
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
