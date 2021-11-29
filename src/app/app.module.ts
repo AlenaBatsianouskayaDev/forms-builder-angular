@@ -1,0 +1,43 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { MaterialModule } from './shared/button/button.module';
+
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/header/header.component';
+import { AppTopBarComponent } from './components/header/app-top-bar/app-top-bar.component';
+import { LogoComponent } from './components/header/app-top-bar/logo/logo.component';
+import { AppNavComponent } from './components/header/app-top-bar/app-nav/app-nav.component';
+import { AuthNavComponent } from './components/header/app-top-bar/auth-nav/auth-nav.component';
+import { HomeViewComponent } from './views/home-view/home-view.component';
+import { FormBuilderViewComponent } from './views/form-builder-view/form-builder-view.component';
+import { LoginViewComponent } from './views/login-view/login-view.component';
+import { RegistrationViewComponent } from './views/registration-view/registration-view.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    AppTopBarComponent,
+    LogoComponent,  
+    AppNavComponent,
+    AuthNavComponent,
+    HomeViewComponent,
+    FormBuilderViewComponent,
+    LoginViewComponent,
+    RegistrationViewComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MaterialModule,
+    BrowserAnimationsModule,
+  ],
+  exports: [],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+  
+export class AppModule { }
