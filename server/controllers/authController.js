@@ -20,18 +20,17 @@ class authController {
       if (!errors.isEmpty()) {
         return res.status(400).json({ message: 'Registration failed', errors });
       }
-      const { username, password, email } = req.body;
-      const candidate = await User.findOne({ email });
+      const { username, password } = req.body;
+      const candidate = await User.findOne({ username });
       if (candidate) {
         return res
           .status(400)
-          .json({ message: 'User with the same email already exists' });
+          .json({ message: `User with ${username} already exists` });
       }
       const hashPassword = bcrypt.hashSync(password, 7);
       const userRole = await Role.findOne({ value: 'USER' });
       const user = new User({
         username,
-        email,
         password: hashPassword,
         roles: [userRole.value],
       });
@@ -45,13 +44,18 @@ class authController {
 
   async login(req, res) {
     try {
-      const { email, password } = req.body;
-      const user = await User.findOne({ email });
-      const validPassword = bcrypt.compareSync(password, user.password);
-      if (!validPassword || !user) {
+      const { username, password } = req.body;
+      const user = await User.findOne({ username });
+      if (!user) {
         return res
           .status(400)
-          .json({ message: 'Enter a wrong email or password' });
+          .json({ message: 'Enter a wrong username or password' });
+      }
+      const validPassword = bcrypt.compareSync(password, user.password);
+      if (!validPassword) {
+        return res
+          .status(400)
+          .json({ message: 'Enter a wrong username or password' });
       }
       const token = generateAccessToken(user._id, user.roles);
       return res.json({ token });
@@ -63,8 +67,11 @@ class authController {
 
   async getUsers(req, res) {
     try {
-      res.json('server works');
-    } catch (e) {}
+      const users = await User.find();
+      res.json(users);
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 
