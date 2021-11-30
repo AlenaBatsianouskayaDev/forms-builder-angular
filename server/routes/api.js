@@ -7,10 +7,10 @@ router.get('/users', controller.getUsers);
 router.post(
   '/registration',
   [check('username', 'The field cannot be empty').notEmpty()],
+  [check('email', 'Enter a full email').isEmail()],
   [
     check('password', 'Password must be at least 5 characters long').isLength({
       min: 5,
-      max: 10,
     }),
   ],
   controller.registration,
