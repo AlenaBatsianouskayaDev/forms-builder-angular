@@ -1,21 +1,13 @@
-const express = require('express');
+const Router = require('express');
+const router = new Router();
+const {
+  getUsers,
+  login,
+  registration,
+} = require('./../controllers/authController');
 
-const router = express.Router();
-
-const mongoose = require('mongoose');
-router.get('/', (req, res) => {
-  res.send('From API');
-});
-
-const db =
-  'mongodb+srv://AlenaBo:love1209@formsbuilder.1jvyi.mongodb.net/usersDB?retryWrites=true&w=majority';
+router.get('/users', getUsers);
+router.post('/registration', registration);
+router.post('/login', login);
 
 module.exports = router;
-
-mongoose.connect(db, err => {
-  if (err) {
-    console.log('error' + err);
-  } else {
-    console.log('connected to Mongo DB');
-  }
-});
