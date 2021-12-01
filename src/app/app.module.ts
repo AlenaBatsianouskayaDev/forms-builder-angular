@@ -23,6 +23,11 @@ import { RegistrationFormComponent } from './components/registration-form/regist
 import { InputErrorEmailMatcherComponent } from './shared/input-error-validation/input-error-email-matcher.component';
 import { InputComponent } from './shared/input/input.component';
 import { ButtonSubmitComponent } from './shared/button-submit/button-submit.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -49,6 +54,11 @@ import { ButtonSubmitComponent } from './shared/button-submit/button-submit.comp
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers
+    }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([]),
   ],
   exports: [],
   providers: [],

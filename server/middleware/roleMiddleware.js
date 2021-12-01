@@ -14,7 +14,6 @@ module.exports = function (roles) {
         return res.status(403).json({ message: 'User is not authenticated' });
       }
       const { roles: userRoles } = jwt.verify(token, secret);
-      console.log(userRoles);
       let hasRole = false;
       userRoles.forEach(role => {
         if (roles.includes(role)) {
