@@ -1,5 +1,4 @@
 const User = require('./models/User');
-const Role = require('./models/Role');
 const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
@@ -8,7 +7,6 @@ const { secret } = require('./config');
 const generateAccessToken = (id, roles) => {
   const payload = {
     id,
-    roles,
   };
   return jwt.sign(payload, secret, { expiresIn: '24h' });
 };
@@ -28,11 +26,9 @@ class authController {
           .json({ message: `User with ${username} already exists` });
       }
       const hashPassword = bcrypt.hashSync(password, 7);
-      const userRole = await Role.findOne({ value: 'USER' });
       const user = new User({
         username,
         password: hashPassword,
-        roles: [userRole.value],
       });
       await user.save();
       return res.json({ message: 'User registered successfully!' });
@@ -57,7 +53,7 @@ class authController {
           .status(400)
           .json({ message: 'Enter a wrong username or password' });
       }
-      const token = generateAccessToken(user._id, user.roles);
+      const token = generateAccessToken(user._id);
       return res.json({ token });
     } catch (e) {
       console.log(e);

@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './modules/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -28,6 +29,7 @@ import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { EffectsModule } from '@ngrx/effects';
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
@@ -61,7 +64,7 @@ import { EffectsModule } from '@ngrx/effects';
     EffectsModule.forRoot([]),
   ],
   exports: [],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
   

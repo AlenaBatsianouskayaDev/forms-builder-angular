@@ -7,11 +7,11 @@ import { LoginViewComponent } from './views/login-view/login-view.component';
 import { RegistrationViewComponent } from './views/registration-view/registration-view.component';
 
 const routes: Routes = [
-  { path: '', component: HomeViewComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'form-builder', component: FormBuilderViewComponent },
   { path: 'login', component: LoginViewComponent }, 
   { path: 'registration', component: RegistrationViewComponent }, 
-  { path: '**', component: FormBuilderViewComponent }, 
+  // { path: '**', component: NotFound }, 
 ]
 
 @NgModule({

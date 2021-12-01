@@ -1,5 +1,13 @@
-<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate class="RegistrationForm">
-  <app-input-error-email-matcher></app-input-error-email-matcher>
-  <app-input *ngFor = "let inputProp of inputProps" [prop]="inputProp"></app-input>
-  <app-button-submit></app-button-submit>
+<form #f="ngForm" novalidate class="RegistrationForm">
+  <mat-form-field class="Input" appearance="fill">
+    <mat-label>Username</mat-label>
+    <input matInput [(ngModel)]="registerUserData.username" placeholder="Username" name="username" type="text">
+  </mat-form-field>
+
+  <mat-form-field class="Input" appearance="fill">
+    <mat-label>Password</mat-label>
+    <input matInput [(ngModel)]="registerUserData.password" placeholder="Password" name="password" type="password">
+  </mat-form-field>
+
+  <app-button-submit (click)="registerUser()"></app-button-submit>
 </form>
