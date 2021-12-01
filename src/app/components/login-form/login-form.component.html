@@ -1,10 +1,14 @@
-<!-- <form #f="ngForm" (ngSubmit)="loginRequest(f)" novalidate class="LoginForm">
-  <app-input-error-email-matcher></app-input-error-email-matcher>
-  <app-input *ngFor = "let inputProp of inputProps" [prop]="inputProp"></app-input>
-  <app-button-submit></app-button-submit>
-  <span>Hello, {{user$ | async}}</span>
-</form> -->
-<div>
-  <!-- <p>Name: {{user?.name}}</p> -->
-  <!-- <p>Password: {{user?.password}}</p> -->
-</div>
+<form #f="ngForm" novalidate class="LoginForm">
+  <mat-form-field class="Input" appearance="fill">
+    <mat-label>Username</mat-label>
+    <input matInput [(ngModel)]="loginUserData.username" placeholder="Username" name="username" type="text">
+  </mat-form-field>
+
+  <mat-form-field class="Input" appearance="fill">
+    <mat-label>Password</mat-label>
+    <input matInput [(ngModel)]="loginUserData.password" placeholder="Password" name="password" type="password">
+  </mat-form-field>
+
+  <app-button-submit (click)="loginUser()"></app-button-submit>
+</form>
+

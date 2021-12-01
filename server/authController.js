@@ -4,7 +4,7 @@ const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const { secret } = require('./config');
 
-const generateAccessToken = (id, roles) => {
+const generateAccessToken = id => {
   const payload = {
     id,
   };
@@ -31,7 +31,8 @@ class authController {
         password: hashPassword,
       });
       await user.save();
-      return res.json({ message: 'User registered successfully!' });
+      const token = generateAccessToken(user._id);
+      return res.json({ token });
     } catch (e) {
       console.log(e);
       res.status(400).json({ message: 'Registration error' });

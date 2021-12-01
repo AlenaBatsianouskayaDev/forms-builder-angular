@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import {select, Store} from '@ngrx/store'
-import { Observable } from 'rxjs';
-import { selectUser } from 'src/app/reducers/auth/user.selectors';
-import { HttpClient } from '@angular/common/http';
 import { User } from './../../services/user';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -14,24 +11,23 @@ import { User } from './../../services/user';
   
 export class LoginFormComponent implements OnInit {
   
-  user: User | undefined;
-  // public user$: Observable<String> = this.store$.pipe(select(selectUser));
-  // inputProps = ['Login', 'Password'];
+  loginUserData: User = new User('','');
   
-  constructor(private http: HttpClient) { }
+  constructor(private _auth: AuthService, private _router: Router) { }
 
   ngOnInit(): void {
-    // console.log("запрос")
-    // this.http.get('http://localhost:4200/api/users').subscribe((data:any) => this.user=new User(data.name, data.password));
-    // console.log(this.user);
   }
 
-
-  loginRequest(f: NgForm): void {
-    console.log('LOGIN')
-    // this.store.dispatch(loginRequest());
-    // console.log(f.value);  // { first: '', last: '' }
-    // console.log(f.valid);  // false
+  loginUser() {
+    this._auth.loginUser(this.loginUserData)
+      .subscribe(
+        res => {
+          console.log(res);
+          localStorage.setItem('token', res.token);
+          this._router.navigate(['form-builder']);
+        },
+        err => console.log(err),
+      )
+  
   }
-
 }
