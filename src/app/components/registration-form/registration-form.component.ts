@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { User } from './../../services/user';
-import { AuthService } from 'src/app/services/auth.service';
+
+import { User } from '../../models/user.models';
+
+import { Store } from "@ngrx/store";
+
+import { registerRequest } from './../../reducers/auth/auth.actions';
+
 
 @Component({
   selector: 'app-registration-form',
@@ -12,20 +16,14 @@ export class RegistrationFormComponent implements OnInit {
   
   registerUserData: User = new User('','');
   
-  constructor(private _auth: AuthService, private _router:Router) { }
+  constructor(private store$: Store) { }
 
   ngOnInit(): void {
   }
 
-  registerUser() {
-    this._auth.registerUser(this.registerUserData)
-      .subscribe(
-       res => {
-          console.log(res);
-          localStorage.setItem('token', res.token);
-          this._router.navigate(['form-builder']);
-        },
-        err=>console.log(err),
-      )
+  registerUser(): void {
+   console.log("before") 
+   this.store$.dispatch(registerRequest(this.registerUserData))
+    console.log("after") 
   }
 }

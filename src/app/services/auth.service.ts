@@ -7,16 +7,17 @@ export class AuthService {
 
   private _registerUrl = "http://localhost:5000/api/registration"
   private _loginUrl = "http://localhost:5000/api/login"
-  constructor(private http: HttpClient, private _router: Router) {
+
+  constructor(private _http: HttpClient, private _router: Router) {
     
   }
 
   registerUser(user: any) {
-    return this.http.post<any>(this._registerUrl, user)
+    return this._http.post<any>(this._registerUrl, user)
   }
 
   loginUser(user: any) {
-    return this.http.post<any>(this._loginUrl, user)
+    return this._http.post<any>(this._loginUrl, user)
   }
 
   loggedIn() {

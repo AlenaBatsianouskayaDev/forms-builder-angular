@@ -2,7 +2,18 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: `
+  <header>
+    <app-container>
+      <app-top-bar></app-top-bar>
+    </app-container>
+  </header>
+
+  <main>
+    <app-container>
+      <router-outlet></router-outlet>
+    </app-container>
+  </main>`,
   styleUrls: ['./app.component.scss']
 })
   

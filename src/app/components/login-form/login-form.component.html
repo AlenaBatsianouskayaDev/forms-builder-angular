@@ -1,10 +1,10 @@
-<form #f="ngForm" novalidate class="LoginForm">
-  <mat-form-field class="Input" appearance="fill">
+<form #f="ngForm" novalidate class="loginForm">
+  <mat-form-field appearance="fill" class="loginForm__input">
     <mat-label>Username</mat-label>
     <input matInput [(ngModel)]="loginUserData.username" placeholder="Username" name="username" type="text">
   </mat-form-field>
 
-  <mat-form-field class="Input" appearance="fill">
+  <mat-form-field appearance="fill" class="loginForm__input">
     <mat-label>Password</mat-label>
     <input matInput [(ngModel)]="loginUserData.password" placeholder="Password" name="password" type="password">
   </mat-form-field>

@@ -1,10 +1,9 @@
-.HomeView {
-  width: 100%;
+.homeView {
   height: 100vh;
-  padding: 0 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  outline: 2px solid orangered;
 
   &__text {
     font-size: 24px;

@@ -25,14 +25,15 @@ class authController {
           .status(400)
           .json({ message: `User with ${username} already exists` });
       }
-      const hashPassword = bcrypt.hashSync(password, 7);
+      // const hashPassword = bcrypt.hashSync(password, 7);
       const user = new User({
         username,
-        password: hashPassword,
+        // password: hashPassword,
+        password,
       });
       await user.save();
       const token = generateAccessToken(user._id);
-      return res.json({ token });
+      return res.json({ username, token });
     } catch (e) {
       console.log(e);
       res.status(400).json({ message: 'Registration error' });
@@ -55,7 +56,8 @@ class authController {
           .json({ message: 'Enter a wrong username or password' });
       }
       const token = generateAccessToken(user._id);
-      return res.json({ token });
+      console.log(res.json);
+      return res.json({ username, token });
     } catch (e) {
       console.log(e);
       res.status(400).json({ message: 'Login error' });

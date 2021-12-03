@@ -1,0 +1,17 @@
+.appNav {
+  &__list {
+    display: flex;
+    flex-direction: row;
+  }
+  &__item {
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+  &__link:focus,
+  &__link:hover,
+  .activeLink {
+    color: rgb(15, 120, 168);
+    background-color: rgba(15, 120, 168, 0.1);
+  }
+}
