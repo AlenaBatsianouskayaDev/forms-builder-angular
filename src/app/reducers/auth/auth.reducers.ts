@@ -4,17 +4,15 @@ import { registerRequest, registerSuccess, registerError, loginRequest, loginSuc
 
 export interface AuthState {
   username: string,
-  token: string | null,
+  token: string,
   isLoading: boolean,
-  isAuthenticated: boolean, //зависит от токена, убрать его
   error: string,
 }
 
 export const initialAuthState: AuthState = {
-  username: 'ale',
+  username: '',
   token: '',
   isLoading: false,
-  isAuthenticated: true,
   error: '',
 }
 
@@ -24,10 +22,10 @@ export const authReducers = createReducer(
   on(loginRequest, state => ({ ...state, isLoading: true })),
   on(logoutRequest, state => ({ ...state, isLoading: true })),
 
-  on(registerSuccess, (state, {username, token}) => ({ ...state, username, token, isLoading: false, isAuthenticated: true, error: '' })),
-  on(loginSuccess, (state, {username, token}) => ({ ...state, username, token, isLoading: false, isAuthenticated: true, error: '' })),
+  on(registerSuccess, (state, {username, token}) => ({ ...state, username, token, isLoading: false, error: '' })),
+  on(loginSuccess, (state, {username, token}) => ({ ...state, username, token, isLoading: false, error: '' })),
 
-  on(logoutSuccess, (state) => ({ ...state, username: '', token: null, isLoading: false, isAuthenticated: false })),
+  on(logoutSuccess, (state) => ({ ...state, username: '', token: '', isLoading: false })),
   
   on(registerError, (state, { error }) => ({ ...state, error })),
   on(loginError, (state, { error }) => ({ ...state, error })),

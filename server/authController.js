@@ -25,11 +25,10 @@ class authController {
           .status(400)
           .json({ message: `User with ${username} already exists` });
       }
-      // const hashPassword = bcrypt.hashSync(password, 7);
+      const hashPassword = bcrypt.hashSync(password, 7);
       const user = new User({
         username,
-        // password: hashPassword,
-        password,
+        password: hashPassword,
       });
       await user.save();
       const token = generateAccessToken(user._id);
@@ -45,15 +44,11 @@ class authController {
       const { username, password } = req.body;
       const user = await User.findOne({ username });
       if (!user) {
-        return res
-          .status(400)
-          .json({ message: 'Enter a wrong username or password' });
+        return res.status(400).json({ message: 'Enter a wrong username ' });
       }
       const validPassword = bcrypt.compareSync(password, user.password);
       if (!validPassword) {
-        return res
-          .status(400)
-          .json({ message: 'Enter a wrong username or password' });
+        return res.status(400).json({ message: 'Enter a wrong password' });
       }
       const token = generateAccessToken(user._id);
       console.log(res.json);

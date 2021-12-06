@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
 import { User } from '../../models/user.models';
-
 import { Store } from "@ngrx/store";
 
 import { registerRequest } from './../../reducers/auth/auth.actions';
-
 
 @Component({
   selector: 'app-registration-form',
@@ -22,8 +19,6 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   registerUser(): void {
-   console.log("before") 
    this.store$.dispatch(registerRequest(this.registerUserData))
-    console.log("after") 
   }
 }

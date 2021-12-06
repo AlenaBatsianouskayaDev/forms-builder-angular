@@ -9,7 +9,7 @@
         </li>
         <li class="authNav__item">
             <a *ngIf="isAuth$ | async" routerLink="/login" routerLinkActive="activeLink" class="authNav__link"
-                mat-button aria-label="Sign Up" >Log Out</a>
+                mat-button aria-label="Log Out" (click)="logoutUser()">Log Out</a>
         </li>
     </ul>
 </nav>

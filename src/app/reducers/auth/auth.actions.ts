@@ -15,7 +15,7 @@ export const registerError = createAction(
 
 export const loginRequest = createAction(
   '[AUTH] loginRequest',
-  props<{username: string, token: string}>()
+  props<{username: string, password: string}>()
 );
 export const loginSuccess = createAction(
   '[AUTH] loginSuccess',
