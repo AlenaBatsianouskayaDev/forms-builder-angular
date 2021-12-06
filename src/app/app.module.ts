@@ -32,7 +32,11 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { AuthEffects } from './reducers/auth/auth.effects';
-
+import { PortalModule } from '@angular/cdk/portal';
+import { PortalComponentComponent } from './components/portal-component/portal-component.component';
+import { TextareaComponent } from './shared/textarea/textarea.component';
+import { CheckboxComponent } from './shared/checkbox/checkbox.component';
+import { SelectComponent } from './shared/select/select.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +55,10 @@ import { AuthEffects } from './reducers/auth/auth.effects';
     InputComponent,
     ButtonSubmitComponent,
     ContainerComponent,
+    PortalComponentComponent,
+    TextareaComponent,
+    CheckboxComponent,
+    SelectComponent,
   ],
   imports: [
     FormsModule,
@@ -65,6 +73,7 @@ import { AuthEffects } from './reducers/auth/auth.effects';
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([AuthEffects]),
+    PortalModule,
   ],
   exports: [],
   providers: [AuthService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}],

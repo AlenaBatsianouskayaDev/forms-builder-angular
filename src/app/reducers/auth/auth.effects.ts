@@ -24,7 +24,7 @@ export class AuthEffects {
           localStorage.setItem('token', token);
           this._router.navigate(['form-builder']);
           return authActions.registerSuccess({ username, token })
-        }),
+        }), 
         catchError(error => of(authActions.registerError(error)))
       ))
     ))
@@ -35,7 +35,6 @@ export class AuthEffects {
       exhaustMap((data: User) => this.authService.loginUser(data).pipe(
         map(({ username, token }) => {
           localStorage.setItem('token', token);
-          console.log('catch login')
           this._router.navigate(['form-builder']);
           return authActions.loginSuccess({ username, token })
         }),
@@ -48,11 +47,9 @@ export class AuthEffects {
       ofType(authActions.logoutRequest),
         map(action => {
           localStorage.removeItem('token');
-          console.log('catch logout');
           this._router.navigate(['/']);
           return authActions.logoutSuccess()
-        }),
+        }), 
         catchError(error => of(authActions.logoutError(error)))
-      ))
-  
+    ))  
 }
