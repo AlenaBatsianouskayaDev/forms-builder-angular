@@ -2,11 +2,5 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  outline: 2px solid orangered;
-
-  &__text {
-    font-size: 24px;
-    color: #151515;
-  }
+  align-items: flex-start;
 }

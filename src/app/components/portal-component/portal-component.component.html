@@ -1,18 +1,20 @@
-<div class="example-container">
-  <h2>To do</h2>
+<div class="builderContainer" cdkDropListGroup>
+  <div class="stylesSection example-container">
+    <button (click)="selectedPortal = domPortal">Render DOM portal</button>
+    <div #domPortalContent>Hello, this is a template portal</div>
+  </div>
 
-  <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
-    class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of todo" cdkDrag>
+  <div class="portalOutlet example-container">
+    <div [cdkPortalOutlet]="selectedPortal" cdkDropList [cdkDropListData]="done" class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
     </div>
   </div>
-</div>
 
-<div class="example-container">
-  <h2>Done</h2>
-
-  <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
-    class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of done" cdkDrag><app-input></app-input></div>
+  <!-- <div cdkDropList [cdkDropListData]="done" class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+  </div> -->
+  <div class="elementsSection example-container" cdkDropList [cdkDropListData]="todo" class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of todo" cdkDrag #domPortalContent>{{item}}</div>    
   </div>
 </div>
+
