@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
-import { CdkDragDrop, moveItemInArray, copyArrayItem, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, copyArrayItem} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-portal-component',
@@ -19,7 +19,6 @@ import { CdkDragDrop, moveItemInArray, copyArrayItem, transferArrayItem } from '
 export class PortalComponentComponent implements AfterViewInit {
   // @ViewChild('templatePortalContent') templatePortalContent: TemplateRef<unknown>;
   @ViewChild('domPortalContent') domPortalContent: ElementRef<HTMLElement>;
-
   selectedPortal: Portal<any>;
   // componentPortal: ComponentPortal<ComponentPortalExample>;
   // templatePortal: TemplatePortal<any>;
@@ -33,22 +32,23 @@ export class PortalComponentComponent implements AfterViewInit {
     this.domPortal = new DomPortal(this.domPortalContent);
   }
   
-  todo = ['input', 'texarea', 'button', 'checkbox', 'select'];
+  todo = ['input', 'textarea', 'button', 'checkbox', 'select'];
 
   done = [];
 
   drop(event: CdkDragDrop<any>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      copyArrayItem(
+    } else if (event.previousContainer !== event.container && event.previousContainer.id === 'cdk-drop-list-0') {
+      event.previousContainer.data.splice(event.currentIndex, 1);
+    }
+      else copyArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex,
-      );
-    }
-  }
+    );
+  } 
 }
 
 // @Component({

@@ -2,11 +2,11 @@
   <div class="stylesSection example-container">
     <button (click)="selectedPortal = domPortal">Render DOM portal</button>
     <div #domPortalContent>Hello, this is a template portal</div>
+    
   </div>
 
-  <div class="portalOutlet example-container">
-    <div [cdkPortalOutlet]="selectedPortal" cdk-drag-placeholder cdkDropList [cdkDropListData]="done" class="example-list" (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of done" cdkDrag>
+  <div class="portalOutlet example-container" [cdkPortalOutlet]="selectedPortal" cdk-drag-placeholder cdkDropList [cdkDropListData]="done" class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="form-element-box" *ngFor="let item of done" cdkDrag>
         <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
         <app-input *ngIf="item === 'input'"></app-input>
         <app-textarea *ngIf="item === 'textarea'"></app-textarea>
@@ -14,14 +14,11 @@
         <app-checkbox *ngIf="item === 'checkbox'"></app-checkbox>
         <app-select *ngIf="item === 'select'"></app-select>
       </div>
-    </div>
   </div>
 
-  <!-- <div cdkDropList [cdkDropListData]="done" class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-  </div> -->
   <div class="elementsSection example-container" cdkDropList [cdkDropListData]="todo" class="example-list" (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of todo" cdkDrag #domPortalContent>
+      <div class="element-box" *ngFor="let item of todo" cdkDrag #domPortalContent>
+        <p class="element-box-title">{{item}}</p>
         <app-input *ngIf="item === 'input'"></app-input>
         <app-textarea *ngIf="item === 'textarea'"></app-textarea>
         <app-button-submit *ngIf="item === 'button'"></app-button-submit>
