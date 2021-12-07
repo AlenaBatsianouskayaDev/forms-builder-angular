@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, copyArrayItem, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-portal-component',
@@ -41,7 +41,7 @@ export class PortalComponentComponent implements AfterViewInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      transferArrayItem(
+      copyArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
