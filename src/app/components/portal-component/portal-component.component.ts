@@ -16,7 +16,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
   styleUrls: ['./portal-component.component.scss']
 })
 
-export class PortalComponentComponent implements AfterViewInit{
+export class PortalComponentComponent implements AfterViewInit {
   // @ViewChild('templatePortalContent') templatePortalContent: TemplateRef<unknown>;
   @ViewChild('domPortalContent') domPortalContent: ElementRef<HTMLElement>;
 
@@ -25,7 +25,7 @@ export class PortalComponentComponent implements AfterViewInit{
   // templatePortal: TemplatePortal<any>;
   domPortal: DomPortal<any>;
 
-  constructor(private _viewContainerRef: ViewContainerRef) {}
+  constructor(private _viewContainerRef: ViewContainerRef) { }
 
   ngAfterViewInit() {
     // this.componentPortal = new ComponentPortal(ComponentPortalExample);
@@ -33,11 +33,11 @@ export class PortalComponentComponent implements AfterViewInit{
     this.domPortal = new DomPortal(this.domPortalContent);
   }
   
-   todo = ['input', 'textarea', 'button', 'checkbox', 'select'];
+  todo = ['input', 'texarea', 'button', 'checkbox', 'select'];
 
-  done = ['Walk dog'];
+  done = [];
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<any>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
