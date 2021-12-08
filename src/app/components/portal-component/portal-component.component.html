@@ -1,19 +1,48 @@
 <div class="builderContainer" cdkDropListGroup>
   <div class="stylesSection example-container">
-    <button (click)="selectedPortal = domPortal">Render DOM portal</button>
-    <div #domPortalContent>Hello, this is a template portal</div>
+    <!-- <button (click)="selectedPortal = domPortal">Render DOM portal</button> -->
+    <!-- <div #domPortalContent>Hello, this is a template portal</div>
+    <input [formControl]="inputControl"> -->
     
+    <app-input-test></app-input-test>
+      <!-- <form [formGroup]="inputBuilder" class="form1">
+        <input type="text" formControlName="placeholderText">
+        <input type="text" formControlName="width">
+        <input type="text" formControlName="height">
+        <input type="checkbox" formControlName="required" name="required">
+        <input type="checkbox" formControlName="required" name="required">
+        <select formControlName="borderStyle">
+          <option value="solid" selected>solid</option>
+          <option value="dotted">dotted</option>
+          <option value="inset">inset</option>            
+          <option value="double">double</option>
+          <option value="groove">groove</option>
+          <option value="none">none</option>
+        </select>
+        <input type="text" formControlName="fontSize">
+        <select formControlName="fontWeight">
+          <option value="normal" selected>normal</option>
+          <option value="bold">bold</option>
+          <option value="lighter">lighter</option>
+        </select>
+        <input type="color" formControlName="color">
+      </form>
+     -->
   </div>
 
-  <div class="portalOutlet example-container" [cdkPortalOutlet]="selectedPortal" cdk-drag-placeholder cdkDropList [cdkDropListData]="done" class="example-list" (cdkDropListDropped)="drop($event)">
+  <div class="portalOutlet example-container" [cdkPortalOutlet]="domPortal" cdk-drag-placeholder cdkDropList [cdkDropListData]="done" class="example-list" (cdkDropListDropped)="drop($event)">
+    <!-- <form [formGroup]='formBuilder'> -->
       <div class="form-element-box" *ngFor="let item of done" cdkDrag>
         <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-        <app-input *ngIf="item === 'input'"></app-input>
+        <!-- <input [value]="inputControlValue" *ngIf="item === 'input'"> -->
+        <!-- <app-input [value]="inputControlValue" *ngIf="item === 'input'"></app-input> -->
         <app-textarea *ngIf="item === 'textarea'"></app-textarea>
         <app-button-submit *ngIf="item === 'button'"></app-button-submit>
         <app-checkbox *ngIf="item === 'checkbox'"></app-checkbox>
         <app-select *ngIf="item === 'select'"></app-select>
       </div>
+    <!-- </form>   -->
+    
   </div>
 
   <div class="elementsSection example-container" cdkDropList [cdkDropListData]="todo" class="example-list" (cdkDropListDropped)="drop($event)">

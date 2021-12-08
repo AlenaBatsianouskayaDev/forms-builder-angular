@@ -37,6 +37,7 @@ import { PortalComponentComponent } from './components/portal-component/portal-c
 import { TextareaComponent } from './shared/textarea/textarea.component';
 import { CheckboxComponent } from './shared/checkbox/checkbox.component';
 import { SelectComponent } from './shared/select/select.component';
+import { InputTestComponent } from './shared/input-test/input-test.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { SelectComponent } from './shared/select/select.component';
     TextareaComponent,
     CheckboxComponent,
     SelectComponent,
+    InputTestComponent,
   ],
   imports: [
     FormsModule,

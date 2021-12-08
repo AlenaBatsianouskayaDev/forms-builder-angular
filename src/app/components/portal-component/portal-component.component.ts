@@ -1,14 +1,16 @@
 import {
   AfterViewInit,
+  OnInit,
   Component,
   TemplateRef,
   ViewChild,
   ViewContainerRef,
   ElementRef,
 } from '@angular/core';
-
 import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
 import { CdkDragDrop, moveItemInArray, copyArrayItem} from '@angular/cdk/drag-drop';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-portal-component',
@@ -16,7 +18,7 @@ import { CdkDragDrop, moveItemInArray, copyArrayItem} from '@angular/cdk/drag-dr
   styleUrls: ['./portal-component.component.scss']
 })
 
-export class PortalComponentComponent implements AfterViewInit {
+export class PortalComponentComponent implements AfterViewInit, OnInit {
   // @ViewChild('templatePortalContent') templatePortalContent: TemplateRef<unknown>;
   @ViewChild('domPortalContent') domPortalContent: ElementRef<HTMLElement>;
   selectedPortal: Portal<any>;
@@ -24,8 +26,23 @@ export class PortalComponentComponent implements AfterViewInit {
   // templatePortal: TemplatePortal<any>;
   domPortal: DomPortal<any>;
 
-  constructor(private _viewContainerRef: ViewContainerRef) { }
+  formReview = this.fb.group({
+    name: ['', Validators.required],
+    comment: ['', Validators.required],
+    rateItem: ['', Validators.required]
+  })
 
+  constructor (private fb: FormBuilder) { }
+ 
+  ngOnInit() {
+  
+    // this.placeholderText.valueChanges.subscribe((value) => {
+    //   console.log(value);
+    // })
+    // this.inputControl.statusChanges.subscribe((status) => console.log(status))
+    
+  }
+  
   ngAfterViewInit() {
     // this.componentPortal = new ComponentPortal(ComponentPortalExample);
     // this.templatePortal = new TemplatePortal(this.templatePortalContent, this._viewContainerRef);
@@ -33,8 +50,7 @@ export class PortalComponentComponent implements AfterViewInit {
   }
   
   todo = ['input', 'textarea', 'button', 'checkbox', 'select'];
-
-  done = [];
+  done = ['input'];
 
   drop(event: CdkDragDrop<any>) {
     if (event.previousContainer === event.container) {
@@ -47,7 +63,7 @@ export class PortalComponentComponent implements AfterViewInit {
         event.container.data,
         event.previousIndex,
         event.currentIndex,
-    );
+    )
   } 
 }
 
