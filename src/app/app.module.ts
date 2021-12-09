@@ -38,6 +38,7 @@ import { TextareaComponent } from './shared/textarea/textarea.component';
 import { CheckboxComponent } from './shared/checkbox/checkbox.component';
 import { SelectComponent } from './shared/select/select.component';
 import { InputTestComponent } from './shared/input-test/input-test.component';
+import { SetupFormComponent } from './components/setup-form/setup-form.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { InputTestComponent } from './shared/input-test/input-test.component';
     CheckboxComponent,
     SelectComponent,
     InputTestComponent,
+    SetupFormComponent,
   ],
   imports: [
     FormsModule,

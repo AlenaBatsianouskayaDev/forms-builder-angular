@@ -1,0 +1,23 @@
+<form [formGroup]="setupForm" class="setupForm">
+  <input type="text" formControlName="placeholderText">
+  <input type="text" formControlName="width">
+  <input type="text" formControlName="height">
+
+  <input type="checkbox" formControlName="required" name="required">
+  <input type="checkbox" formControlName="required" name="required">
+  <select formControlName="borderStyle">
+    <option value="solid" selected>solid</option>
+    <option value="dotted">dotted</option>
+    <option value="inset">inset</option>
+    <option value="double">double</option>
+    <option value="groove">groove</option>
+    <option value="none">none</option>
+  </select>
+  <input type="text" formControlName="fontSize">
+  <select formControlName="fontWeight">
+    <option value="normal" selected>normal</option>
+    <option value="bold">bold</option>
+    <option value="lighter">lighter</option>
+  </select>
+  <input type="color" formControlName="color">
+</form>
