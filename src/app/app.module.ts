@@ -39,6 +39,7 @@ import { CheckboxComponent } from './shared/checkbox/checkbox.component';
 import { SelectComponent } from './shared/select/select.component';
 import { InputTestComponent } from './shared/input-test/input-test.component';
 import { SetupFormComponent } from './components/setup-form/setup-form.component';
+import { StylesFormComponent } from './styles-form/styles-form.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { SetupFormComponent } from './components/setup-form/setup-form.component
     SelectComponent,
     InputTestComponent,
     SetupFormComponent,
+    StylesFormComponent,
   ],
   imports: [
     FormsModule,

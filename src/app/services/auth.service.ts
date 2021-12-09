@@ -1,12 +1,16 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
+import * as uuid from 'uuid';
+
+
 
 @Injectable()
 export class AuthService {
 
-  private _registerUrl = "http://localhost:5000/api/registration"
-  private _loginUrl = "http://localhost:5000/api/login"
+  private _registerUrl = "http://localhost:5000/api/registration";
+  private _loginUrl = "http://localhost:5000/api/login";
+  id: string;
 
   constructor(private _http: HttpClient, private _router: Router) {
     
@@ -26,5 +30,9 @@ export class AuthService {
 
   getToken() {
     return localStorage.getItem('token'); /// посмотреть куда их перенести
+  }
+
+  generateId() {
+    return this.id = uuid.v4();
   }
 }

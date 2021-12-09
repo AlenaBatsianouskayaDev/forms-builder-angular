@@ -8,9 +8,10 @@ import {
   ElementRef,
 } from '@angular/core';
 import { ComponentPortal, DomPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
-import { CdkDragDrop, moveItemInArray, copyArrayItem} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, copyArrayItem, transferArrayItem} from '@angular/cdk/drag-drop';
 
 import { Observable, Subject } from 'rxjs';
+import { AuthService } from './../../services/auth.service'
 
 @Component({
   selector: 'app-portal-component',
@@ -21,8 +22,8 @@ import { Observable, Subject } from 'rxjs';
 
 export class PortalComponentComponent implements AfterViewInit, OnInit {
 
-
-  constructor () { }
+  id: string;
+  constructor (private authService: AuthService, ) { }
  
   ngOnInit() {
     
@@ -47,6 +48,7 @@ export class PortalComponentComponent implements AfterViewInit, OnInit {
         event.previousIndex,
         event.currentIndex,
     )
+    this.id = this.authService.generateId();
   } 
 }
 

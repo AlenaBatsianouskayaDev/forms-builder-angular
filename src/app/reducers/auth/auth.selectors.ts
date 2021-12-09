@@ -4,17 +4,17 @@ import { AuthState } from "./auth.reducers";
 const getFeature = createFeatureSelector<AuthState>('auth');
 
 export const getUsername = createSelector(
-  getFeature, state => state.username);
+  getFeature, (state: AuthState) => state.username);
 
 export const getToken = createSelector(
-  getFeature, state => state.token);
+  getFeature, (state: AuthState) => state.token);
 
 export const getError = createSelector(
-  getFeature, state => state.error);
+  getFeature, (state: AuthState) => state.error);
   
 export const isAuth = createSelector(
   getToken, token => !!token);
 
 export const isLoading = createSelector(
-  getFeature, state => state.isLoading);
+  getFeature, (state: AuthState) => state.isLoading);
 

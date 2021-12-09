@@ -4,27 +4,31 @@ import { FormBuilderState } from "./formBuilder.reducers";
 const getFeature = createFeatureSelector<FormBuilderState>('formBuilder');
 
 export const getPlaceholderText = createSelector(
-  getFeature, state => state.placeholderText);
+  getFeature, (state: FormBuilderState) => state.placeholderText);
 
 export const getWidth = createSelector(
-  getFeature, state => state.width);
+  getFeature, (state: FormBuilderState) => state.width);
 
 export const getHeight = createSelector(
-  getFeature, state => state.height);
+  getFeature, (state: FormBuilderState) => state.height);
   
 export const isRequired = createSelector(
-  getFeature, state => state.required);
+  getFeature, (state: FormBuilderState) => state.required);
 
 export const getBorderStyle = createSelector(
-  getFeature, state => state.borderStyle);
+  getFeature, (state: FormBuilderState) => state.borderStyle);
 
 export const getFontSize = createSelector(
-  getFeature, state => state.fontSize);
+  getFeature, (state: FormBuilderState) => state.fontSize);
 
 export const getFontWeight = createSelector(
-  getFeature, state => state.fontWeight);
+  getFeature, (state: FormBuilderState) => state.fontWeight);
   
 export const getColor = createSelector(
-  getFeature, state => state.color);
+  getFeature, (state: FormBuilderState) => state.color);
+
+export const getStyles = createSelector(
+  getFeature, (state: FormBuilderState) => state)
+
   
     
