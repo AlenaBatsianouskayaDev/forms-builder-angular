@@ -13,7 +13,6 @@ import { LogoComponent } from './components/app-top-bar/logo/logo.component';
 import { AppNavComponent } from './components/app-top-bar/app-nav/app-nav.component';
 import { AuthNavComponent } from './components/app-top-bar/auth-nav/auth-nav.component';
 import { ContainerComponent } from './shared/container/container.component';
-import { HomeViewComponent } from './views/home-view/home-view.component';
 import { FormBuilderViewComponent } from './views/form-builder-view/form-builder-view.component';
 import { LoginViewComponent } from './views/login-view/login-view.component';
 import { RegistrationViewComponent } from './views/registration-view/registration-view.component';
@@ -52,7 +51,6 @@ import { ReactiveComponentModule } from '@ngrx/component';
     LogoComponent,  
     AppNavComponent,
     AuthNavComponent,
-    HomeViewComponent,
     FormBuilderViewComponent,
     LoginViewComponent,
     RegistrationViewComponent,

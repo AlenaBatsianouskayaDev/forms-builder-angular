@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { User } from '../../models/user.models';
 import { Store } from "@ngrx/store";
 
@@ -9,16 +9,13 @@ import { registerRequest } from './../../reducers/auth/auth.actions';
   templateUrl: './registration-form.component.html',
   styleUrls: ['./registration-form.component.scss']
 })
-export class RegistrationFormComponent implements OnInit {
+export class RegistrationFormComponent {
   
   registerUserData: User = new User('','');
   
   constructor(private store$: Store) { }
 
-  ngOnInit(): void {
-  }
-
-  registerUser(): void {
+  registerUser() {
    this.store$.dispatch(registerRequest(this.registerUserData))
   }
 }

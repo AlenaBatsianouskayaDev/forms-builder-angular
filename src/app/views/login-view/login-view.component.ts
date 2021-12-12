@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-login-view',
-  templateUrl: './login-view.component.html',
-  styleUrls: ['./login-view.component.scss']
+  template: `
+  <div class="loginView">
+    <app-login-form></app-login-form>
+  </div>`,
+  styles: [`
+  .loginView {
+    height: 100vh;
+    padding: 130px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }`]
 })
-export class LoginViewComponent implements OnInit {
-
-  constructor(private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-  }
+export class LoginViewComponent {
 
 }

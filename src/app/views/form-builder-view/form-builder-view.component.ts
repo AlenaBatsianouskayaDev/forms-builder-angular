@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-form-builder-view',
-  templateUrl: './form-builder-view.component.html',
-  styleUrls: ['./form-builder-view.component.scss']
+  template: `
+  <div class="FormBuilderView">
+    <app-form-styles></app-form-styles>
+    <app-form-display></app-form-display>
+  </div>`,
+  styles: [`
+  .FormBuilderView {
+    height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }`]
 })
-export class FormBuilderViewComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  
+export class FormBuilderViewComponent {
 
 }
