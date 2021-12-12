@@ -4,6 +4,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -11,6 +12,7 @@ const MaterialComponents = [
   MatCheckboxModule,
   MatSelectModule,
   DragDropModule,
+  CdkAccordionModule
 ]
 
 @NgModule({

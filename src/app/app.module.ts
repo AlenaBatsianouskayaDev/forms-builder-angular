@@ -19,7 +19,6 @@ import { LoginViewComponent } from './views/login-view/login-view.component';
 import { RegistrationViewComponent } from './views/registration-view/registration-view.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
-import { InputErrorEmailMatcherComponent } from './shared/input-error-validation/input-error-email-matcher.component';
 import { InputComponent } from './shared/input/input.component';
 import { ButtonSubmitComponent } from './shared/button-submit/button-submit.component';
 
@@ -29,17 +28,22 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthService } from './services/auth.service';
-import { AuthGuard } from './auth.guard';
-import { TokenInterceptorService } from './token-interceptor.service';
+import { AuthGuard } from './guards/auth/auth.guard';
+import { TokenInterceptorService } from './interceptors/token/token-interceptor.service';
 import { AuthEffects } from './reducers/auth/auth.effects';
 import { PortalModule } from '@angular/cdk/portal';
-import { PortalComponentComponent } from './components/portal-component/portal-component.component';
 import { TextareaComponent } from './shared/textarea/textarea.component';
 import { CheckboxComponent } from './shared/checkbox/checkbox.component';
 import { SelectComponent } from './shared/select/select.component';
-import { InputTestComponent } from './shared/input-test/input-test.component';
-import { SetupFormComponent } from './components/setup-form/setup-form.component';
-import { StylesFormComponent } from './styles-form/styles-form.component';
+import { FormSetupInputComponent } from './components/setup-form/form-setup-input/form-setup-input.component';
+import { FormSetupTextareaComponent } from './components/setup-form/form-setup-textarea/form-setup-textarea.component';
+import { FormSetupButtonComponent } from './components/setup-form/form-setup-button/form-setup-button.component';
+import { FormSetupSelectComponent } from './components/setup-form/form-setup-select/form-setup-select.component';
+import { FormSetupCheckboxComponent } from './components/setup-form/form-setup-checkbox/form-setup-checkbox.component';
+
+import { FormStylesComponent } from './components/form-styles/form-styles.component';
+import { FormDisplayComponent } from './components/form-display/form-display.component';
+import { ReactiveComponentModule } from '@ngrx/component';
 
 @NgModule({
   declarations: [
@@ -54,17 +58,19 @@ import { StylesFormComponent } from './styles-form/styles-form.component';
     RegistrationViewComponent,
     LoginFormComponent,
     RegistrationFormComponent,
-    InputErrorEmailMatcherComponent,
     InputComponent,
     ButtonSubmitComponent,
     ContainerComponent,
-    PortalComponentComponent,
     TextareaComponent,
     CheckboxComponent,
     SelectComponent,
-    InputTestComponent,
-    SetupFormComponent,
-    StylesFormComponent,
+    FormSetupInputComponent,
+    FormSetupTextareaComponent,
+    FormSetupButtonComponent,
+    FormSetupSelectComponent,
+    FormSetupCheckboxComponent,
+    FormStylesComponent,
+    FormDisplayComponent,  
   ],
   imports: [
     FormsModule,
@@ -80,6 +86,7 @@ import { StylesFormComponent } from './styles-form/styles-form.component';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([AuthEffects]),
     PortalModule,
+    ReactiveComponentModule
   ],
   exports: [],
   providers: [AuthService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}],

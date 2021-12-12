@@ -6,7 +6,7 @@ import { HomeViewComponent } from './views/home-view/home-view.component';
 import { FormBuilderViewComponent } from './views/form-builder-view/form-builder-view.component';
 import { LoginViewComponent } from './views/login-view/login-view.component';
 import { RegistrationViewComponent } from './views/registration-view/registration-view.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './guards/auth/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeViewComponent  },
