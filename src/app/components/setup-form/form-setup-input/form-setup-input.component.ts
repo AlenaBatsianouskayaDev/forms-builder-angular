@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Store } from "@ngrx/store";
 import { formSetupInputChange } from './../../../reducers/formBuilder/formBuilder.actions';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -24,7 +24,7 @@ export class FormSetupInputComponent implements OnInit {
   color: FormControl;
   private readonly destroy$ = new Subject();
 
-  constructor(fb: FormBuilder, private store$: Store) {
+  constructor(private fb: FormBuilder, private store$: Store) {
     this.formSetupInput = fb.group({
       placeholderText: new FormControl(''),
       width: new FormControl(''),

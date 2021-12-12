@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from '../../models/user.models';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Store } from "@ngrx/store";
 
 import { loginRequest } from 'src/app/reducers/auth/auth.actions';
@@ -10,13 +10,20 @@ import { loginRequest } from 'src/app/reducers/auth/auth.actions';
   styleUrls: ['./login-form.component.scss']
 })
   
-export class LoginFormComponent  {
+export class LoginFormComponent {
   
-  loginUserData: User = new User('','');
+  loginForm: FormGroup;
+  username: FormControl;
+  password: FormControl;
   
-  constructor(private store$: Store) { }
+  constructor(fb: FormBuilder, private store$: Store) {
+    this.loginForm = fb.group({
+      username: new FormControl(''),
+      password: new FormControl(''),
+    })
+  }
 
   loginUser() {
-    this.store$.dispatch(loginRequest(this.loginUserData))
+    this.store$.dispatch(loginRequest(this.loginForm.value));
   }
 }
