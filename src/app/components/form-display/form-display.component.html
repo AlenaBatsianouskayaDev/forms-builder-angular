@@ -1,55 +1,70 @@
 <div cdkDropListGroup class="example-container">
   <div cdk-drag-placeholder cdkDropList [cdkDropListData]="droppedElements" class="example-list"
     (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of shownElements" cdkDrag>
-      <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
-      <label>{{ label }}
-        <input type="text" *ngIf="item.name === 'input'" [placeholder]="placeholder"
-          [ngStyle]="{'color': color, 'width': width, 'height': height, 'border': borderStyle, 'font-size': fontSize, 'font-weight': fontWeight}" />
-      </label>
-      <label>{{ label }}
-        <textarea *ngIf="item.name === 'textarea'" placeholder]="placeholder"
-          [ngStyle]="{'color': color, 'width': width, 'height': height, 'border': borderStyle, 'font-size': fontSize, 'font-weight': fontWeight}"></textarea>
-      </label>
-      <label>{{ label }}
-        <select *ngIf="item.name === 'select'"
-          [ngStyle]="{'color': color, 'width': width, 'height': height, 'border': borderStyle, 'font-size': fontSize, 'font-weight': fontWeight}">
-          <option name="1">1</option>
-        </select>
-      </label>
-      <label>{{ label }}
-        <input type="checkbox" *ngIf="item.name === 'checkbox'"
-          [ngStyle]="{'color': color, 'width': width, 'height': height, 'border': borderStyle, 'font-size': fontSize, 'font-weight': fontWeight}">
-      </label>
-      <button *ngIf="item.name === 'button'"
-        [ngStyle]="{'color': color, 'width': width, 'height': height, 'border': borderStyle, 'font-size': fontSize, 'font-weight': fontWeight}">{{
-        label }}</button>
-    </div>
+    <ng-container *ngIf="shownElements$ | ngrxPush as shownElements">
+      <div class="example-box" *ngFor="let item of shownElements" cdkDrag>
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+        <ng-container *ngIf="item.name === 'input'" class="fieldElement">
+          <label>{{ item.label }}
+            <input (click)=setActiveElement($event) [id]="item.id" name="input" type="text" [placeholder]="item.placeholder"
+              [ngStyle]="{'color': item.color, 'width': item.width, 'height': item.height, 'border': item.borderStyle, 'font-size': item.fontSize, 'font-weight': item.fontWeight}" />
+          </label>
+        </ng-container>
+      
+        <ng-container *ngIf="item.name === 'textarea'" class="fieldElement">
+          <label>{{ item.label }}
+            <textarea (click)=setActiveElement($event) name="textarea" [id]="item.id" [placeholder]="item.placeholder"
+              [ngStyle]="{'color': item.color, 'width': item.width, 'height': item.height, 'border': item.borderStyle, 'font-size': item.fontSize, 'font-weight': item.fontWeight}"></textarea>
+          </label>
+        </ng-container>
+      
+        <ng-container *ngIf="item.name === 'select'" class="fieldElement">
+          <label>{{ item.label }}
+            <select (click)=setActiveElement($event) [id]="item.id" name="select"
+              [ngStyle]="{'color': item.color, 'width': item.width, 'height': item.height, 'border': item.borderStyle, 'font-size': item.fontSize, 'font-weight': item.fontWeight}">
+              <option name="1">1</option>
+            </select>
+          </label>
+        </ng-container>
+      
+        <ng-container *ngIf="item.name === 'checkbox'" class="fieldElement">
+          <label>{{ item.label }}
+            <input (click)=setActiveElement($event) [id]="item.id" type="checkbox" name="checkbox"
+              [ngStyle]="{'color': item.color, 'width': item.width, 'height': item.height, 'border': item.borderStyle, 'font-size': item.fontSize, 'font-weight': item.fontWeight}">
+          </label>
+        </ng-container>
+      
+        <ng-container *ngIf="item.name === 'button'" class="fieldElement">
+          <button (click)=setActiveElement($event) [id]="item.id" name="button"
+            [ngStyle]="{'color': item.color, 'width': item.width, 'height': item.height, 'border': item.borderStyle, 'font-size': item.fontSize, 'font-weight': item.fontWeight}">
+            {{ item.label }}
+          </button>
+        </ng-container>
+      </div>
+    </ng-container>
+    
   </div>
 
-  <div class="example-list" cdkDropList [cdkDropListData]="drugElements" class="example-list"
+  <div class="example-list" cdkDropList [cdkDropListData]="dragElements" class="example-list"
     (cdkDropListDropped)="drop($event)">
-    <div class="example-box" *ngFor="let item of drugElements" cdkDrag>
+    <div class="example-box" *ngFor="let item of dragElements" cdkDrag>
       <p class="element-box-title">{{item}}</p>
 
-      <label>{{ label }}
-        <input type="text" *ngIf="item === 'input'" [placeholder]="placeholder"
-          [ngStyle]="{'color': color, 'width': width, 'height': height, 'border': borderStyle, 'font-size': fontSize, 'font-weight': fontWeight}" />
+      <label>
+        <input type="text" *ngIf="item === 'input'"/>
       </label>
-      <label>{{ label }}
-        <textarea *ngIf="item === 'textarea'" placeholder]="placeholder"
-          [ngStyle]="{'color': color, 'width': width, 'height': height, 'border': borderStyle, 'font-size': fontSize, 'font-weight': fontWeight}"></textarea>
+      <label>
+        <textarea *ngIf="item === 'textarea'"></textarea>
       </label>
-      <label>{{ label }}
-        <select *ngIf="item === 'select'" [ngStyle]="{'color': color, 'width': width, 'height': height, 'border': borderStyle, 'font-size': fontSize, 'font-weight': fontWeight}">
+      <label>
+        <select *ngIf="item === 'select'" >
           <option name="1">1</option>
         </select>
       </label>
-      <label>{{ label }}
-        <input type="checkbox" *ngIf="item === 'checkbox'" [ngStyle]="{'color': color, 'width': width, 'height': height, 'border': borderStyle, 'font-size': fontSize, 'font-weight': fontWeight}">
+      <label>
+        <input type="checkbox" *ngIf="item === 'checkbox'" >
       </label>
-        <button *ngIf="item === 'button'" [ngStyle]="{'color': color, 'width': width, 'height': height, 'border': borderStyle, 'font-size': fontSize, 'font-weight': fontWeight}">{{ label }}</button>
-
+        <button type="button" *ngIf="item === 'button'"></button>
     </div>
   </div>
 </div>

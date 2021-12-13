@@ -1,85 +1,17 @@
 import { createAction, props } from '@ngrx/store';
-import { AuthService } from "src/app/services/auth.service";
+import { IElementStyles, IElementData } from '../interfaces';
 
-export const formSetupInputChange = createAction(
-  '[FORMBUILDER] formSetupInputChange',
-  props<{
-    label: string,
-    placeholder: string,
-    width: string,
-    height: string,
-    required: boolean,
-    borderStyle: string,
-    fontSize: string,
-    fontWeight: string,
-    color: string,
-  }>()
+export const addElementStyles = createAction(
+  '[FORMBUILDER] addStylesToElement',
+  props< IElementStyles >()
 );
 
-export const formSetupSelectChange = createAction(
-  '[FORMBUILDER] formSetupSelectChange',
-  props<{
-    label: string,
-    placeholder: string,
-    width: string,
-    height: string,
-    required: boolean,
-    borderStyle: string,
-    fontSize: string,
-    fontWeight: string,
-    color: string,
-  }>()
-);
+export const addFormElement = createAction(
+  '[FORMBUILDER] addFormElement',
+  props<{ name: string }>()
+)
 
-export const formSetupTextareaChange = createAction(
-  '[FORMBUILDER] formSetupTextareaChange',
-  props<{
-    label: string,
-    placeholder: string,
-    width: string,
-    height: string,
-    required: boolean,
-    borderStyle: string,
-    fontSize: string,
-    fontWeight: string,
-    color: string,
-  }>()
-);
-
-export const formSetupCheckboxChange = createAction(
-  '[FORMBUILDER] formSetupCheckboxChange',
-  props<{
-    label: string,
-    placeholder: string,
-    width: string,
-    height: string,
-    required: boolean,
-    borderStyle: string,
-    fontSize: string,
-    fontWeight: string,
-    color: string,
-  }>()
-);
-
-export const formSetupButtonChange = createAction(
-  '[FORMBUILDER] formSetupButtonChange',
-  props<{
-    label: string,
-    placeholder: string,
-    width: string,
-    height: string,
-    required: boolean,
-    borderStyle: string,
-    fontSize: string,
-    fontWeight: string,
-    color: string,
-  }>()
-);
-
-export const addElementToForm = createAction(
-  '[FORMBUILDER] addElementToForm',
-  props<{
-    name: string,
-    id: string,
-  }>()
+export const setCurrentElement = createAction(
+  '[FORMBUILDER] setCurrentElement',
+  props<{ id: string }>()
 )

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Store } from "@ngrx/store";
-import { formSetupInputChange } from './../../../reducers/formBuilder/formBuilder.actions';
+import { addElementStyles } from './../../../reducers/formBuilder/formBuilder.actions';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -14,6 +14,7 @@ import { takeUntil } from 'rxjs/operators';
 export class FormSetupInputComponent implements OnInit {
 
   formSetupInput: FormGroup;
+  label: FormControl;
   placeholderText: FormControl;
   width: FormControl;
   height: FormControl;
@@ -26,6 +27,7 @@ export class FormSetupInputComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private store$: Store) {
     this.formSetupInput = fb.group({
+      label: new FormControl(''),
       placeholderText: new FormControl(''),
       width: new FormControl(''),
       height: new FormControl(''),
@@ -41,7 +43,7 @@ export class FormSetupInputComponent implements OnInit {
     this.formSetupInput.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(value => {
-        this.store$.dispatch(formSetupInputChange(value));
+        this.store$.dispatch(addElementStyles(value));
       });    
   }
  

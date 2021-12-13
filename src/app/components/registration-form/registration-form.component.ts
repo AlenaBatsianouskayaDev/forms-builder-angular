@@ -13,8 +13,6 @@ import { registerRequest } from './../../reducers/auth/auth.actions';
 export class RegistrationFormComponent {
   
   registrationForm: FormGroup;
-  username: FormControl;
-  password: FormControl;
   
   constructor(fb: FormBuilder, private store$: Store) {
      this.registrationForm = fb.group({
@@ -24,6 +22,8 @@ export class RegistrationFormComponent {
   }
 
   registerUser() {
-   this.store$.dispatch(registerRequest(this.registrationForm.value))
+    this.store$.dispatch(registerRequest(
+      this.registrationForm.value
+    ))
   }
 }

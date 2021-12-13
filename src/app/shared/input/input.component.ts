@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
-import { getFormStyles  } from 'src/app/reducers/formBuilder/formBuilder.selectors';
+import { getFormElement  } from 'src/app/reducers/formBuilder/formBuilder.selectors';
 import { Store, select} from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -30,26 +30,26 @@ export class InputComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store
-      .pipe(
-        select(getFormStyles),
-        takeUntil(this.destroy$))
-      .subscribe(({ inputLabel, inputPlaceholder, inputWidth, inputHeight, inputRequired, inputBorderStyle, inputFontSize, inputFontWeight, inputColor}) => {
-        this.label = inputLabel;
-        this.placeholder = inputPlaceholder;
-        this.width = inputWidth+'px';
-        this.height = inputHeight+'px';
-        this.required = inputRequired;
-        this.borderStyle = inputBorderStyle;
-        this.fontSize = inputFontSize+'px';
-        this.fontWeight = inputFontWeight;
-        this.color = inputColor;
-      });
+    // this.store
+    //   .pipe(
+    //     select(getFormStyles),
+    //     takeUntil(this.destroy$))
+    //   .subscribe((component) => {
+    //     this.label = label;
+    //     this.placeholder = placeholder;
+    //     this.width = width+'px';
+    //     this.height = height+'px';
+    //     this.required = required;
+    //     this.borderStyle = borderStyle;
+    //     this.fontSize = fontSize+'px';
+    //     this.fontWeight = fontWeight;
+    //     this.color = color;
+    //   });
   }
 
   ngOnDestroy() {
-    this.destroy$.next(console.log('unsubscribed'));
-    this.destroy$.complete();
+    // this.destroy$.next(console.log('unsubscribed'));
+    // this.destroy$.complete();
   }
   
 }

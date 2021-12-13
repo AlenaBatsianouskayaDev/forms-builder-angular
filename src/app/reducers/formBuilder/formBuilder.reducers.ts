@@ -1,182 +1,51 @@
 import { createReducer, on } from "@ngrx/store";
-import { formSetupInputChange, formSetupSelectChange, formSetupTextareaChange, formSetupCheckboxChange, formSetupButtonChange, addElementToForm } from "./formBuilder.actions";
+
+import { CommonService } from "src/app/services/common.service";
+import * as formBuilderActions from "./formBuilder.actions";
+import { IFormElement } from './../interfaces';
+import { initialStyles } from "src/app/data/constants";
 
 export interface FormBuilderState {
-  
-  inputLabel: string,
-  inputPlaceholder: string,
-  inputWidth: string,
-  inputHeight: string,
-  inputRequired: boolean,
-  inputBorderStyle: string,
-  inputFontSize: string,
-  inputFontWeight: string,
-  inputColor: string,
-  
-  textareaLabel: string,
-  textareaPlaceholder: string,
-  textareaWidth: string,
-  textareaHeight: string,
-  textareaRequired: boolean,
-  textareaBorderStyle: string,
-  textareaFontSize: string,
-  textareaFontWeight: string,
-  textareaColor: string,
-
-  selectLabel: string,
-  selectPlaceholder: string,
-  selectWidth: string,
-  selectHeight: string,
-  selectRequired: boolean,
-  selectBorderStyle: string,
-  selectFontSize: string,
-  selectFontWeight: string,
-  selectColor: string,
-
-  checkboxLabel: string,
-  checkboxPlaceholder: string,
-  checkboxWidth: string,
-  checkboxHeight: string,
-  checkboxRequired: boolean,
-  checkboxBorderStyle: string,
-  checkboxFontSize: string,
-  checkboxFontWeight: string,
-  checkboxColor: string,
-
-  buttonLabel: string,
-  buttonPlaceholder: string,
-  buttonWidth: string,
-  buttonHeight: string,
-  buttonRequired: boolean,
-  buttonBorderStyle: string,
-  buttonFontSize: string,
-  buttonFontWeight: string,
-  buttonColor: string,
-
-  components: {name: string, id: string}[],
+  components: IFormElement[],
 }
 
 export const initialFormBuilderState: FormBuilderState = {
- 
-  inputLabel: '',
-  inputPlaceholder: '',
-  inputWidth: '',
-  inputHeight: '',
-  inputRequired: false,
-  inputBorderStyle: '',
-  inputFontSize: '',
-  inputFontWeight: '',
-  inputColor: '',
-  
-  textareaLabel: '',
-  textareaPlaceholder: '',
-  textareaWidth: '',
-  textareaHeight: '',
-  textareaRequired: false,
-  textareaBorderStyle: '',
-  textareaFontSize: '',
-  textareaFontWeight: '',
-  textareaColor: '',
-
-  selectLabel: '',
-  selectPlaceholder: '',
-  selectWidth: '',
-  selectHeight: '',
-  selectRequired: false,
-  selectBorderStyle: '',
-  selectFontSize: '',
-  selectFontWeight: '',
-  selectColor: '',
-
-  checkboxLabel: '',
-  checkboxPlaceholder: '',
-  checkboxWidth: '',
-  checkboxHeight: '',
-  checkboxRequired: false,
-  checkboxBorderStyle: '',
-  checkboxFontSize: '',
-  checkboxFontWeight: '',
-  checkboxColor: '',
-
-  buttonLabel: '',
-  buttonPlaceholder: '',
-  buttonWidth: '',
-  buttonHeight: '',
-  buttonRequired: false,
-  buttonBorderStyle: '',
-  buttonFontSize: '',
-  buttonFontWeight: '',
-  buttonColor: '',
-
   components: [],
 }
 
 export const formBuilderReducers = createReducer(
   initialFormBuilderState,
-  on(formSetupInputChange, (state, { label, placeholder, width, height, required, borderStyle, fontSize, fontWeight, color }) => ({
-    ...state,
-    inputLabel: label,
-    inputPlaceholder: placeholder,
-    inputWidth: width,
-    inputHeight: height,
-    inputRequired: required,
-    inputBorderStyle: borderStyle,
-    inputFontSize: fontSize,
-    inputFontWeight: fontWeight,
-    inputColor: color,
-  })),
-  on(formSetupSelectChange, (state, { label, placeholder, width, height, required, borderStyle, fontSize, fontWeight, color }) => ({
-    ...state,
-    selectLabel: label,
-    selectPlaceholder: placeholder,
-    selectWidth: width,
-    selectHeight: height,
-    selectRequired: required,
-    selectBorderStyle: borderStyle,
-    selectFontSize: fontSize,
-    selectFontWeight: fontWeight,
-    selectColor: color,
-  })),
-  on(formSetupTextareaChange, (state, { label, placeholder, width, height, required, borderStyle, fontSize, fontWeight, color }) => ({
-    ...state,
-    textareaLabel: label,
-    textareaPlaceholder: placeholder,
-    textareaWidth: width,
-    textareaHeight: height,
-    textareaRequired: required,
-    textareaBorderStyle: borderStyle,
-    textareaFontSize: fontSize,
-    textareaFontWeight: fontWeight,
-    textareaColor: color,
-  })),
-  on(formSetupCheckboxChange, (state, { label, placeholder, width, height, required, borderStyle, fontSize, fontWeight, color }) => ({
-    ...state,
-    checkboxLabel: label,
-    checkboxPlaceholder: placeholder,
-    checkboxWidth: width,
-    checkboxHeight: height,
-    checkboxRequired: required,
-    checkboxBorderStyle: borderStyle,
-    checkboxFontSize: fontSize,
-    checkboxFontWeight: fontWeight,
-    checkboxColor: color,
-  })),
-  on(formSetupButtonChange, (state, { label, placeholder, width, height, required, borderStyle, fontSize, fontWeight, color }) => ({
-    ...state,
-    buttonLabel: label,
-    buttonPlaceholder: placeholder,
-    buttonWidth: width,
-    buttonHeight: height,
-    buttonRequired: required,
-    buttonBorderStyle: borderStyle,
-    buttonFontSize: fontSize,
-    buttonFontWeight: fontWeight,
-    buttonColor: color,
-  })),
-  on(addElementToForm, (state, { name, id }) => ({
-      ...state,
-    components: [...state.components, { name: name, id: id }]
+  on(formBuilderActions.addFormElement, (state, {name}) => {
+    let commonService = new CommonService( );
+    return ({
+      components: [ {
+      ...initialStyles,
+      name: name,
+      id: commonService.generateId(),
+      }, ...state.components]
     })
-  )
+  }
+  ),
 
+  // on(formBuilderActions.setCurrentElement, (state, {id}) => {
+  //   const currentElement = state.components.filter(item => item.id === id);
+  //   console.log(currentElement);
+  //   return ({
+  //     components: [...state.components, {
+  //     ...currentElement,
+  //     isCurrentElement: true
+  //       }]
+  //   });
+  // }
+  // ),
+
+  // on(formBuilderActions.addElementStyles, (state, payload) => ({
+  //   components: [...state.components, {
+  //   ...initialStyles,
+  //   ...payload
+  //   }]
+  // })
+  // ),
+
+  
 )

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from "@ngrx/store";
 
 import { loginRequest } from 'src/app/reducers/auth/auth.actions';
@@ -10,17 +10,21 @@ import { loginRequest } from 'src/app/reducers/auth/auth.actions';
   styleUrls: ['./login-form.component.scss']
 })
   
-export class LoginFormComponent {
+export class LoginFormComponent implements OnInit {
   
   loginForm: FormGroup;
-  username: FormControl;
-  password: FormControl;
   
-  constructor(fb: FormBuilder, private store$: Store) {
-    this.loginForm = fb.group({
-      username: new FormControl(''),
-      password: new FormControl(''),
-    })
+  constructor(
+    private fb: FormBuilder,
+    private store$: Store
+  ) {
+  }
+
+  ngOnInit(): void {
+      this.loginForm = this.fb.group({
+      username: [''],
+      password: [''],
+    });
   }
 
   loginUser() {

@@ -28,6 +28,7 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth/auth.guard';
+import { CommonService } from './services/common.service';
 import { TokenInterceptorService } from './interceptors/token/token-interceptor.service';
 import { AuthEffects } from './reducers/auth/auth.effects';
 import { PortalModule } from '@angular/cdk/portal';
@@ -75,7 +76,7 @@ import { ReactiveComponentModule } from '@ngrx/component';
     ReactiveComponentModule
   ],
   exports: [],
-  providers: [AuthService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}],
+  providers: [AuthService, CommonService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
   

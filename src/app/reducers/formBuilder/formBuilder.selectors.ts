@@ -3,5 +3,5 @@ import { FormBuilderState } from "./formBuilder.reducers";
 
 const getFeature = createFeatureSelector<FormBuilderState>('formBuilder');
 
-export const getFormStyles = createSelector(
-  getFeature, (state: FormBuilderState) => state)
+export const getFormElement = createSelector(
+  getFeature, (state: FormBuilderState) => state.components)
