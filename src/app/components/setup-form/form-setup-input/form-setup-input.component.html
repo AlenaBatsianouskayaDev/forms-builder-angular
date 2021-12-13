@@ -1,40 +1,66 @@
-<form [formGroup]="formSetupInput" class="formSetupInput">
-  <label>Field label
-    <input mat-input type="text" formControlName="label">
-  </label>
-  <label>Placeholder
-    <input mat-input type="text" formControlName="placeholderText">
-  </label>
-  <label>Field width
-    <input type="text" formControlName="width">
-  </label>
-  <label>Field height
-    <input type="text" formControlName="height">
-  </label>
-  <label>Required of field
-    <input type="checkbox" formControlName="required" name="required">
-  </label>
-  <label> Border style
-    <select formControlName="borderStyle">
-      <option value="solid" selected>solid</option>
-      <option value="dotted">dotted</option>
-      <option value="inset">inset</option>
-      <option value="double">double</option>
-      <option value="groove">groove</option>
-      <option value="none">none</option>
-    </select>
-  </label>
-  <label> Font size
-    <input type="text" formControlName="fontSize">
-  </label>
-  <label> Font weight
-    <select formControlName="fontWeight">
-      <option value="normal" selected>normal</option>
-      <option value="bold">bold</option>
-      <option value="lighter">lighter</option>
-    </select>
-  </label>
-  <label> Font color
-    <input type="color" formControlName="color">
-  </label>
+<form [formGroup]="formElementsStyles" class="formElementsStyles">
+  <div class="formElementsStyles__item">
+    <mat-form-field appearance="fill" formControlName="label">
+      <mat-label>Field label</mat-label>
+      <input matInput type="text"  placeholder="Enter your text">
+    </mat-form-field>
+  </div>
+  <div class="formElementsStyles__item">
+    <mat-form-field appearance="fill" formControlName="placeholder">
+      <mat-label>Placeholder</mat-label>
+      <input matInput type="text"  placeholder="Enter your placeholder"/>
+    </mat-form-field>
+  </div>
+  <div class="formElementsStyles__item">
+    <mat-form-field appearance="fill" formControlName="width">
+      <mat-label>Field width</mat-label>
+      <input matInput type="text"  placeholder="Enter width of element"/>
+    </mat-form-field>
+  </div>
+  <div class="formElementsStyles__item">
+    <mat-form-field appearance="fill" formControlName="height">
+      <mat-label>Field height</mat-label>
+      <input matInput type="text"  placeholder="Enter height of element" />
+    </mat-form-field>
+  </div>
+  <!-- <div class="formElementsStyles__item">
+    <mat-form-field appearance="fill" formControlName="required">
+      <label class="example-margin">Required of field</label>
+      <mat-radio-group [(ngModel)]="labelPosition">
+        <mat-radio-button class="example-margin" value="after">After</mat-radio-button>
+        <mat-radio-button class="example-margin" value="before">Before</mat-radio-button>
+      </mat-radio-group>
+    </mat-form-field>
+  </div> -->
+  <div class="formElementsStyles__item">
+  <mat-form-field appearance="fill" formControlName="borderStyle">
+    <mat-label>Border style</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let style of borderStyles" [value]="style">
+        {{style}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  </div>
+  <div class="formElementsStyles__item">
+    <mat-form-field appearance="fill" formControlName="fontSize">
+      <mat-label>Font size</mat-label>
+      <input matInput type="text" placeholder="Enter font size" />
+    </mat-form-field>
+  </div>
+  <div class="formElementsStyles__item">
+    <mat-form-field appearance="fill" formControlName="fontWeight">
+      <mat-label>Border style</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let item of fontWeight" [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="formElementsStyles__item">
+    <label> Font color
+      <input type="color" formControlName="color">
+    </label>
+  </div>
 </form>

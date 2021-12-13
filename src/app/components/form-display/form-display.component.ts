@@ -5,6 +5,7 @@ import { Store, select } from '@ngrx/store';
 import { takeUntil, map, filter, find, tap  } from 'rxjs/operators';
 
 import { IElementData, IFormElement } from './../../reducers/interfaces';
+import { initialElements } from './../../data/constants';
 import { Elements } from './../../data/enums';
 import { addFormElement, setCurrentElement } from 'src/app/reducers/formBuilder/formBuilder.actions';
 import { getFormElement } from 'src/app/reducers/formBuilder/formBuilder.selectors';
@@ -15,36 +16,20 @@ import { getFormElement } from 'src/app/reducers/formBuilder/formBuilder.selecto
   styleUrls: ['./form-display.component.scss'],
 })
 
-//TODO: to split this component 
 export class FormDisplayComponent implements OnInit {
 
-  public dragElements: Elements[] = [Elements.Input, Elements.Textarea, Elements.Select, Elements.Checkbox, Elements.Button]
+  public dragElements: string[] = initialElements;
   public droppedElements: IElementData [] = [];
-  // public shownElements: IFormElement [] = [];
   private destroy$: Subject<void> = new Subject();
   public shownElements$: Observable<IFormElement[]>;
-  constructor(private readonly store$: Store) { 
-    
-  }
+
+  constructor(private readonly store$: Store) { }
    
   ngOnInit(): void {
     this.shownElements$ = this.store$
       .pipe(
         select(getFormElement),
         takeUntil(this.destroy$))
-    //   .subscribe(components => { 
-    //     this.shownElements = components;
-        // this.shownElements = components;
-        // this.label = label;
-        // this.placeholder = placeholder;
-        // this.width = width + 'px';
-        // this.height = height + 'px';
-        // this.required = required;
-        // this.borderStyle = borderStyle;
-        // this.fontSize = fontSize + 'px';
-        // this.fontWeight = fontWeight;
-        // this.color = color;
-      // })
   }
   
   ngOnDestroy() {
@@ -66,14 +51,14 @@ export class FormDisplayComponent implements OnInit {
         event.currentIndex,
       );
       this.store$.dispatch(addFormElement(
-        {
-          name: this.dragElements[event.previousIndex]
-        }
+        {name: this.dragElements[event.previousIndex]}
       ));
     }
   }
 
   setActiveElement(event: any) {
-    this.store$.dispatch(setCurrentElement({ id: event.currentTarget.id }));
+    this.store$.dispatch(
+      setCurrentElement({ id: event.currentTarget.id })
+    );
   }
 }

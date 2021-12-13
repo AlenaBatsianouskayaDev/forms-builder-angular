@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from "@ngrx/store";
 
 import { loginRequest } from 'src/app/reducers/auth/auth.actions';
@@ -17,8 +17,7 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private store$: Store
-  ) {
-  }
+  ) { }
 
   ngOnInit(): void {
       this.loginForm = this.fb.group({

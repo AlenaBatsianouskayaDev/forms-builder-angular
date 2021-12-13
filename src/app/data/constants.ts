@@ -10,3 +10,6 @@ export const initialStyles = {
   fontWeight: '400',
   color: 'black',
 }
+
+export const initialElements = ['input', 'textarea', 'select', 'checkbox', 'button']
+

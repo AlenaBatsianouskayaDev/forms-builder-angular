@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from "@ngrx/store";
-import { addElementStyles } from './../../../reducers/formBuilder/formBuilder.actions';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
+import { addElementStyles } from './../../../reducers/formBuilder/formBuilder.actions';
 
 @Component({
   selector: 'app-form-setup-input',
@@ -13,34 +14,30 @@ import { takeUntil } from 'rxjs/operators';
   
 export class FormSetupInputComponent implements OnInit {
 
-  formSetupInput: FormGroup;
-  label: FormControl;
-  placeholderText: FormControl;
-  width: FormControl;
-  height: FormControl;
-  required: FormControl;
-  borderStyle: FormControl;
-  fontSize: FormControl;
-  fontWeight: FormControl;
-  color: FormControl;
-  private readonly destroy$ = new Subject();
+  formElementsStyles: FormGroup;
+  public borderStyles: string[] = ['solid', 'dotted', 'insent', 'double', 'groove', 'none'];
+  public fontWeight: string[] = ['normal', 'bold', 'lighter'];
 
-  constructor(private fb: FormBuilder, private store$: Store) {
-    this.formSetupInput = fb.group({
-      label: new FormControl(''),
-      placeholderText: new FormControl(''),
-      width: new FormControl(''),
-      height: new FormControl(''),
-      required: new FormControl(''),
-      borderStyle: new FormControl(''),
-      fontSize: new FormControl(''),
-      fontWeight: new FormControl(''),
-      color: new FormControl(''),
+  private destroy$: Subject<void> = new Subject();
+
+  constructor(
+    private fb: FormBuilder,
+    private store$: Store
+  ) { }
+
+  ngOnInit(): void {
+    this.formElementsStyles = this.fb.group({
+      label: [''],
+      placeholder: [''],
+      width: [''],
+      height: [''],
+      required: [''],
+      borderStyle: [''],
+      fontSize: [''],
+      fontWeight: [''],
+      color: [''],
     })
-  }
-
-  ngOnInit() {
-    this.formSetupInput.valueChanges
+    this.formElementsStyles.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(value => {
         this.store$.dispatch(addElementStyles(value));
@@ -48,6 +45,7 @@ export class FormSetupInputComponent implements OnInit {
   }
  
   ngOnDestroy() {
+    this.destroy$.next();
     this.destroy$.complete();
   }
 }
