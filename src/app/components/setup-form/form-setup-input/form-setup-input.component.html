@@ -23,15 +23,6 @@
       <input matInput type="text"  placeholder="Enter height of element" />
     </mat-form-field>
   </div>
-  <!-- <div class="formElementsStyles__item">
-    <mat-form-field appearance="fill" formControlName="required">
-      <label class="example-margin">Required of field</label>
-      <mat-radio-group [(ngModel)]="labelPosition">
-        <mat-radio-button class="example-margin" value="after">After</mat-radio-button>
-        <mat-radio-button class="example-margin" value="before">Before</mat-radio-button>
-      </mat-radio-group>
-    </mat-form-field>
-  </div> -->
   <div class="formElementsStyles__item">
   <mat-form-field appearance="fill" formControlName="borderStyle">
     <mat-label>Border style</mat-label>
@@ -41,6 +32,17 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
+  </div>
+  <div class="formElementsStyles__item" formControlName="required">
+    <p>Required this field</p>
+    <label>
+      <input type="checkbox" name="required" value="required" checked>
+      Not Required
+    </label>
+    <label>
+      <input type="checkbox" name="required" value="not required">
+      Required
+    </label>
   </div>
   <div class="formElementsStyles__item">
     <mat-form-field appearance="fill" formControlName="fontSize">
