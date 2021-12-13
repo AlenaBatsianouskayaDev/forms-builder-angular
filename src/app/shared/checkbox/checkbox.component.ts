@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {ThemePalette} from '@angular/material/core';
 
 export interface Task {
@@ -9,16 +9,10 @@ export interface Task {
 
 @Component({
   selector: 'app-checkbox',
-  templateUrl: './checkbox.component.html',
+  template: `<mat-checkbox class="example-margin">Check me!</mat-checkbox>`,
   styleUrls: ['./checkbox.component.scss']
 })
-export class CheckboxComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class CheckboxComponent  {
   task: Task = {
     name: 'Indeterminate',
     completed: false,

@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class FormStylesComponent {
 
-  // удалить этот массив, сюда будет передаваться выбранный тип элемента из стора и ренднрится соответсвующая форма для стилизации
+  // TODD: to delete this array, when will be connect with choose element
   items = ['Input', 'Textarea', 'Button', 'Select', 'Checkbox'];
   expandedIndex = 0;
 

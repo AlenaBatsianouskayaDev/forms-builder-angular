@@ -31,14 +31,8 @@ import { AuthGuard } from './guards/auth/auth.guard';
 import { TokenInterceptorService } from './interceptors/token/token-interceptor.service';
 import { AuthEffects } from './reducers/auth/auth.effects';
 import { PortalModule } from '@angular/cdk/portal';
-import { TextareaComponent } from './shared/textarea/textarea.component';
 import { CheckboxComponent } from './shared/checkbox/checkbox.component';
-import { SelectComponent } from './shared/select/select.component';
 import { FormSetupInputComponent } from './components/setup-form/form-setup-input/form-setup-input.component';
-import { FormSetupTextareaComponent } from './components/setup-form/form-setup-textarea/form-setup-textarea.component';
-import { FormSetupButtonComponent } from './components/setup-form/form-setup-button/form-setup-button.component';
-import { FormSetupSelectComponent } from './components/setup-form/form-setup-select/form-setup-select.component';
-import { FormSetupCheckboxComponent } from './components/setup-form/form-setup-checkbox/form-setup-checkbox.component';
 
 import { FormStylesComponent } from './components/form-styles/form-styles.component';
 import { FormDisplayComponent } from './components/form-display/form-display.component';
@@ -59,14 +53,8 @@ import { ReactiveComponentModule } from '@ngrx/component';
     InputComponent,
     ButtonSubmitComponent,
     ContainerComponent,
-    TextareaComponent,
     CheckboxComponent,
-    SelectComponent,
     FormSetupInputComponent,
-    FormSetupTextareaComponent,
-    FormSetupButtonComponent,
-    FormSetupSelectComponent,
-    FormSetupCheckboxComponent,
     FormStylesComponent,
     FormDisplayComponent,  
   ],

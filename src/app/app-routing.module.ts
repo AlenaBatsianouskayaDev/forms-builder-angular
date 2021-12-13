@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'form-builder', component: FormBuilderViewComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginViewComponent }, 
   { path: 'registration', component: RegistrationViewComponent }, 
-  // { path: '**', component: NotFoundComponent }, //добавить страницу для отсутствующх маршрутов
+  // { path: '**', component: NotFoundComponent }, //TODO: add view for not found route
 ]
 
 @NgModule({
