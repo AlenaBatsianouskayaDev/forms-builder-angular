@@ -14,11 +14,12 @@ import { getFormStyles } from 'src/app/reducers/formBuilder/formBuilder.selector
   styleUrls: ['./form-display.component.scss'],
 })
 
-//раздутый компонент, разделить 
+//TODO: to split this component 
 export class FormDisplayComponent implements OnInit {
 
   drugElements: string[] = ['input', 'textarea', 'select', 'button', 'checkbox']
-  droppedElements: {name: string, id: string}[] = [];
+  droppedElements: { name: string, id: string }[] = [];
+  shownElements: { name: string, id: string }[] = [];
   
   label: string;
   placeholder: string;
@@ -31,7 +32,7 @@ export class FormDisplayComponent implements OnInit {
   color: string;
   private readonly destroy$ = new Subject();
   
-  constructor(authService: AuthService, private readonly store$: Store) { }
+  constructor(private authService: AuthService, private readonly store$: Store) { }
    
   ngOnInit(): void {
     this.store$
@@ -39,7 +40,7 @@ export class FormDisplayComponent implements OnInit {
         select(getFormStyles),
         takeUntil(this.destroy$))
       .subscribe(({ inputLabel, inputPlaceholder, inputWidth, inputHeight, inputRequired, inputBorderStyle, inputFontSize, inputFontWeight, inputColor, components }) => {
-        // this.droppedElements = components;
+        this.shownElements = components;
         this.label = inputLabel;
         this.placeholder = inputPlaceholder;
         this.width = inputWidth + 'px';
@@ -70,10 +71,8 @@ export class FormDisplayComponent implements OnInit {
         event.previousIndex,
         event.currentIndex,
       );
-      //  this.droppedElements[event.currentIndex]
-      this.store$.dispatch(addElementToForm({ name: 'input', id: '12345' }));
+      this.store$.dispatch(addElementToForm({ name: this.drugElements[event.previousIndex], id: this.authService.generateId() }));
     }
-  
   }
 
   setActiveElement(event: any) {
