@@ -67,9 +67,7 @@ export class FormDisplayComponent implements OnInit {
     }
   }
 
-  setActiveElement(event: any) { 
-    
-      
+  setActiveElement(event: any) {       
     if (event.target.tagName === 'LABEL' ||
       event.target.tagName === 'INPUT' ||
       event.target.tagName === 'TEXTAREA' ||

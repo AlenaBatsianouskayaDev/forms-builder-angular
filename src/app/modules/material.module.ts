@@ -6,6 +6,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -15,6 +16,7 @@ const MaterialComponents = [
   DragDropModule,
   CdkAccordionModule,
   MatFormFieldModule,
+  MatGridListModule
 ]
 
 @NgModule({

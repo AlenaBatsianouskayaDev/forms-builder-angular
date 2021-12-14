@@ -10,6 +10,7 @@ import { getCurrentElementName } from './../../reducers/formBuilder/formBuilder.
   templateUrl: './form-styles.component.html',
   styleUrls: ['./form-styles.component.scss']
 })
+  
 export class FormStylesComponent implements OnInit{
 
   public currentElement$: Observable<string | undefined>;
