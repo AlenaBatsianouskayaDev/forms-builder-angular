@@ -14,9 +14,6 @@ export class FormStylesComponent implements OnInit{
 
   public currentElement$: Observable<string | undefined>;
   private destroy$: Subject<void> = new Subject();
-  // TODO: to delete this array, when will be connect with choose element
-  items = ['Input', 'Textarea', 'Button', 'Select', 'Checkbox'];
-  expandedIndex = 0;
 
   constructor(private store: Store) { }
 

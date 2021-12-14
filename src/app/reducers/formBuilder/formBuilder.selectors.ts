@@ -15,9 +15,12 @@ export const getCurrentElementName = createSelector(
     return currentElement.name;
   }
 )
-// export const getCurrentElementId = createSelector(
-//   getFeature, (state: FormBuilderState) => {
-//     const a = state.components.find(item => { item.isCurrentElement === true; return item.id })
-//     return a
-//   }
-// ) //TODO: to add selector for checking chosen element
+export const getCurrentElementId = createSelector(
+  getFormElement, (components) => {
+    const currentElement = components.find(item => item.isCurrentElement === true);
+    if (!currentElement) {
+      return;
+    }
+    return currentElement.id;
+  }
+)

@@ -1,14 +1,14 @@
 import { OnInit, Component } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, copyArrayItem } from '@angular/cdk/drag-drop';
-import { from, Subject, fromEvent, pipe, Observable } from 'rxjs';
+import { Subject, Observable} from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { takeUntil, map, filter, find, tap  } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 
 import { IElementData, IFormElement } from './../../reducers/interfaces';
 import { INITIAL_ELEMENTS } from '../../utils/data';
 import { Elements } from '../../utils/enums';
 import { addFormElement, setCurrentElement } from 'src/app/reducers/formBuilder/formBuilder.actions';
-import { getFormElement } from 'src/app/reducers/formBuilder/formBuilder.selectors';
+import { getFormElement, getCurrentElementId } from 'src/app/reducers/formBuilder/formBuilder.selectors';
 
 @Component({
   selector: 'app-form-display',
@@ -23,6 +23,8 @@ export class FormDisplayComponent implements OnInit {
   public element: Elements;
   private destroy$: Subject<void> = new Subject();
   public shownElements$: Observable<IFormElement[]>;
+  public prevCurrentElementId: string | undefined;
+  public currentElementId: string;
 
   constructor(private readonly store$: Store) { }
    
@@ -31,6 +33,14 @@ export class FormDisplayComponent implements OnInit {
       .pipe(
         select(getFormElement),
         takeUntil(this.destroy$))
+    
+    this.store$.pipe(
+        select(getCurrentElementId),
+        takeUntil(this.destroy$))
+      .subscribe(val => {
+        this.prevCurrentElementId = val;
+        console.log(val)
+      })
   }
   
   ngOnDestroy() {
@@ -57,9 +67,22 @@ export class FormDisplayComponent implements OnInit {
     }
   }
 
-  setActiveElement(event: any) {
-    this.store$.dispatch(
-      setCurrentElement({ id: event.currentTarget.id })
+  setActiveElement(event: any) { 
+    
+      
+    if (event.target.tagName === 'LABEL' || event.target.tagName === 'INPUT') {
+      this.currentElementId = event.target.closest('div').id;  
+      console.log(this.currentElementId)
+    } else {
+      this.currentElementId = event.target.id;
+    }
+
+    // console.log(this.prevCurrentElementId, this.currentElementId)
+
+    if (this.prevCurrentElementId !== this.currentElementId) {
+      this.store$.dispatch(
+      setCurrentElement({ id: this.currentElementId })
     );
+    }    
   }
 }
