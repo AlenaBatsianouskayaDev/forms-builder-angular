@@ -5,8 +5,8 @@ import { Store, select } from '@ngrx/store';
 import { takeUntil, map, filter, find, tap  } from 'rxjs/operators';
 
 import { IElementData, IFormElement } from './../../reducers/interfaces';
-import { initialElements } from './../../data/constants';
-import { Elements } from './../../data/enums';
+import { INITIAL_ELEMENTS } from '../../utils/data';
+import { Elements } from '../../utils/enums';
 import { addFormElement, setCurrentElement } from 'src/app/reducers/formBuilder/formBuilder.actions';
 import { getFormElement } from 'src/app/reducers/formBuilder/formBuilder.selectors';
 
@@ -18,7 +18,7 @@ import { getFormElement } from 'src/app/reducers/formBuilder/formBuilder.selecto
 
 export class FormDisplayComponent implements OnInit {
 
-  public dragElements: string[] = initialElements;
+  public dragElements: string[] = INITIAL_ELEMENTS;
   public droppedElements: IElementData[] = [];
   public element: Elements;
   private destroy$: Subject<void> = new Subject();

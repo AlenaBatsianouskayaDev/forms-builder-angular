@@ -7,8 +7,8 @@
         <div *ngIf="item.name === 'input'" class="fieldElement">
           <label>{{ item.label }}
             <input (click)=setActiveElement($event) [id]="item.id" name="input" type="text" [placeholder]="item.placeholder"
-              [ngStyle]="{'color': item.color, 'width': item.width, 'height': item.height, 'border': item.borderStyle, 'font-size': item.fontSize, 'font-weight': item.fontWeight}" />
-          </label>
+              [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}">
+            </label>
         </div>
       
         <div *ngIf="item.name === 'textarea'" class="fieldElement">

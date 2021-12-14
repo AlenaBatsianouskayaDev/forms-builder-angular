@@ -3,7 +3,7 @@ import { createReducer, on } from "@ngrx/store";
 import { CommonService } from "src/app/services/common.service";
 import * as formBuilderActions from "./formBuilder.actions";
 import { IFormElement } from './../interfaces';
-import { initialStyles } from "src/app/data/constants";
+import { INITIAL_STYLES } from "src/app/utils/data";
 
 export interface FormBuilderState {
   components: IFormElement[],
@@ -19,7 +19,7 @@ export const formBuilderReducers = createReducer(
     let commonService = new CommonService( );
     return ({
       components: [...state.components,
-        {...initialStyles,
+        {...INITIAL_STYLES,
         id: commonService.generateId(),
         name}]
     })
@@ -49,16 +49,18 @@ export const formBuilderReducers = createReducer(
     return ({ components: [...copyStateComponents] })
   }
   ),
-  
 
-
-  // on(formBuilderActions.addElementStyles, (state, payload) => ({
-  //   components: [...state.components, {
-  //   ...initialStyles,
-  //   ...payload
-  //   }]
-  // })
-  // ),
-
-  
+  on(formBuilderActions.addElementStyles, (state, payload) => {
+    const copyStateComponents = [...state.components];
+    const currentElementIndex = copyStateComponents.findIndex(item => item.isCurrentElement === true);
+    
+    if (currentElementIndex !== -1) {
+      copyStateComponents[currentElementIndex] = {
+        ...copyStateComponents[currentElementIndex],
+        ...payload,
+      }
+    }
+    return ({ components: [...copyStateComponents] })
+  }
+  ),
 )
