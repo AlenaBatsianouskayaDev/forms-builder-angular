@@ -1,0 +1,36 @@
+.formElementsStyles {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+    & input,
+    & mat-select {
+      padding: 10px;
+    }
+
+    & input[type='color'] {
+      width: 100px;
+      height: 40px;
+      padding: 0;
+    }
+  }
+
+  &__label {
+    padding: 0 10px;
+  }
+}
+
+.radioBtn {
+  & p {
+    margin-bottom: 0px;
+    margin-right: 10px;
+  }
+  & mat-radio-button:not(:last-child) {
+    margin-bottom: 5px;
+  }
+}

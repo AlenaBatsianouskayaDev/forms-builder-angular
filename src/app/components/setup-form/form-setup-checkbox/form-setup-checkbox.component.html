@@ -1,0 +1,50 @@
+<form [formGroup]="formElementsStyles" class="formElementsStyles">
+  <mat-grid-list cols="2" rowHeight="2:1" gutterSize='10px'>
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Field checkbox text</mat-label>
+          <input matInput type="text" placeholder="Enter your text" formControlName="label">
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Field label</mat-label>
+          <input matInput type="text" placeholder="Enter your text" formControlName="checkboxText">
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Field width</mat-label>
+          <input matInput type="text" placeholder="Enter width of element" formControlName="checkboxWidth" />
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Field height</mat-label>
+          <input matInput type="text" placeholder="Enter height of element" formControlName="checkboxHeight" />
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item radioBtn">
+        <p class="formElementsStyles__label">Required this field</p>
+        <div>
+          <mat-radio-button value="1">Required</mat-radio-button>
+          <mat-radio-button value="2">Not Required</mat-radio-button>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+</form>

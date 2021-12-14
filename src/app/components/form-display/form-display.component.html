@@ -27,12 +27,14 @@
           </select>
         </div>
       
-        <!-- <div [id]="item.id" *ngIf="item.name === 'checkbox'" class="fieldElement">
-          <label for="checkbox" class="fieldElement__label">{{ item.label }}</label>
-          <input type="checkbox" name="checkbox" id='checkbox'
-            [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}">
-        </div> -->
-      
+        <div [id]="item.id" *ngIf="item.name === 'checkbox'" class="fieldElement">
+          <p for="checkbox" class="fieldElement__label">{{ item.checkboxText }}</p>
+          <label for="checkbox" [ngStyle]="{'display': 'flex', 'align-items': 'center'}">
+            <span>{{ item.label }}</span>
+            <input type="checkbox" name="checkbox" id='checkbox'
+              [ngStyle]="{'color': item.color, 'width.px': item.checkboxWidth, 'height.px': item.checkboxHeight, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}">
+          </label>
+          </div>
 
         <div [id]="item.id" *ngIf="item.name === 'button'" class="fieldElement">
           <button name="button" type="button"

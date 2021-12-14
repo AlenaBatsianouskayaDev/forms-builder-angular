@@ -11,14 +11,15 @@ export const INITIAL_STYLES = {
   fontSize: '14',
   fontWeight: '400',
   color: 'black',
-  //
   buttonText: 'button text',
   backgroundColor: '#DBF3FA',
   buttonWidth: '100',
   buttonHeight: '40',
-  //
   textareaWidth: '250',
   textareaHeight: '30',
+  checkboxWidth: '20',
+  checkboxHeight: '20',
+  checkboxText: 'Enter your text',
 }
 
 export const INITIAL_ELEMENTS = ['input', 'textarea', 'select', 'checkbox', 'button']

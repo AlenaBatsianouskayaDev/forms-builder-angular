@@ -13,14 +13,15 @@ export interface IFormElement {
   fontSize?: string,
   fontWeight?: string,
   color?: string,
-  //
   buttonText?: string,
   backgroundColor?: string,
   buttonWidth?: string,
   buttonHeight?: string,
-  //
   textareaWidth?: string,
   textareaHeight?: string,
+  checkboxText?: string,
+  checkboxWidth?: string,
+  checkboxHeight?: string,
 }
 
 export interface IElementStyles {
@@ -33,14 +34,15 @@ export interface IElementStyles {
   fontSize?: string,
   fontWeight?: string,
   color?: string,
-  //
   buttonText?: string,
   backgroundColor?: string,
   buttonWidth?: string,
   buttonHeight?: string,
-  //
   textareaWidth?: string,
   textareaHeight?: string,
+  checkboxText?: string,
+  checkboxWidth?: string,
+  checkboxHeight?: string,
 }
 
 export interface IElementData {
