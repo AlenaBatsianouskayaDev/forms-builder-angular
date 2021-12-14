@@ -17,15 +17,17 @@
             [ngStyle]="{'color': item.color, 'width.px': item.textareaWidth, 'height.px': item.textareaHeight, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}"></textarea>
         </div>
       
-        <!-- <div [id]="item.id" *ngIf="item.name === 'select'" class="fieldElement">
+        <div [id]="item.id" *ngIf="item.name === 'select'" class="fieldElement">
           <label for="select" class="fieldElement__label">{{ item.label }}</label>
           <select class="fieldElement__input" name="select" id='select'
             [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}">
-            <option name="1">1</option>
+            <option name="option 1">option 1</option>
+            <option name="option 2">option 2</option>
+            <option name="option 3">option 3</option>
           </select>
         </div>
       
-        <div [id]="item.id" *ngIf="item.name === 'checkbox'" class="fieldElement">
+        <!-- <div [id]="item.id" *ngIf="item.name === 'checkbox'" class="fieldElement">
           <label for="checkbox" class="fieldElement__label">{{ item.label }}</label>
           <input type="checkbox" name="checkbox" id='checkbox'
             [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}">
