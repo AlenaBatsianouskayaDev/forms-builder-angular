@@ -1,59 +1,55 @@
 <form [formGroup]="formElementsStyles" class="formElementsStyles">
   <div class="formElementsStyles__item">
-    <mat-form-field appearance="fill" formControlName="label">
+    <mat-form-field appearance="fill" >
       <mat-label>Field label</mat-label>
-      <input matInput type="text"  placeholder="Enter your text">
+      <input matInput type="text"  placeholder="Enter your text" formControlName="label">
     </mat-form-field>
   </div>
   <div class="formElementsStyles__item">
-    <mat-form-field appearance="fill" formControlName="placeholder">
+    <mat-form-field appearance="fill" >
       <mat-label>Placeholder</mat-label>
-      <input matInput type="text"  placeholder="Enter your placeholder"/>
+      <input matInput type="text"  placeholder="Enter your placeholder" formControlName="placeholder"/>
     </mat-form-field>
   </div>
   <div class="formElementsStyles__item">
-    <mat-form-field appearance="fill" formControlName="width">
+    <mat-form-field appearance="fill" >
       <mat-label>Field width</mat-label>
-      <input matInput type="text"  placeholder="Enter width of element"/>
+      <input matInput type="text"  placeholder="Enter width of element" formControlName="width"/>
     </mat-form-field>
   </div>
   <div class="formElementsStyles__item">
-    <mat-form-field appearance="fill" formControlName="height">
+    <mat-form-field appearance="fill" >
       <mat-label>Field height</mat-label>
-      <input matInput type="text"  placeholder="Enter height of element" />
+      <input matInput type="text"  placeholder="Enter height of element" formControlName="height"/>
     </mat-form-field>
   </div>
   <div class="formElementsStyles__item">
-  <mat-form-field appearance="fill" formControlName="borderStyle">
+  <mat-form-field appearance="fill" >
     <mat-label>Border style</mat-label>
-    <mat-select>
+    <mat-select formControlName="borderStyle">
       <mat-option *ngFor="let style of borderStyles" [value]="style">
         {{style}}
       </mat-option>
     </mat-select>
   </mat-form-field>
   </div>
-  <div class="formElementsStyles__item" formControlName="required">
+  <div class="formElementsStyles__item checkbox" >
     <p>Required this field</p>
-    <label>
-      <input type="checkbox" name="required" value="required" checked>
-      Not Required
-    </label>
-    <label>
-      <input type="checkbox" name="required" value="not required">
-      Required
-    </label>
-  </div>
+    <div>
+      <mat-checkbox class="checkbox__item" formControlName="required">Not Required</mat-checkbox>
+      <mat-checkbox class="checkbox__item" formControlName="required">Required</mat-checkbox>
+    </div> 
+  </div> 
   <div class="formElementsStyles__item">
-    <mat-form-field appearance="fill" formControlName="fontSize">
+    <mat-form-field appearance="fill" >
       <mat-label>Font size</mat-label>
-      <input matInput type="text" placeholder="Enter font size" />
+      <input matInput type="text" placeholder="Enter font size" formControlName="fontSize"/>
     </mat-form-field>
   </div>
   <div class="formElementsStyles__item">
-    <mat-form-field appearance="fill" formControlName="fontWeight">
+    <mat-form-field appearance="fill" >
       <mat-label>Border style</mat-label>
-      <mat-select>
+      <mat-select formControlName="fontWeight">
         <mat-option *ngFor="let item of fontWeight" [value]="item">
           {{item}}
         </mat-option>

@@ -46,7 +46,7 @@
 
   <div class="example-list" cdkDropList [cdkDropListData]="dragElements" class="example-list"
     (cdkDropListDropped)="drop($event)">
-    <!-- <p>AHAHAHAHAHAH</p> -->
+    
     <div class="example-box" *ngFor="let item of dragElements" cdkDrag>
       <p class="element-box-title">{{item}}</p>
   

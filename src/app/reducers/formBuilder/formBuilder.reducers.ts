@@ -18,26 +18,39 @@ export const formBuilderReducers = createReducer(
   on(formBuilderActions.addFormElement, (state, {name}) => {
     let commonService = new CommonService( );
     return ({
-      components: [ {
-      ...initialStyles,
-      name: name,
-      id: commonService.generateId(),
-      }, ...state.components]
+      components: [...state.components,
+        {...initialStyles,
+        id: commonService.generateId(),
+        name}]
     })
   }
   ),
 
-  // on(formBuilderActions.setCurrentElement, (state, {id}) => {
-  //   const currentElement = state.components.filter(item => item.id === id);
-  //   console.log(currentElement);
-  //   return ({
-  //     components: [...state.components, {
-  //     ...currentElement,
-  //     isCurrentElement: true
-  //       }]
-  //   });
-  // }
-  // ),
+  on(formBuilderActions.setCurrentElement, (state, { id }) => {
+    const copyStateComponents = [...state.components];
+
+    const currentElementIndex = copyStateComponents.findIndex(item => item.isCurrentElement === true);
+
+    if (currentElementIndex !== -1) {
+      copyStateComponents[currentElementIndex] = {
+        ...copyStateComponents[currentElementIndex],
+        isCurrentElement: false
+      }
+    }
+
+    const currentIndex = copyStateComponents.findIndex(item => item.id === id)
+    
+    if (currentIndex !== -1) {
+      copyStateComponents[currentIndex] = {
+        ...copyStateComponents[currentIndex],
+        isCurrentElement: true
+      }
+    }
+    return ({ components: [...copyStateComponents] })
+  }
+  ),
+  
+
 
   // on(formBuilderActions.addElementStyles, (state, payload) => ({
   //   components: [...state.components, {

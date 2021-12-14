@@ -19,7 +19,8 @@ import { getFormElement } from 'src/app/reducers/formBuilder/formBuilder.selecto
 export class FormDisplayComponent implements OnInit {
 
   public dragElements: string[] = initialElements;
-  public droppedElements: IElementData [] = [];
+  public droppedElements: IElementData[] = [];
+  public element: Elements;
   private destroy$: Subject<void> = new Subject();
   public shownElements$: Observable<IFormElement[]>;
 

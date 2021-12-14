@@ -1,4 +1,21 @@
-.formSetupInput {
+.formElementsStyles {
   display: flex;
   flex-direction: column;
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.checkbox {
+  margin-bottom: 15px;
+  & p {
+    margin-bottom: 0px;
+    margin-right: 10px;
+  }
+  &__item:not(:last-child) {
+    margin-right: 10px;
+  }
 }
