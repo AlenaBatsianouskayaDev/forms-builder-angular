@@ -5,8 +5,8 @@ export const INITIAL_STYLES = {
   width: '200',
   height: '20',
   required: false,
-  borderStyle: 'solid',
-  fontSize: '18',
+  borderStyle: '',
+  fontSize: '14',
   fontWeight: '400',
   color: 'black',
 }
@@ -14,10 +14,10 @@ export const INITIAL_STYLES = {
 export const INITIAL_ELEMENTS = ['input', 'textarea', 'select', 'checkbox', 'button']
 
 export const STYLES = {
-  'color': 'item.color',
   'width': 'item.width', 
   'height': 'item.height',
   'border': 'item.borderStyle',
   'font-size': 'item.fontSize',
-  'font-weight': 'item.fontWeight' //TODO: change to stylesFactory????
+  'font-weight': 'item.fontWeight', //TODO: change to stylesFactory????
+  'color': 'item.color',
 }

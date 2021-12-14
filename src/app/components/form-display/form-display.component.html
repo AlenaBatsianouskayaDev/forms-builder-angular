@@ -14,14 +14,14 @@
         <div *ngIf="item.name === 'textarea'" class="fieldElement">
           <label>{{ item.label }}
             <textarea (click)=setActiveElement($event) name="textarea" [id]="item.id" [placeholder]="item.placeholder"
-              [ngStyle]="{'color': item.color, 'width': item.width, 'height': item.height, 'border': item.borderStyle, 'font-size': item.fontSize, 'font-weight': item.fontWeight}"></textarea>
+             [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}"></textarea>
           </label>
         </div>
       
         <div *ngIf="item.name === 'select'" class="fieldElement">
           <label>{{ item.label }}
             <select (click)=setActiveElement($event) [id]="item.id" name="select"
-              [ngStyle]="{'color': item.color, 'width': item.width, 'height': item.height, 'border': item.borderStyle, 'font-size': item.fontSize, 'font-weight': item.fontWeight}">
+              [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}">
               <option name="1">1</option>
             </select>
           </label>
@@ -30,13 +30,13 @@
         <div *ngIf="item.name === 'checkbox'" class="fieldElement">
           <label>{{ item.label }}
             <input (click)=setActiveElement($event) [id]="item.id" type="checkbox" name="checkbox"
-              [ngStyle]="{'color': item.color, 'width': item.width, 'height': item.height, 'border': item.borderStyle, 'font-size': item.fontSize, 'font-weight': item.fontWeight}">
+            [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}">
           </label>
         </div>
       
         <div *ngIf="item.name === 'button'" class="fieldElement">
           <button (click)=setActiveElement($event) [id]="item.id" name="button"
-            [ngStyle]="{'color': item.color, 'width': item.width, 'height': item.height, 'border': item.borderStyle, 'font-size': item.fontSize, 'font-weight': item.fontWeight}">
+           [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}">
             {{ item.label }}
           </button>
         </div>
