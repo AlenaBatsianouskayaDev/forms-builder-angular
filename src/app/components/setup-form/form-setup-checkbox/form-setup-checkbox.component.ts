@@ -6,7 +6,6 @@ import { takeUntil } from 'rxjs/operators';
 
 import { addElementStyles } from './../../../reducers/formBuilder/formBuilder.actions';
 
-
 @Component({
   selector: 'app-form-setup-checkbox',
   templateUrl: './form-setup-checkbox.component.html',
@@ -14,9 +13,7 @@ import { addElementStyles } from './../../../reducers/formBuilder/formBuilder.ac
 })
 export class FormSetupCheckboxComponent implements OnInit {
 
-formElementsStyles: FormGroup;
-  public borderStyles: string[] = ['solid', 'dotted', 'insent', 'double', 'groove', 'none'];
-  public fontWeight: string[] = ['normal', 'bold', 'lighter'];
+  formElementsStyles: FormGroup;
 
   private destroy$: Subject<void> = new Subject();
 

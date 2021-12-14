@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { addElementStyles } from './../../../reducers/formBuilder/formBuilder.actions';
+import { BORDER_STYLES, FONT_WEIGHT } from './../../../utils/data';
 
 @Component({
   selector: 'app-form-setup-select',
@@ -13,8 +14,8 @@ import { addElementStyles } from './../../../reducers/formBuilder/formBuilder.ac
 })
 export class FormSetupSelectComponent implements OnInit {
  formElementsStyles: FormGroup;
-  public borderStyles: string[] = ['solid', 'dotted', 'insent', 'double', 'groove', 'none'];
-  public fontWeight: string[] = ['normal', 'bold', 'lighter'];
+  public borderStyles: string[] = BORDER_STYLES;
+  public fontWeight: string[] = FONT_WEIGHT;
 
   private destroy$: Subject<void> = new Subject();
 

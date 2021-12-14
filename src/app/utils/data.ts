@@ -24,6 +24,10 @@ export const INITIAL_STYLES = {
 
 export const INITIAL_ELEMENTS = ['input', 'textarea', 'select', 'checkbox', 'button']
 
+export const BORDER_STYLES = ['solid', 'dotted', 'insent', 'double', 'groove', 'none']
+
+export const FONT_WEIGHT = ['normal', 'bold', 'lighter'];
+
 export const STYLES = {
   'width': 'item.width', 
   'height': 'item.height',
