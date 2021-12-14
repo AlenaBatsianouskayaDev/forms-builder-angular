@@ -5,32 +5,29 @@
       <div class="example-box" *ngFor="let item of shownElements" cdkDrag>
         <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
         <div [id]="item.id" *ngIf="item.name === 'input'" class="fieldElement" >
-          <label for="input">{{ item.label }} </label>
-          <input name="input" id='input' type="text" [placeholder]="item.placeholder"
+          <label for="input" class="fieldElement__label">{{ item.label }} </label>
+          <input name="input" class="fieldElement__input" id='input' type="text" [placeholder]="item.placeholder"
             [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}">
         </div>
       
         <div [id]="item.id" *ngIf="item.name === 'textarea'" class="fieldElement">
-          <label class="fieldElement__label">{{ item.label }}
-            <textarea class="fieldElement__input" name="textarea"  [placeholder]="item.placeholder"
-             [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}"></textarea>
-          </label>
+          <label for="textarea" class="fieldElement__label">{{ item.label }}</label>
+          <textarea class="fieldElement__input" name="textarea" id='textarea' [placeholder]="item.placeholder"
+            [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}"></textarea>
         </div>
       
         <div [id]="item.id" *ngIf="item.name === 'select'" class="fieldElement">
-          <label>{{ item.label }}
-            <select name="select"
-              [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}">
-              <option name="1">1</option>
-            </select>
-          </label>
+          <label for="select" class="fieldElement__label">{{ item.label }}</label>
+          <select class="fieldElement__input" name="select" id='select'
+            [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}">
+            <option name="1">1</option>
+          </select>
         </div>
       
         <div [id]="item.id" *ngIf="item.name === 'checkbox'" class="fieldElement">
-          <label>{{ item.label }}
-            <input type="checkbox" name="checkbox"
+          <label for="checkbox" class="fieldElement__label">{{ item.label }}</label>
+          <input type="checkbox" name="checkbox" id='checkbox'
             [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}">
-          </label>
         </div>
       
         <div [id]="item.id" *ngIf="item.name === 'button'" class="fieldElement">

@@ -70,15 +70,15 @@ export class FormDisplayComponent implements OnInit {
   setActiveElement(event: any) { 
     
       
-    if (event.target.tagName === 'LABEL' || event.target.tagName === 'INPUT') {
+    if (event.target.tagName === 'LABEL' ||
+      event.target.tagName === 'INPUT' ||
+      event.target.tagName === 'TEXTAREA' ||
+      event.target.tagName === 'SELECT' ||
+      event.target.tagName === 'BUTTON' ) {
       this.currentElementId = event.target.closest('div').id;  
-      console.log(this.currentElementId)
     } else {
       this.currentElementId = event.target.id;
     }
-
-    // console.log(this.prevCurrentElementId, this.currentElementId)
-
     if (this.prevCurrentElementId !== this.currentElementId) {
       this.store$.dispatch(
       setCurrentElement({ id: this.currentElementId })
