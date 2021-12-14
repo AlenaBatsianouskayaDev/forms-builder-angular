@@ -13,7 +13,8 @@
       padding: 10px;
     }
 
-    & input[type='color'] {
+    & input[type='color'],
+    & input[type='backgroundColor'] {
       width: 100px;
       height: 40px;
       padding: 0;
@@ -22,15 +23,5 @@
 
   &__label {
     padding: 0 10px;
-  }
-}
-
-.radioBtn {
-  & p {
-    margin-bottom: 0px;
-    margin-right: 10px;
-  }
-  & mat-radio-button:not(:last-child) {
-    margin-bottom: 5px;
   }
 }

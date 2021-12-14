@@ -1,7 +1,9 @@
 export const INITIAL_STYLES = {
   isCurrentElement: false,
+
   label: 'Enter your text',
   placeholder: 'Enter your placeholder',
+
   width: '200',
   height: '20',
   required: false,
@@ -9,6 +11,11 @@ export const INITIAL_STYLES = {
   fontSize: '14',
   fontWeight: '400',
   color: 'black',
+  //
+  buttonText: 'button text',
+  backgroundColor: '#DBF3FA',
+  buttonWidth: '100',
+  buttonHeight: '50',
 }
 
 export const INITIAL_ELEMENTS = ['input', 'textarea', 'select', 'checkbox', 'button']

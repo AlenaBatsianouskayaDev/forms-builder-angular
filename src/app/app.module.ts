@@ -32,12 +32,15 @@ import { CommonService } from './services/common.service';
 import { TokenInterceptorService } from './interceptors/token/token-interceptor.service';
 import { AuthEffects } from './reducers/auth/auth.effects';
 import { PortalModule } from '@angular/cdk/portal';
-import { CheckboxComponent } from './shared/checkbox/checkbox.component';
 import { FormSetupInputComponent } from './components/setup-form/form-setup-input/form-setup-input.component';
 
 import { FormStylesComponent } from './components/form-styles/form-styles.component';
 import { FormDisplayComponent } from './components/form-display/form-display.component';
 import { ReactiveComponentModule } from '@ngrx/component';
+import { FormSetupTextareaComponent } from './form-setup-textarea/form-setup-textarea.component';
+import { FormSetupSelectComponent } from './form-setup-select/form-setup-select.component';
+import { FormSetupButtonComponent } from './components/setup-form/form-setup-button/form-setup-button.component';
+import { FormSetupCheckboxComponent } from './form-setup-checkbox/form-setup-checkbox.component';
 
 @NgModule({
   declarations: [
@@ -54,10 +57,13 @@ import { ReactiveComponentModule } from '@ngrx/component';
     InputComponent,
     ButtonSubmitComponent,
     ContainerComponent,
-    CheckboxComponent,
     FormSetupInputComponent,
     FormStylesComponent,
-    FormDisplayComponent,  
+    FormDisplayComponent,
+    FormSetupTextareaComponent,
+    FormSetupSelectComponent,
+    FormSetupButtonComponent,
+    FormSetupCheckboxComponent,  
   ],
   imports: [
     FormsModule,

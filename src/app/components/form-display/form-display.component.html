@@ -4,19 +4,20 @@
     <ng-container *ngIf="shownElements$ | ngrxPush as shownElements">
       <div class="example-box" *ngFor="let item of shownElements" cdkDrag>
         <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+
         <div [id]="item.id" *ngIf="item.name === 'input'" class="fieldElement" >
           <label for="input" class="fieldElement__label">{{ item.label }} </label>
           <input name="input" class="fieldElement__input" id='input' type="text" [placeholder]="item.placeholder"
             [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}">
         </div>
       
-        <div [id]="item.id" *ngIf="item.name === 'textarea'" class="fieldElement">
+        <!-- <div [id]="item.id" *ngIf="item.name === 'textarea'" class="fieldElement">
           <label for="textarea" class="fieldElement__label">{{ item.label }}</label>
           <textarea class="fieldElement__input" name="textarea" id='textarea' [placeholder]="item.placeholder"
             [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}"></textarea>
-        </div>
+        </div> -->
       
-        <div [id]="item.id" *ngIf="item.name === 'select'" class="fieldElement">
+        <!-- <div [id]="item.id" *ngIf="item.name === 'select'" class="fieldElement">
           <label for="select" class="fieldElement__label">{{ item.label }}</label>
           <select class="fieldElement__input" name="select" id='select'
             [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}">
@@ -28,12 +29,13 @@
           <label for="checkbox" class="fieldElement__label">{{ item.label }}</label>
           <input type="checkbox" name="checkbox" id='checkbox'
             [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}">
-        </div>
+        </div> -->
       
+
         <div [id]="item.id" *ngIf="item.name === 'button'" class="fieldElement">
-          <button name="button"
-           [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}">
-            {{ item.label }}
+          <button name="button" type="button"
+          [ngStyle]="{'color': item.color, 'background-color': item.backgroundColor, 'width.px': item.buttonWidth, 'height.px':item.buttonHeight, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight, 'display': 'inline-block', 'padding.px': '5 7', 'border-radius.px': '5', 'border': 'transparent', 'min-width.px': '100', 'min-height.px': '30'} ">
+          {{ item.buttonText }}
           </button>
         </div>
       </div>

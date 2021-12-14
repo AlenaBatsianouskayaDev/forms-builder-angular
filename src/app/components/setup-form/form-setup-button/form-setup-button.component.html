@@ -1,0 +1,63 @@
+<form [formGroup]="formElementsStyles" class="formElementsStyles">
+  <mat-grid-list cols="2" rowHeight="2:1" gutterSize='10px'>
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Button text</mat-label>
+          <input matInput type="text" placeholder="Enter your text" formControlName="buttonText">
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Button width</mat-label>
+          <input matInput type="text" placeholder="Enter width of element" formControlName="buttonWidth" />
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Button height</mat-label>
+          <input matInput type="text" placeholder="Enter height of element" formControlName="buttonHeight" />
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Font size</mat-label>
+          <input matInput type="text" placeholder="Enter font size" formControlName="fontSize" />
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Font weight</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let item of fontWeight" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  
+  <div class="formElementsStyles__item">
+    <label class="formElementsStyles__label labelColor" for="inputColor"> Font color</label>
+    <input type="color" formControlName="color" id="inputColor">
+  </div>
+
+  <div class="formElementsStyles__item">
+    <label class="formElementsStyles__label labelColor" for="inputColor"> Background color</label>
+    <input type="color" formControlName="backgroundColor" id="inputColor">
+  </div>
+
+</form>
