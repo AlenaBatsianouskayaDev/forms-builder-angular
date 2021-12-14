@@ -18,6 +18,9 @@ export interface IFormElement {
   backgroundColor?: string,
   buttonWidth?: string,
   buttonHeight?: string,
+  //
+  textareaWidth?: string,
+  textareaHeight?: string,
 }
 
 export interface IElementStyles {
@@ -35,6 +38,9 @@ export interface IElementStyles {
   backgroundColor?: string,
   buttonWidth?: string,
   buttonHeight?: string,
+  //
+  textareaWidth?: string,
+  textareaHeight?: string,
 }
 
 export interface IElementData {

@@ -11,11 +11,11 @@
             [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}">
         </div>
       
-        <!-- <div [id]="item.id" *ngIf="item.name === 'textarea'" class="fieldElement">
+        <div [id]="item.id" *ngIf="item.name === 'textarea'" class="fieldElement">
           <label for="textarea" class="fieldElement__label">{{ item.label }}</label>
           <textarea class="fieldElement__input" name="textarea" id='textarea' [placeholder]="item.placeholder"
-            [ngStyle]="{'color': item.color, 'width.px': item.width, 'height.px': item.height, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}"></textarea>
-        </div> -->
+            [ngStyle]="{'color': item.color, 'width.px': item.textareaWidth, 'height.px': item.textareaHeight, 'border': item.borderStyle, 'font-size.px': item.fontSize, 'font-weight': item.fontWeight}"></textarea>
+        </div>
       
         <!-- <div [id]="item.id" *ngIf="item.name === 'select'" class="fieldElement">
           <label for="select" class="fieldElement__label">{{ item.label }}</label>

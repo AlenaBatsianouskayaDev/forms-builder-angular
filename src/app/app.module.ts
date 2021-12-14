@@ -37,7 +37,7 @@ import { FormSetupInputComponent } from './components/setup-form/form-setup-inpu
 import { FormStylesComponent } from './components/form-styles/form-styles.component';
 import { FormDisplayComponent } from './components/form-display/form-display.component';
 import { ReactiveComponentModule } from '@ngrx/component';
-import { FormSetupTextareaComponent } from './form-setup-textarea/form-setup-textarea.component';
+import { FormSetupTextareaComponent } from './components/setup-form/form-setup-textarea/form-setup-textarea.component';
 import { FormSetupSelectComponent } from './form-setup-select/form-setup-select.component';
 import { FormSetupButtonComponent } from './components/setup-form/form-setup-button/form-setup-button.component';
 import { FormSetupCheckboxComponent } from './form-setup-checkbox/form-setup-checkbox.component';

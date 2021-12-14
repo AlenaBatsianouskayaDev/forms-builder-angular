@@ -15,7 +15,10 @@ export const INITIAL_STYLES = {
   buttonText: 'button text',
   backgroundColor: '#DBF3FA',
   buttonWidth: '100',
-  buttonHeight: '50',
+  buttonHeight: '40',
+  //
+  textareaWidth: '250',
+  textareaHeight: '30',
 }
 
 export const INITIAL_ELEMENTS = ['input', 'textarea', 'select', 'checkbox', 'button']

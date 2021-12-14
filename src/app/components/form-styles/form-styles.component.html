@@ -19,6 +19,7 @@
         [attr.id]="'accordion-body'" [attr.aria-labelledby]="'accordion-header'">  
         <app-form-setup-input *ngIf="currentElement === 'input'"></app-form-setup-input>
         <app-form-setup-button *ngIf="currentElement === 'button'"></app-form-setup-button>
+        <app-form-setup-textarea *ngIf="currentElement === 'textarea'"></app-form-setup-textarea>      
       </div>
     </cdk-accordion-item>
   </cdk-accordion>
