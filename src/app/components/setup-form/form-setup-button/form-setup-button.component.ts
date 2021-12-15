@@ -4,11 +4,10 @@ import { Store, select } from "@ngrx/store";
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { addElementStyles } from './../../../reducers/formBuilder/formBuilder.actions';
-import { BORDER_STYLES, FONT_WEIGHT } from './../../../utils/data';
-import { getCurrentElementStyles } from './../../../reducers/formBuilder/formBuilder.selectors'
-import { IElementStyles } from './../../../reducers/interfaces';
-import { INITIAL_STYLES } from './../../../utils/data';
+import { addElementStyles } from 'src/app/reducers/formBuilder/formBuilder.actions';
+import { getCurrentElementStyles } from 'src/app/reducers/formBuilder/formBuilder.selectors'
+import { IElementStyles } from 'src/app/reducers/interfaces';
+import { INITIAL_STYLES,BORDER_STYLES, FONT_WEIGHT } from 'src/app/utils/data';
 
 @Component({
   selector: 'app-form-setup-button',
