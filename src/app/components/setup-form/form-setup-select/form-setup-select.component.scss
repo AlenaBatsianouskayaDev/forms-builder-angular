@@ -1,7 +1,4 @@
 .formElementsStyles {
-  display: flex;
-  flex-direction: column;
-
   &__item {
     display: flex;
     justify-content: center;
@@ -12,12 +9,6 @@
     & mat-select {
       padding: 10px;
     }
-
-    & input[type='color'] {
-      width: 100px;
-      height: 40px;
-      padding: 0;
-    }
   }
 
   &__label {
@@ -25,12 +16,26 @@
   }
 }
 
-.radioBtn {
-  & p {
-    margin-bottom: 0px;
-    margin-right: 10px;
+.colorInput {
+  &__input {
+    border: none;
+    background: transparent;
+    width: 60px;
+    height: 60px;
+    padding: 0;
   }
-  & mat-radio-button:not(:last-child) {
+}
+
+.radioBtn {
+  &__label {
+    text-align: right;
+  }
+
+  &__button:not(:last-child) {
     margin-bottom: 5px;
+  }
+
+  &__fieldset {
+    border: none;
   }
 }

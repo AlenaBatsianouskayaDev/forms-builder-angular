@@ -41,6 +41,7 @@ export class FormSetupTextareaComponent implements OnInit {
     
     this.formElementsStyles = this.fb.group({
       textareaFieldText: [this.initialSetup.textareaFieldText],
+      textareaLabel: [this.initialSetup.textareaLabel],
       textareaPlaceholder: [this.initialSetup.textareaPlaceholder],
       textareaWidth: [this.initialSetup.textareaWidth],
       textareaHeight: [this.initialSetup.textareaHeight],

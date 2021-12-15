@@ -13,7 +13,7 @@
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Button width</mat-label>
-          <input matInput type="text" placeholder="Enter width of element" formControlName="buttonWidth" />
+          <input matInput type="text" placeholder="Enter a number" formControlName="buttonWidth" />
         </mat-form-field>
       </div>
     </mat-grid-tile>
@@ -22,7 +22,7 @@
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Button height</mat-label>
-          <input matInput type="text" placeholder="Enter height of element" formControlName="buttonHeight" />
+          <input matInput type="text" placeholder="Enter a number" formControlName="buttonHeight" />
         </mat-form-field>
       </div>
     </mat-grid-tile>
@@ -31,7 +31,7 @@
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Font size</mat-label>
-          <input matInput type="text" placeholder="Enter font size" formControlName="buttonFontSize" />
+          <input matInput type="text" placeholder="Enter a number" formControlName="buttonFontSize" />
         </mat-form-field>
       </div>
     </mat-grid-tile>
@@ -48,16 +48,19 @@
         </mat-form-field>
       </div>
     </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item colorInput">
+        <label class="formElementsStyles__label" for="inputBkgColor"> Background color</label>
+        <input class="colorInput__input" type="color" formControlName="buttonBackgroundColor" id="inputBkgColor">
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item colorInput">
+        <label class="formElementsStyles__label" for=" inputColor"> Font color</label>
+        <input class="colorInput__input" type="color" formControlName="buttonColor" id="inputColor">
+      </div>
+    </mat-grid-tile>
   </mat-grid-list>
-  
-  <div class="formElementsStyles__item">
-    <label class="formElementsStyles__label labelColor" for="inputColor"> Font color</label>
-    <input type="color" formControlName="buttonColor" id="inputColor">
-  </div>
-
-  <div class="formElementsStyles__item">
-    <label class="formElementsStyles__label labelColor" for="inputBkgColor"> Background color</label>
-    <input type="color" formControlName="buttonBackgroundColor" id="inputBkgColor">
-  </div>
-
 </form>

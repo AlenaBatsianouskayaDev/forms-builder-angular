@@ -1,0 +1,57 @@
+<form [formGroup]="formGeneralStyles" class="formElementsStyles">
+  <mat-grid-list cols="2" rowHeight="2:1" gutterSize='10px'>
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Form Title</mat-label>
+          <input matInput type="text" placeholder="Enter your text" formControlName="formTitle">
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Font size</mat-label>
+          <input matInput type="text" placeholder="Enter a number" formControlName="formGeneralFontSize" />
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Font weight</mat-label>
+          <mat-select formControlName="formGeneralFontWeight">
+            <mat-option *ngFor="let item of fontWeight" [value]="item">
+              {{item}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item colorInput">
+        <label class="formElementsStyles__label" for="fontColor"> Font color</label>
+        <input class="colorInput__input" type="color" formControlName="formGeneralColor" id="fontColor">
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item colorInput">
+        <label class="formElementsStyles__label" for="bkgColor"> Font color</label>
+        <input class="colorInput__input" type="color" formControlName="formGeneralBkgColor" id="bkgColor">
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div class="formElementsStyles__item colorInput">
+        <label class="formElementsStyles__label" for="borderColor"> Font color</label>
+        <input class="colorInput__input" type="color" formControlName="formGeneralBorderColor" id="borderColor">
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>
+
+

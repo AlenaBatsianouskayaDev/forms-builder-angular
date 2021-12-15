@@ -40,6 +40,7 @@ export class FormSetupSelectComponent implements OnInit {
       })
     
     this.formElementsStyles = this.fb.group({
+      selectFieldText: [this.initialSetup.selectFieldText],
       selectLabel: [this.initialSetup.selectLabel],
       selectWidth: [this.initialSetup.selectWidth],
       selectHeight: [this.initialSetup.selectHeight],

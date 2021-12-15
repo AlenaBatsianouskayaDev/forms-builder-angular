@@ -42,8 +42,6 @@ export class FormSetupCheckboxComponent implements OnInit {
     this.formElementsStyles = this.fb.group({
       checkboxFieldText: [this.initialSetup.checkboxFieldText],
       checkboxLabel: [this.initialSetup.checkboxLabel],
-      checkboxWidth: [this.initialSetup.checkboxWidth],
-      checkboxHeight: [this.initialSetup.checkboxHeight],
       checkboxRequired: [this.initialSetup.checkboxRequired],
     })
 

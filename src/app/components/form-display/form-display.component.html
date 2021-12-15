@@ -2,93 +2,73 @@
   <!-- cdk-drag-placeholder -->
   <div cdkDropList [cdkDropListData]="droppedElements" class="example-list"
     (cdkDropListDropped)="drop($event)" (click)=deleteElement($event) (click)=setActiveElement($event) *ngIf="shownElements$ | ngrxPush as shownElements">
-    
-      <div class="example-box" *ngFor="let item of shownElements" cdkDrag>
-        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+      <h1 class="formHeader">Form title</h1>
 
-        <div [id]="item.id" *ngIf="item.name === 'input'" class="fieldElement" [ngClass] = '{isActiveElement: item.isCurrentElement}'>
-          <label for="input" class="fieldElement__label">{{ item.inputLabel }} </label>
-          <input name="input" class="fieldElement__input" id='input' type="text" [placeholder]="item.inputPlaceholder"
-            [ngStyle]="{'color': item.inputColor, 'width.px': item.inputWidth, 'height.px': item.inputHeight, 'border': item.inputBorderStyle, 'font-size.px': item.inputFontSize, 'font-weight': item.inputFontWeight}">
-          <button name="btnDelete"  mat-fab color="primary" aria-label="delete button">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </div>
-      
-        <div [id]="item.id" *ngIf="item.name === 'textarea'" class="fieldElement" [ngClass] = '{isActiveElement: item.isCurrentElement}'>
-          <label for="textarea" class="fieldElement__label">{{ item.textareaFieldText }}</label>
-          <textarea class="fieldElement__input" name="textarea" id='textarea' [placeholder]="item.textareaPlaceholder"
-            [ngStyle]="{'color': item.textareaColor, 'width.px': item.textareaWidth, 'height.px': item.textareaHeight, 'border': item.textareaBorderStyle, 'font-size.px': item.textareaFontSize, 'font-weight': item.textareaFontWeight}"></textarea>
-          <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
-            <mat-icon>delete</mat-icon>
-          </button>
-          </div>
-      
-        <div [id]="item.id" *ngIf="item.name === 'select'" class="fieldElement" [ngClass] = '{isActiveElement: item.isCurrentElement}'>
-          <label for="select" class="fieldElement__label">{{ item.selectLabel }}</label>
-          <select class="fieldElement__input" name="select" id='select'
-            [ngStyle]="{'color': item.selectColor, 'width.px': item.selectWidth, 'height.px': item.selectHeight, 'border': item.selectBorderStyle, 'font-size.px': item.selectFontSize, 'font-weight': item.selectFontWeight}">
-            <option name="option 1">option 1</option>
-            <option name="option 2">option 2</option>
-            <option name="option 3">option 3</option>
-          </select>
+      <div class="example-box" *ngFor="let item of shownElements" cdkDrag>
+        <!-- <div class="example-custom-placeholder" *cdkDragPlaceholder></div> -->
+
+        <div [id]="item.id" *ngIf="item.name === 'input'" class="fieldElement" [ngClass]='{isActiveElement: item.isCurrentElement}'>
+          <p>{{ item.inputFieldText }}</p>
+          <mat-form-field class="example-full-width" appearance="fill" [attr.required]="item.selectRequired" [ngStyle]="{'color': item.inputColor, 'width.px': item.inputWidth, 'border': item.inputBorderStyle, 'font-size.px': item.inputFontSize, 'font-weight': item.inputFontWeight}">
+            <mat-label class="fieldElement__label">{{ item.inputLabel }}</mat-label>
+            <input class="fieldElement__input" name="input" matInput [attr.placeholder]='item.inputPlaceholder' [ngStyle]="{'height.px': item.inputHeight}" >
+          </mat-form-field>
           <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
             <mat-icon>delete</mat-icon>
           </button>
         </div>
-      
+        
+        <div [id]="item.id" *ngIf="item.name === 'textarea'" class="fieldElement" [ngClass]='{isActiveElement: item.isCurrentElement}'>
+          <p>{{ item.textareaFieldText }}</p>
+          <mat-form-field class="example-full-width" appearance="fill" [attr.required]="item.selectRequired"
+            [ngStyle]="{'color': item.textareaColor, 'width.px': item.textareaWidth, 'border': item.textareaBorderStyle, 'font-size.px': item.textareaFontSize, 'font-weight': item.textareaFontWeight}">
+            <mat-label class="fieldElement__label">{{ item.textareaLabel }}</mat-label>
+            <textarea class="fieldElement__input" name="input" matInput [attr.placeholder]="item.textareaPlaceholder"
+              [ngStyle]="{'height.px': item.textareaHeight}"></textarea>
+          </mat-form-field>
+          <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        
+        <div [id]="item.id" *ngIf="item.name === 'select'" class="fieldElement" [ngClass]='{isActiveElement: item.isCurrentElement}'>
+          <p>{{ item.selectFieldText }}</p>          
+          <mat-form-field appearance="fill" [attr.required]="item.selectRequired"
+            [ngStyle]="{'width.px': item.selectWidth, 'border': item.selectBorderStyle, 'font-size.px': item.selectFontSize, 'font-weight': item.selectFontWeight}">
+            <mat-label [ngStyle]="{'color': item.selectColor}">{{ item.selectLabel }}</mat-label>
+            <mat-select class="fieldElement__input" name="select" [ngStyle]="{'color': item.selectColor, 'height.px': item.selectHeight}">
+              <mat-option *ngFor="let option of item.selectOptions" [value]="option" [ngStyle]="{'color': item.selectColor}">
+                {{ option }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+
         <div [id]="item.id" *ngIf="item.name === 'checkbox'" class="fieldElement" [ngClass] = '{isActiveElement: item.isCurrentElement}'>
-          <p for="checkbox" class="fieldElement__label">{{ item.checkboxFieldText }}</p>
-          <label for="checkbox">
-            <span>{{ item.checkboxLabel }}</span>
-            <input type="checkbox" name="checkbox" id='checkbox'
-              [ngStyle]="{'width.px': item.checkboxWidth, 'height.px': item.checkboxHeight}">
-          </label>
+          <p>{{ item.checkboxFieldText }}</p>
+          <mat-checkbox name="checkbox" [attr.required]="item.selectRequired">{{ item.checkboxLabel }}</mat-checkbox>
           <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
             <mat-icon>delete</mat-icon>
           </button>
-          </div>
+        </div>
 
         <div [id]="item.id" *ngIf="item.name === 'button'" class="fieldElement" [ngClass] = '{isActiveElement: item.isCurrentElement}'>
-          <button name="button" type="button"
-          [ngStyle]="{'color': item.buttonColor, 'background-color': item.buttonBackgroundColor, 'width.px': item.buttonWidth, 'height.px':item.buttonHeight, 'font-size.px': item.buttonFontSize, 'font-weight': item.buttonFontWeight } ">
-          {{ item.buttonText }}
-          </button>
+          <button mat-flat-button name="button" [ngStyle]="{'color': item.buttonColor, 'background-color': item.buttonBackgroundColor, 'width.px': item.buttonWidth, 'height.px':item.buttonHeight, 'font-size.px': item.buttonFontSize, 'font-weight': item.buttonFontWeight } ">{{ item.buttonText }}</button>
           <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
             <mat-icon>delete</mat-icon>
           </button>
         </div>
+
       </div>
   </div>
 
   <div class="example-list collectionElements" cdkDropList [cdkDropListData]="dragElements"
     (cdkDropListDropped)="drop($event)">
-    
     <div class="example-box collectionElements__item" *ngFor="let item of dragElements" cdkDrag>
-      <label *ngIf="item === 'input'">
-        <span class="collectionElements__itemText">{{item}}</span>
-        <input type="text" aria-label="basic text field form"/>
-      </label>
-      <label *ngIf="item === 'textarea'">
-        <span class="collectionElements__itemText">{{item}}</span>
-        <textarea aria-label="big text field form"></textarea>
-      </label>
-      <label *ngIf="item === 'select'">
-        <span class="collectionElements__itemText">{{item}}</span>
-        <select aria-label="options field form">
-          <option name="option1">option1</option>
-          <option name="option2">option2</option>
-          <option name="option3">option3</option>
-        </select>
-      </label>
-      <label *ngIf="item === 'checkbox'">
-        <span class="collectionElements__itemText">{{item}}</span>
-        <input type="checkbox" aria-label="checkbox element">
-      </label>
-      <label *ngIf="item === 'button'">
-        <span class="collectionElements__itemText">{{item}}</span>
-        <button type="button" aria-label="button element">button</button>
-      </label>
+      <h2 class="collectionElements__element">{{ item }}</h2>
     </div>
   </div>
 </div>

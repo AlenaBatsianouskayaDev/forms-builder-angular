@@ -10,14 +10,13 @@ import { IElementStyles } from 'src/app/reducers/interfaces';
 import { INITIAL_STYLES,BORDER_STYLES, FONT_WEIGHT } from 'src/app/utils/data';
 
 @Component({
-  selector: 'app-form-setup-input',
-  templateUrl: './form-setup-input.component.html',
-  styleUrls: ['./form-setup-input.component.scss']
+  selector: 'app-general-styles',
+  templateUrl: './general-styles.component.html',
+  styleUrls: ['./general-styles.component.scss']
 })
-  
-export class FormSetupInputComponent implements OnInit {
+export class GeneralStylesComponent implements OnInit {
 
-  public formElementsStyles: FormGroup;
+  public formGeneralStyles: FormGroup;
   public borderStyles: string[] = BORDER_STYLES;
   public fontWeight: string[] = FONT_WEIGHT;
   private initialSetup: IElementStyles;
@@ -40,20 +39,16 @@ export class FormSetupInputComponent implements OnInit {
         }
       })
     
-    this.formElementsStyles = this.fb.group({
-      inputFieldText: [this.initialSetup.inputFieldText],
-      inputLabel: [this.initialSetup.inputLabel],
-      inputPlaceholder: [this.initialSetup.inputPlaceholder],
-      inputWidth: [this.initialSetup.inputWidth],
-      inputHeight: [this.initialSetup.inputHeight],
-      inputRequired: [this.initialSetup.inputRequired],
-      inputBorderStyle: [this.initialSetup.inputBorderStyle],
-      inputFontSize: [this.initialSetup.inputFontSize],
-      inputFontWeight: [this.initialSetup.inputFontWeight],
-      inputColor: [this.initialSetup.inputColor],
+    this.formGeneralStyles = this.fb.group({
+      formTitle: [this.initialSetup.formTitle],
+      formGeneralFontSize: [this.initialSetup.formGeneralFontSize],
+      formGeneralFontWeight: [this.initialSetup.formGeneralFontWeight],
+      formGeneralColor: [this.initialSetup.formGeneralColor],
+      formGeneralBkgColor: [this.initialSetup.formGeneralBcgColor],
+      formGeneralBorderColor: [this.initialSetup.formGeneralBorderColor],
     })
 
-    this.formElementsStyles.valueChanges
+    this.formGeneralStyles.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(value => {
         this.store$.dispatch(addElementStyles(value));

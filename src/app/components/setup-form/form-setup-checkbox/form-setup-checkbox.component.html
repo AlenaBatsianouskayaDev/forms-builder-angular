@@ -3,8 +3,8 @@
     <mat-grid-tile>
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
-          <mat-label class="formElementsStyles__label">Field checkbox text</mat-label>
-          <input matInput type="text" placeholder="Enter text for this field" formControlName="checkboxFieldText">
+          <mat-label class="formElementsStyles__label">Field description or question</mat-label>
+          <input matInput type="text" placeholder="Enter your text" formControlName="checkboxFieldText">
         </mat-form-field>
       </div>
     </mat-grid-tile>
@@ -13,35 +13,17 @@
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Field label</mat-label>
-          <input matInput type="text" placeholder="Enter label for checkbox" formControlName="checkboxLabel">
-        </mat-form-field>
-      </div>
-    </mat-grid-tile>
-
-    <mat-grid-tile>
-      <div class="formElementsStyles__item">
-        <mat-form-field appearance="fill">
-          <mat-label class="formElementsStyles__label">Field width</mat-label>
-          <input matInput type="text" placeholder="Enter width of element" formControlName="checkboxWidth" />
-        </mat-form-field>
-      </div>
-    </mat-grid-tile>
-
-    <mat-grid-tile>
-      <div class="formElementsStyles__item">
-        <mat-form-field appearance="fill">
-          <mat-label class="formElementsStyles__label">Field height</mat-label>
-          <input matInput type="text" placeholder="Enter height of element" formControlName="checkboxHeight" />
+          <input matInput type="text" placeholder="Enter your text" formControlName="checkboxLabel">
         </mat-form-field>
       </div>
     </mat-grid-tile>
   </mat-grid-list>
-
+  
   <div class="formElementsStyles__item radioBtn">
-    <p class="formElementsStyles__label">Required this field</p>
-    <fieldset formControlName="checkboxRequired" ngDefaultControl>
-      <mat-radio-button name="Required" value="true">Required</mat-radio-button>
-      <mat-radio-button name="Required" value="false">Not Required</mat-radio-button>
+    <p class="formElementsStyles__label radioBtn__label">Required this field</p>
+    <fieldset class="radioBtn__fieldset" formControlName="checkboxRequired" ngDefaultControl>
+      <mat-radio-button class="radioBtn__button" name="Required" value="required">Required</mat-radio-button>
+      <mat-radio-button class="radioBtn__button" name="Required" value="" checked>Not Required</mat-radio-button>
     </fieldset>
   </div>
 </form>

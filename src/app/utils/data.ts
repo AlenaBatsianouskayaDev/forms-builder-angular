@@ -1,53 +1,63 @@
 export const COLORS = {
   fontColor: '#2a2a2a',
-  backgroundElementColor: 'rgb(239, 239, 239)',
+  backgroundElementColor: 'rgba(15, 120, 168, 0.5)',
+  whiteColor: '#ffffff'
 }
 
 export const INITIAL_STYLES = {
   isCurrentElement: false,
 
-  inputLabel: 'Enter text for this field',
-  inputPlaceholder: 'Enter placeholder text',
+  formTitle: 'Form Title',
+  formGeneralFontSize: '14',
+  formGeneralFontWeight: 'normal',
+  formGeneralColor: COLORS.fontColor,
+  formGeneralBcgColor: COLORS.whiteColor,
+  formGeneralBorderColor: COLORS.fontColor,
+      
+  inputFieldText: 'Field text',
+  inputLabel: 'Field label',
+  inputPlaceholder: 'Placeholder text',
   inputWidth: '200',
   inputHeight: '20',
-  inputRequired: false,
+  inputRequired: '',
   inputBorderStyle: 'insent',
   inputFontSize: '14',
-  inputFontWeight: '400',
+  inputFontWeight: 'normal',
   inputColor: COLORS.fontColor,
   
-  buttonText: 'button text',
+  buttonText: 'Button',
   buttonWidth: '100',
   buttonHeight: '40',
   buttonFontSize: '14',
   buttonFontWeight: 'normal',
-  buttonColor: COLORS.fontColor,
+  buttonColor: COLORS.whiteColor,
   buttonBackgroundColor: COLORS.backgroundElementColor,
   
-  textareaFieldText: 'Enter text for this field',
+  textareaFieldText: 'Field text',
+  textareaLabel: 'Field label',
   textareaPlaceholder: 'Placeholder text',
   textareaWidth: '250',
   textareaHeight: '30',
-  textareaRequired: false,
+  textareaRequired: '',
   textareaBorderStyle: 'insent',
   textareaFontSize: '14',
   textareaFontWeight: 'normal',
   textareaColor: COLORS.fontColor,
  
-  selectLabel: 'Enter text for this field',
-  selectWidth: '200',
+  selectFieldText: 'Field text',
+  selectLabel: 'Field label',
+  selectWidth: '250',
   selectHeight: '20',
-  selectRequired: false,
+  selectRequired: '',
   selectBorderStyle: 'insent',
   selectFontSize: '14',
   selectFontWeight: 'normal',
   selectColor: COLORS.fontColor,
+  selectOptions: ['option1', 'option2', 'option3'], ///add to form control
 
-  checkboxFieldText: 'Enter text for this field',
-  checkboxLabel: 'Enter label',
-  checkboxWidth: '20',
-  checkboxHeight: '20',
-  checkboxRequired: false,
+  checkboxFieldText: 'Field text',
+  checkboxLabel: 'Field label',
+  checkboxRequired: '',
 }
 
 export const INITIAL_ELEMENTS = ['input', 'textarea', 'select', 'checkbox', 'button']

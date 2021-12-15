@@ -1,5 +1,20 @@
 <div class="formStyles">
   <cdk-accordion class="example-accordion">
+    <cdk-accordion-item #accordionItem="cdkAccordionItem" class="example-accordion-item" role="button" tabindex="0"
+      [attr.id]="'accordion-header-' + index" [attr.aria-expanded]="accordionItem.expanded"
+      [attr.aria-controls]="'accordion-body-' + index">
+    <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
+      General Styles
+      <span class="example-accordion-item-description">
+        Click to {{ accordionItem.expanded ? 'close' : 'open' }}
+      </span>
+    </div>
+    <div class="example-accordion-item-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none'"
+      [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
+      <app-general-styles></app-general-styles>
+    </div>
+    </cdk-accordion-item>
+
     <cdk-accordion-item 
       *ngIf="currentElement$ | ngrxPush as currentElement" 
       #accordionItem="cdkAccordionItem"
@@ -9,15 +24,13 @@
       [attr.id]="'accordion-header-' + index"
       [attr.aria-expanded]="accordionItem.expanded"
       [attr.aria-controls]="'accordion-body-' + index">
-      
       <div class="example-accordion-item-header" 
       (click)="accordionItem.toggle()">
-        {{ currentElement }}
+        Element Styles: {{ currentElement }}
         <span class="example-accordion-item-description">
           Click to {{ accordionItem.expanded ? 'close' : 'open' }}
         </span>
       </div>
-      
       <div 
         *ngIf = "currentElement !== 'Field styling'" 
         class="example-accordion-item-body" 
@@ -31,7 +44,6 @@
         <app-form-setup-select *ngIf="currentElement === 'select'"></app-form-setup-select>      
         <app-form-setup-checkbox *ngIf="currentElement === 'checkbox'"></app-form-setup-checkbox>
       </div>
-
     </cdk-accordion-item>
   </cdk-accordion>
 </div>

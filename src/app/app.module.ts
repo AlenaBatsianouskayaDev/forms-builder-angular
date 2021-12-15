@@ -41,6 +41,7 @@ import { FormSetupTextareaComponent } from './components/setup-form/form-setup-t
 import { FormSetupSelectComponent } from './components/setup-form/form-setup-select/form-setup-select.component';
 import { FormSetupButtonComponent } from './components/setup-form/form-setup-button/form-setup-button.component';
 import { FormSetupCheckboxComponent } from './components/setup-form/form-setup-checkbox/form-setup-checkbox.component';
+import { GeneralStylesComponent } from './components/setup-form/general-styles/general-styles.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { FormSetupCheckboxComponent } from './components/setup-form/form-setup-c
     FormSetupTextareaComponent,
     FormSetupSelectComponent,
     FormSetupButtonComponent,
-    FormSetupCheckboxComponent,  
+    FormSetupCheckboxComponent,
+    GeneralStylesComponent
   ],
   imports: [
     FormsModule,
