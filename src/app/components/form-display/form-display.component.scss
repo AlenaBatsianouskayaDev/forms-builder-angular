@@ -79,9 +79,27 @@ button {
 label[for='checkbox'] {
   display: flex;
   align-items: center;
+
+  & span {
+    display: inline-block;
+    padding-right: 15px;
+  }
 }
 
-label[for='checkbox'] span {
-  display: inline-block;
-  padding-right: 15px;
+.collectionElements {
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 10px;
+  }
+
+  &__itemText {
+    padding-right: 15px;
+  }
+
+  &__item label {
+    display: flex;
+    align-items: center;
+  }
 }

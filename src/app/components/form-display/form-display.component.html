@@ -46,27 +46,34 @@
     </ng-container> 
   </div>
 
-  <div class="example-list" cdkDropList [cdkDropListData]="dragElements" class="example-list"
+  <div class="example-list collectionElements" cdkDropList [cdkDropListData]="dragElements"
     (cdkDropListDropped)="drop($event)">
     
-    <div class="example-box" *ngFor="let item of dragElements" cdkDrag>
-      <p class="element-box-title">{{item}}</p>
-  
-      <label>
-        <input type="text" *ngIf="item === 'input'" />
+    <div class="example-box collectionElements__item" *ngFor="let item of dragElements" cdkDrag>
+      <label *ngIf="item === 'input'">
+        <span class="collectionElements__itemText">{{item}}</span>
+        <input type="text" aria-label="basic text field form"/>
       </label>
-      <label>
-        <textarea *ngIf="item === 'textarea'"></textarea>
+      <label *ngIf="item === 'textarea'">
+        <span class="collectionElements__itemText">{{item}}</span>
+        <textarea aria-label="big text field form"></textarea>
       </label>
-      <label>
-        <select *ngIf="item === 'select'">
-          <option name="1">1</option>
+      <label *ngIf="item === 'select'">
+        <span class="collectionElements__itemText">{{item}}</span>
+        <select aria-label="options field form">
+          <option name="option1">option1</option>
+          <option name="option2">option2</option>
+          <option name="option3">option3</option>
         </select>
       </label>
-      <label>
-        <input type="checkbox" *ngIf="item === 'checkbox'">
+      <label *ngIf="item === 'checkbox'">
+        <span class="collectionElements__itemText">{{item}}</span>
+        <input type="checkbox" aria-label="checkbox element">
       </label>
-      <button type="button" *ngIf="item === 'button'"></button>
+      <label *ngIf="item === 'button'">
+        <span class="collectionElements__itemText">{{item}}</span>
+        <button type="button" aria-label="button element">button</button>
+      </label>
     </div>
   </div>
 </div>
