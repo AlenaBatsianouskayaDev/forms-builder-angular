@@ -5,9 +5,11 @@
       #accordionItem="cdkAccordionItem"
       class="example-accordion-item" 
       role="button" 
-      [attr.id]="'accordion-header'"
-      [attr.aria-expanded]="accordionItem.expanded" 
-      [attr.aria-controls]="'accordion-body'">
+      tabindex="0"
+      [attr.id]="'accordion-header-' + index"
+      [attr.aria-expanded]="accordionItem.expanded"
+      [attr.aria-controls]="'accordion-body-' + index">
+      
       <div class="example-accordion-item-header" 
       (click)="accordionItem.toggle()">
         {{ currentElement }}
@@ -15,14 +17,21 @@
           Click to {{ accordionItem.expanded ? 'close' : 'open' }}
         </span>
       </div>
-      <div *ngIf = "currentElement !== 'Choose Element'" class="example-accordion-item-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none'"
-        [attr.id]="'accordion-body'" [attr.aria-labelledby]="'accordion-header'">  
+      
+      <div 
+        *ngIf = "currentElement !== 'Field styling'" 
+        class="example-accordion-item-body" 
+        role="region" 
+        [style.display]="accordionItem.expanded ? '' : 'none'"
+        [attr.id]="'accordion-body-' + index"
+        [attr.aria-labelledby]="'accordion-header-' + index"> 
         <app-form-setup-input *ngIf="currentElement === 'input'"></app-form-setup-input>
         <app-form-setup-button *ngIf="currentElement === 'button'"></app-form-setup-button>
         <app-form-setup-textarea *ngIf="currentElement === 'textarea'"></app-form-setup-textarea>
         <app-form-setup-select *ngIf="currentElement === 'select'"></app-form-setup-select>      
         <app-form-setup-checkbox *ngIf="currentElement === 'checkbox'"></app-form-setup-checkbox>
       </div>
+
     </cdk-accordion-item>
   </cdk-accordion>
 </div>

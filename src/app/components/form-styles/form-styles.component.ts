@@ -15,6 +15,7 @@ export class FormStylesComponent implements OnInit{
 
   public currentElement$: Observable<string | undefined>;
   private destroy$: Subject<void> = new Subject();
+  public index = 0;
 
   constructor(private store: Store) { }
 
