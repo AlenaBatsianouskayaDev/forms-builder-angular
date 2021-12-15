@@ -17,6 +17,7 @@
 
 .example-box {
   // padding: 20px 10px;
+  position: relative;
   border-bottom: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);
   display: flex;
@@ -65,7 +66,7 @@
   }
 }
 
-button {
+button[type='button'] {
   display: inline-block;
   min-width: 100px;
   padding: 10px 5px;
@@ -106,4 +107,19 @@ label[for='checkbox'] {
 
 .isActiveElement {
   background-color: rgba(15, 120, 168, 0.1);
+}
+
+button[mat-fab] {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  background-color: #0f78a8;
+}
+
+button mat-icon {
+  font-size: 18px;
+  line-height: 6px;
 }

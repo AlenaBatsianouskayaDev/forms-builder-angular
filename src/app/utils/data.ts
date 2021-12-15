@@ -15,14 +15,6 @@ export const INITIAL_STYLES = {
   inputFontSize: '14',
   inputFontWeight: '400',
   inputColor: COLORS.fontColor,
-
-  width: '200',
-  height: '20',
-  required: false,
-  borderStyle: 'insent',
-  fontSize: '14',
-  fontWeight: '400',
-  color: COLORS.fontColor,
   
   buttonText: 'button text',
   buttonWidth: '100',

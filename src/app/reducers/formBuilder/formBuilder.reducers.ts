@@ -66,9 +66,17 @@ export const formBuilderReducers = createReducer(
 
   on(formBuilderActions.changeElementsOrder, (state, { prevIndex, currentIndex }) => {
     const copyStateComponents = [...state.components];
-    console.log(copyStateComponents);
     [copyStateComponents[prevIndex], copyStateComponents[currentIndex]] = [copyStateComponents[currentIndex], copyStateComponents[prevIndex]];
-    console.log(copyStateComponents);
     return ({ components: [...copyStateComponents] })
   }
-  ))
+  ),
+
+  on(formBuilderActions.deleteElement, (state, { id }) => {
+    const copyStateComponents = [...state.components];
+    const filteredComponents = copyStateComponents.filter(item => item.id !== id);
+    return ({
+      components: [...filteredComponents],
+    })
+  }
+  )
+)

@@ -7,7 +7,7 @@ import { takeUntil } from 'rxjs/operators';
 import { IElementData, IFormElement } from './../../reducers/interfaces';
 import { INITIAL_ELEMENTS, COLORS } from '../../utils/data';
 // import { Elements } from '../../utils/enums';
-import { addFormElement, setCurrentElement, changeElementsOrder } from 'src/app/reducers/formBuilder/formBuilder.actions';
+import * as formBuilderActions from 'src/app/reducers/formBuilder/formBuilder.actions';
 import { getFormElement, getCurrentElementId } from 'src/app/reducers/formBuilder/formBuilder.selectors';
 
 @Component({
@@ -23,8 +23,9 @@ export class FormDisplayComponent implements OnInit {
   public colors = COLORS;
   private destroy$: Subject<void> = new Subject();
   public shownElements$: Observable<IFormElement[]>;
-  public prevCurrentElementId: string | undefined;
-  public currentElementId: string;
+  private prevCurrentElementId: string | undefined;
+  private currentElementId: string;
+  private toDeleteElementId: string;
 
   constructor(private readonly store$: Store) { }
    
@@ -52,7 +53,7 @@ export class FormDisplayComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
       if (event.container.id === 'cdk-drop-list-1') {
-        this.store$.dispatch(changeElementsOrder(
+        this.store$.dispatch(formBuilderActions.changeElementsOrder(
         {prevIndex: event.previousIndex, currentIndex: event.currentIndex}
       ));
       }
@@ -64,13 +65,21 @@ export class FormDisplayComponent implements OnInit {
         event.previousIndex,
         event.currentIndex,
       );
-      this.store$.dispatch(addFormElement(
+      this.store$.dispatch(formBuilderActions.addFormElement(
         {name: this.dragElements[event.previousIndex]}
       ));
     }
   }
 
-  setActiveElement(event: any) {       
+   deleteElement(event: any) {
+    if (!event.target.closest('[name="btnDelete"]')) {
+      return;
+    }
+    this.toDeleteElementId = event.target.closest('div').id; 
+      this.store$.dispatch(formBuilderActions.deleteElement({ id: this.toDeleteElementId }));
+   }
+  
+  setActiveElement(event: any) { 
     if (event.target.tagName === 'LABEL' ||
       event.target.tagName === 'INPUT' ||
       event.target.tagName === 'TEXTAREA' ||
@@ -82,8 +91,11 @@ export class FormDisplayComponent implements OnInit {
     }
     if (this.prevCurrentElementId !== this.currentElementId) {
       this.store$.dispatch(
-      setCurrentElement({ id: this.currentElementId })
+      formBuilderActions.setCurrentElement({ id: this.currentElementId })
     );
     }    
   }
+
+ 
+    
 }

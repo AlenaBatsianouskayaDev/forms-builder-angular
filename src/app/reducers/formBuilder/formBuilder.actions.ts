@@ -20,3 +20,8 @@ export const changeElementsOrder = createAction(
   '[FORMBUILDER] changeElementsOrder',
   props<{ prevIndex: number, currentIndex: number }>()
 )
+
+export const deleteElement = createAction(
+  '[FORMBUILDER] deleteElement',
+  props<{ id: string }>()
+)

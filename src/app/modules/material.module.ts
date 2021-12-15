@@ -8,6 +8,7 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatIconModule } from '@angular/material/icon';
 
 const MaterialComponents = [
   MatButtonModule,
@@ -18,7 +19,8 @@ const MaterialComponents = [
   CdkAccordionModule,
   MatFormFieldModule,
   MatGridListModule,
-  MatRadioModule
+  MatRadioModule,
+  MatIconModule
 ]
 
 @NgModule({
