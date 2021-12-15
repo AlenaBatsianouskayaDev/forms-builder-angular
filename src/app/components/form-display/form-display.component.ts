@@ -5,8 +5,8 @@ import { Store, select } from '@ngrx/store';
 import { takeUntil } from 'rxjs/operators';
 
 import { IElementData, IFormElement } from './../../reducers/interfaces';
-import { INITIAL_ELEMENTS } from '../../utils/data';
-import { Elements } from '../../utils/enums';
+import { INITIAL_ELEMENTS, COLORS } from '../../utils/data';
+// import { Elements } from '../../utils/enums';
 import { addFormElement, setCurrentElement, changeElementsOrder } from 'src/app/reducers/formBuilder/formBuilder.actions';
 import { getFormElement, getCurrentElementId } from 'src/app/reducers/formBuilder/formBuilder.selectors';
 
@@ -20,7 +20,7 @@ export class FormDisplayComponent implements OnInit {
 
   public dragElements: string[] = INITIAL_ELEMENTS;
   public droppedElements: IElementData[] = [];
-  public element: Elements;
+  public colors = COLORS;
   private destroy$: Subject<void> = new Subject();
   public shownElements$: Observable<IFormElement[]>;
   public prevCurrentElementId: string | undefined;

@@ -1,6 +1,6 @@
 export const COLORS = {
   fontColor: '#2a2a2a',
-  backgroundColor: 'rgb(239, 239, 239)',
+  backgroundElementColor: 'rgb(239, 239, 239)',
 }
 
 export const INITIAL_STYLES = {
@@ -30,7 +30,7 @@ export const INITIAL_STYLES = {
   buttonFontSize: '14',
   buttonFontWeight: 'normal',
   buttonColor: COLORS.fontColor,
-  buttonBackgroundColor: COLORS.backgroundColor,
+  buttonBackgroundColor: COLORS.backgroundElementColor,
   
   textareaFieldText: 'Enter text for this field',
   textareaPlaceholder: 'Placeholder text',
