@@ -4,7 +4,7 @@
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Field label</mat-label>
-          <input matInput type="text" placeholder="Enter your text" formControlName="label">
+          <input matInput type="text" placeholder="Enter your text" formControlName="textareaFieldText">
         </mat-form-field>
       </div>
     </mat-grid-tile>
@@ -13,7 +13,7 @@
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Placeholder</mat-label>
-          <input matInput type="text" placeholder="Enter your placeholder" formControlName="placeholder" />
+          <input matInput type="text" placeholder="Enter your placeholder" formControlName="textareaPlaceholder" />
         </mat-form-field>
       </div>
     </mat-grid-tile>
@@ -40,20 +40,7 @@
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Font size</mat-label>
-          <input matInput type="text" placeholder="Enter font size" formControlName="fontSize" />
-        </mat-form-field>
-      </div>
-    </mat-grid-tile>
-
-    <mat-grid-tile>
-      <div class="formElementsStyles__item">
-        <mat-form-field appearance="fill">
-          <mat-label class="formElementsStyles__label">Border style</mat-label>
-          <mat-select formControlName="borderStyle">
-            <mat-option *ngFor="let style of borderStyles" [value]="style">
-              {{style}}
-            </mat-option>
-          </mat-select>
+          <input matInput type="text" placeholder="Enter font size" formControlName="textareaFontSize" />
         </mat-form-field>
       </div>
     </mat-grid-tile>
@@ -72,18 +59,31 @@
     </mat-grid-tile>
 
     <mat-grid-tile>
+      <div class="formElementsStyles__item">
+        <mat-form-field appearance="fill">
+          <mat-label class="formElementsStyles__label">Border style</mat-label>
+          <mat-select formControlName="textareaBorderStyle">
+            <mat-option *ngFor="let style of borderStyles" [value]="style">
+              {{style}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
       <div class="formElementsStyles__item radioBtn">
         <p class="formElementsStyles__label">Required this field</p>
-        <div>
-          <mat-radio-button value="1">Required</mat-radio-button>
-          <mat-radio-button value="2">Not Required</mat-radio-button>
-        </div>
+        <fieldset formControlName="textareaRequired" ngDefaultControl>
+          <mat-radio-button name="Required" value="true">Required</mat-radio-button>
+          <mat-radio-button name="Required" value="false">Not Required</mat-radio-button>
+        </fieldset>
       </div>
     </mat-grid-tile>
   </mat-grid-list>
 
   <div class="formElementsStyles__item">
     <label class="formElementsStyles__label labelColor" for="inputColor"> Font color</label>
-    <input type="color" formControlName="color" id="inputColor">
+    <input type="color" formControlName="textareaColor" id="inputColor">
   </div>
 </form>

@@ -15,6 +15,7 @@ export const getCurrentElementName = createSelector(
     return currentElement.name;
   }
 )
+
 export const getCurrentElementId = createSelector(
   getFormElement, (components) => {
     const currentElement = components.find(item => item.isCurrentElement === true);
@@ -22,5 +23,15 @@ export const getCurrentElementId = createSelector(
       return;
     }
     return currentElement.id;
+  }
+)
+
+export const getCurrentElementStyles = createSelector(
+  getFormElement, (components) => {
+    const currentElement = components.find(item => item.isCurrentElement === true);
+    if (!currentElement) {
+      return;
+    }
+    return currentElement;
   }
 )

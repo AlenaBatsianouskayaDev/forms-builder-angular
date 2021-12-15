@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Store } from "@ngrx/store";
+import { Store, select } from "@ngrx/store";
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { addElementStyles } from './../../../reducers/formBuilder/formBuilder.actions';
 import { BORDER_STYLES, FONT_WEIGHT } from './../../../utils/data';
+import { getCurrentElementStyles } from './../../../reducers/formBuilder/formBuilder.selectors'
+import { IElementStyles } from './../../../reducers/interfaces';
+import { INITIAL_STYLES } from './../../../utils/data';
 
 @Component({
   selector: 'app-form-setup-textarea',
@@ -14,10 +17,10 @@ import { BORDER_STYLES, FONT_WEIGHT } from './../../../utils/data';
 })
 export class FormSetupTextareaComponent implements OnInit {
 
-formElementsStyles: FormGroup;
+  public formElementsStyles: FormGroup;
   public borderStyles: string[] = BORDER_STYLES;
   public fontWeight: string[] = FONT_WEIGHT;
-
+  private initialSetup: IElementStyles;
   private destroy$: Subject<void> = new Subject();
 
   constructor(
@@ -26,17 +29,29 @@ formElementsStyles: FormGroup;
   ) { }
 
   ngOnInit(): void {
+    this.store$.pipe(
+      select(getCurrentElementStyles),
+      takeUntil(this.destroy$))
+      .subscribe(val => {
+        if (val) {
+          this.initialSetup = val;
+        } else {
+          this.initialSetup = INITIAL_STYLES;
+        }
+      })
+    
     this.formElementsStyles = this.fb.group({
-      label: [''],
-      placeholder: [''],
-      textareaWidth: [''],
-      textareaHeight: [''],
-      required: [''],
-      borderStyle: [''],
-      fontSize: [''],
-      fontWeight: [''],
-      color: [''],
+      textareaFieldText: [this.initialSetup.textareaFieldText],
+      textareaPlaceholder: [this.initialSetup.textareaPlaceholder],
+      textareaWidth: [this.initialSetup.textareaWidth],
+      textareaHeight: [this.initialSetup.textareaHeight],
+      textareaRequired: [this.initialSetup.textareaRequired],
+      textareaBorderStyle: [this.initialSetup.textareaBorderStyle],
+      textareaFontSize: [this.initialSetup.textareaFontSize],
+      textareaFontWeight: [this.initialSetup.textareaFontWeight],
+      textareaColor: [this.initialSetup.textareaColor],
     })
+
     this.formElementsStyles.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(value => {

@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Store } from "@ngrx/store";
+import { Store, select } from "@ngrx/store";
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { addElementStyles } from './../../../reducers/formBuilder/formBuilder.actions';
+import { BORDER_STYLES, FONT_WEIGHT } from './../../../utils/data';
+import { getCurrentElementStyles } from './../../../reducers/formBuilder/formBuilder.selectors'
+import { IElementStyles } from './../../../reducers/interfaces';
+import { INITIAL_STYLES } from 'src/app/utils/data';
 
 @Component({
   selector: 'app-form-setup-checkbox',
@@ -14,7 +18,9 @@ import { addElementStyles } from './../../../reducers/formBuilder/formBuilder.ac
 export class FormSetupCheckboxComponent implements OnInit {
 
   formElementsStyles: FormGroup;
-
+  public borderStyles: string[] = BORDER_STYLES;
+  public fontWeight: string[] = FONT_WEIGHT;
+  private initialSetup: IElementStyles;
   private destroy$: Subject<void> = new Subject();
 
   constructor(
@@ -23,13 +29,25 @@ export class FormSetupCheckboxComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.store$.pipe(
+      select(getCurrentElementStyles),
+      takeUntil(this.destroy$))
+      .subscribe(val => {
+        if (val) {
+          this.initialSetup = val;
+        } else {
+          this.initialSetup = INITIAL_STYLES;
+        }
+      })
+    
     this.formElementsStyles = this.fb.group({
-      checkboxText: [''],
-      label: [''],
-      checkboxWidth: [''],
-      checkboxHeight: [''],
-      required: [''],
+      checkboxFieldText: [this.initialSetup.checkboxFieldText],
+      checkboxLabel: [this.initialSetup.checkboxLabel],
+      checkboxWidth: [this.initialSetup.checkboxWidth],
+      checkboxHeight: [this.initialSetup.checkboxHeight],
+      checkboxRequired: [this.initialSetup.checkboxRequired],
     })
+
     this.formElementsStyles.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(value => {

@@ -64,3 +64,24 @@
     margin-bottom: 10px;
   }
 }
+
+button {
+  display: inline-block;
+  min-width: 100px;
+  padding: 10px 5px;
+  border: transparent;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+label[for='checkbox'] {
+  display: flex;
+  align-items: center;
+}
+
+label[for='checkbox'] span {
+  display: inline-block;
+  padding-right: 15px;
+}

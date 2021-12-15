@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Store } from "@ngrx/store";
+import { Store, select } from "@ngrx/store";
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { addElementStyles } from './../../../reducers/formBuilder/formBuilder.actions';
 import { BORDER_STYLES, FONT_WEIGHT } from './../../../utils/data';
+import { getCurrentElementStyles } from './../../../reducers/formBuilder/formBuilder.selectors'
+import { IElementStyles } from './../../../reducers/interfaces';
+import { INITIAL_STYLES } from './../../../utils/data';
 
 @Component({
   selector: 'app-form-setup-button',
@@ -14,10 +17,10 @@ import { BORDER_STYLES, FONT_WEIGHT } from './../../../utils/data';
 })
 export class FormSetupButtonComponent implements OnInit {
 
-  formElementsStyles: FormGroup;
+  public formElementsStyles: FormGroup;
   public borderStyles: string[] = BORDER_STYLES;
   public fontWeight: string[] = FONT_WEIGHT;
-
+  private initialSetup: IElementStyles;
   private destroy$: Subject<void> = new Subject();
 
   constructor(
@@ -26,15 +29,27 @@ export class FormSetupButtonComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.store$.pipe(
+      select(getCurrentElementStyles),
+      takeUntil(this.destroy$))
+      .subscribe(val => {
+        if (val) {
+          this.initialSetup = val;
+        } else {
+          this.initialSetup = INITIAL_STYLES;
+        }
+      })
+    
     this.formElementsStyles = this.fb.group({
-      buttonText: [''],
-      buttonWidth: [''],
-      buttonHeight: [''],
-      fontSize: [''],
-      fontWeight: [''],
-      color: [''],
-      backgroundColor: ['']
+      buttonText: [this.initialSetup.buttonText],
+      buttonWidth: [this.initialSetup.buttonWidth],
+      buttonHeight: [this.initialSetup.buttonHeight],
+      buttonFontSize: [this.initialSetup.buttonFontSize],
+      buttonFontWeight: [this.initialSetup.buttonFontWeight],
+      buttonColor: [this.initialSetup.buttonColor],
+      buttonBackgroundColor: [this.initialSetup.buttonBackgroundColor]
     })
+    
     this.formElementsStyles.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(value => {

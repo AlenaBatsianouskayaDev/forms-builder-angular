@@ -39,7 +39,6 @@ export class FormDisplayComponent implements OnInit {
         takeUntil(this.destroy$))
       .subscribe(val => {
         this.prevCurrentElementId = val;
-        console.log(val)
       })
   }
   
