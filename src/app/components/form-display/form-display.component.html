@@ -1,7 +1,8 @@
 <div cdkDropListGroup class="example-container">
-  <div cdk-drag-placeholder cdkDropList [cdkDropListData]="droppedElements" class="example-list"
-    (cdkDropListDropped)="drop($event)" (click)=setActiveElement($event)>
-    <ng-container *ngIf="shownElements$ | ngrxPush as shownElements">
+  <!-- cdk-drag-placeholder -->
+  <div cdkDropList [cdkDropListData]="droppedElements" class="example-list"
+    (cdkDropListDropped)="drop($event)" (click)=setActiveElement($event) *ngIf="shownElements$ | ngrxPush as shownElements">
+    
       <div class="example-box" *ngFor="let item of shownElements" cdkDrag>
         <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
 
@@ -43,7 +44,6 @@
           </button>
         </div>
       </div>
-    </ng-container> 
   </div>
 
   <div class="example-list collectionElements" cdkDropList [cdkDropListData]="dragElements"

@@ -1,6 +1,6 @@
 export const COLORS = {
   fontColor: '#2a2a2a',
-  backgroundColor: '#00BFFF',
+  backgroundColor: 'rgb(239, 239, 239)',
 }
 
 export const INITIAL_STYLES = {

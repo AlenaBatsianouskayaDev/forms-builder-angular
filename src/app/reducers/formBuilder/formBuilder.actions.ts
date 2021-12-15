@@ -15,3 +15,8 @@ export const setCurrentElement = createAction(
   '[FORMBUILDER] setCurrentElement',
   props<{ id: string }>()
 )
+
+export const changeElementsOrder = createAction(
+  '[FORMBUILDER] changeElementsOrder',
+  props<{ prevIndex: number, currentIndex: number }>()
+)

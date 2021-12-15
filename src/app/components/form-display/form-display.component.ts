@@ -7,7 +7,7 @@ import { takeUntil } from 'rxjs/operators';
 import { IElementData, IFormElement } from './../../reducers/interfaces';
 import { INITIAL_ELEMENTS } from '../../utils/data';
 import { Elements } from '../../utils/enums';
-import { addFormElement, setCurrentElement } from 'src/app/reducers/formBuilder/formBuilder.actions';
+import { addFormElement, setCurrentElement, changeElementsOrder } from 'src/app/reducers/formBuilder/formBuilder.actions';
 import { getFormElement, getCurrentElementId } from 'src/app/reducers/formBuilder/formBuilder.selectors';
 
 @Component({
@@ -48,10 +48,14 @@ export class FormDisplayComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<any>) {
-    if (event.previousContainer === event.container && event.previousContainer.id === 'cdk-drop-list-0') {
+    
+    if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      // } else if (event.previousContainer !== event.container && event.previousContainer.id === 'cdk-drop-list-0') {
-      //   event.previousContainer.data.splice(event.currentIndex, 1); //добавить кнопку удаления, напрямую делитить из стора
+      if (event.container.id === 'cdk-drop-list-1') {
+        this.store$.dispatch(changeElementsOrder(
+        {prevIndex: event.previousIndex, currentIndex: event.currentIndex}
+      ));
+      }
     }
     else {
       copyArrayItem(
