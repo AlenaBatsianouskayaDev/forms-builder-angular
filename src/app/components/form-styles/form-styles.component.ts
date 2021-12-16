@@ -1,7 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, map } from 'rxjs/operators';
 
 import { getCurrentElementName } from './../../reducers/formBuilder/formBuilder.selectors';
 
@@ -17,14 +18,26 @@ export class FormStylesComponent implements OnInit{
   private destroy$: Subject<void> = new Subject();
   public index = 0;
   public accordionSections: string[] = ['General Styles', 'Element Styles']
-
+  public isOpenGeneralSection: boolean = true;
+  public isOpenElementSection: boolean = false;
   constructor(private store: Store) { }
 
+  
   ngOnInit(): void {
-    this.currentElement$ = this.store
-      .pipe(
-        select(getCurrentElementName),
-        takeUntil(this.destroy$))
+    this.currentElement$ = this.store.select(getCurrentElementName)
+    this.currentElement$.subscribe(val => {
+      if (val) {
+        this.isOpenElementSection = true;
+        this.isOpenGeneralSection = false;
+      } else {
+        this.isOpenElementSection = false;
+        this.isOpenGeneralSection = true;
+      }
+    });
+  }
+
+  onToggle(event: Event) {
+    this.isOpenGeneralSection = !this.isOpenGeneralSection;
   }
 
   ngOnDestroy() {

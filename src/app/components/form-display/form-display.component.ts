@@ -72,7 +72,7 @@ export class FormDisplayComponent implements OnInit {
         event.currentIndex,
       );
       this.store$.dispatch(formBuilderActions.addFormElement(
-        {name: this.dragElements[event.previousIndex]}
+        { name: this.dragElements[event.previousIndex] }
       ));
     }
   }

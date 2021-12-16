@@ -10,7 +10,7 @@ export const getCurrentElementName = createSelector(
   getFormElement, (components) => {
     const currentElement = components.find(item => item.isCurrentElement === true);
     if (!currentElement) {
-      return 'Choose Element';
+      return;
     }
     return currentElement.name;
   }
@@ -20,7 +20,7 @@ export const getCurrentElementId = createSelector(
   getFormElement, (components) => {
     const currentElement = components.find(item => item.isCurrentElement === true);
     if (!currentElement) {
-      return;
+      return ;
     }
     return currentElement.id;
   }

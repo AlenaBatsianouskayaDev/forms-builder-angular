@@ -42,6 +42,7 @@ import { FormSetupSelectComponent } from './components/setup-form/form-setup-sel
 import { FormSetupButtonComponent } from './components/setup-form/form-setup-button/form-setup-button.component';
 import { FormSetupCheckboxComponent } from './components/setup-form/form-setup-checkbox/form-setup-checkbox.component';
 import { GeneralStylesComponent } from './components/setup-form/general-styles/general-styles.component';
+import { FormBuilderEffects } from './reducers/formBuilder/formBuilder.effects';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,7 @@ import { GeneralStylesComponent } from './components/setup-form/general-styles/g
       metaReducers
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, FormBuilderEffects]),
     PortalModule,
     ReactiveComponentModule
   ],

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core"; 
 import * as uuid from 'uuid';
-import { IFormElement } from './../reducers/interfaces';
+import { IFormElement, IGeneralStylesData } from './../reducers/interfaces';
 
 @Injectable()
 export class CommonService {

@@ -10,6 +10,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
 
+
 const MaterialComponents = [
   MatButtonModule,
   MatInputModule,
@@ -20,7 +21,7 @@ const MaterialComponents = [
   MatFormFieldModule,
   MatGridListModule,
   MatRadioModule,
-  MatIconModule
+  MatIconModule,
 ]
 
 @NgModule({
