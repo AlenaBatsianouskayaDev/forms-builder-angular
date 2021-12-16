@@ -16,6 +16,7 @@ export class FormStylesComponent implements OnInit{
   public currentElement$: Observable<string | undefined>;
   private destroy$: Subject<void> = new Subject();
   public index = 0;
+  public accordionSections: string[] = ['General Styles', 'Element Styles']
 
   constructor(private store: Store) { }
 

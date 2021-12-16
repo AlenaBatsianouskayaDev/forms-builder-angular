@@ -18,6 +18,11 @@
           <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
             <mat-icon>delete</mat-icon>
           </button>
+
+          добавить кнопку редактирования
+          <!-- <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
+            <mat-icon>edit</mat-icon>
+          </button> -->
         </div>
         
         <div [id]="item.id" *ngIf="item.name === 'textarea'" class="fieldElement" [ngClass]='{isActiveElement: item.isCurrentElement}'>
