@@ -1,18 +1,12 @@
 export const COLORS = {
   fontColor: '#2a2a2a',
   backgroundElementColor: 'rgba(15, 120, 168, 0.5)',
-  whiteColor: '#ffffff'
+  whiteColor: '#ffffff',
+  greyColor: '#d3d3d3'
 }
 
 export const INITIAL_STYLES = {
   isCurrentElement: false,
-
-  formTitle: 'Form Title',
-  formGeneralFontSize: '14',
-  formGeneralFontWeight: 'normal',
-  formGeneralColor: COLORS.fontColor,
-  formGeneralBcgColor: COLORS.whiteColor,
-  formGeneralBorderColor: COLORS.fontColor,
       
   inputFieldText: 'Field text',
   inputLabel: 'Field label',
@@ -60,17 +54,18 @@ export const INITIAL_STYLES = {
   checkboxRequired: '',
 }
 
+export const INITIAL_GENERAL_STYLES = {
+  formTitle: 'Form Title',
+  formGeneralFontSize: '14',
+  formGeneralFontWeight: 'normal',
+  formGeneralColor: COLORS.fontColor,
+  formGeneralBcgColor: COLORS.whiteColor,
+  formGeneralBorderColor: COLORS.greyColor,
+}
+
 export const INITIAL_ELEMENTS = ['input', 'textarea', 'select', 'checkbox', 'button']
 
 export const BORDER_STYLES = ['solid', 'dotted', 'insent', 'double', 'groove', 'none']
 
 export const FONT_WEIGHT = ['normal', 'bold', 'lighter'];
 
-export const STYLES = {
-  'width': 'item.width', 
-  'height': 'item.height',
-  'border': 'item.borderStyle',
-  'font-size': 'item.fontSize',
-  'font-weight': 'item.fontWeight', //TODO: change to stylesFactory????
-  'color': 'item.color',
-}

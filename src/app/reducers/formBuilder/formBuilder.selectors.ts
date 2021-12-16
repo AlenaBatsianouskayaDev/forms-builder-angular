@@ -35,3 +35,7 @@ export const getCurrentElementStyles = createSelector(
     return currentElement;
   }
 )
+
+export const getGeneralStyles = createSelector(
+  getFeature, (state: FormBuilderState) => state.generalStyles
+)

@@ -4,10 +4,10 @@ import { Store, select } from "@ngrx/store";
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { addElementStyles } from 'src/app/reducers/formBuilder/formBuilder.actions';
-import { getCurrentElementStyles } from 'src/app/reducers/formBuilder/formBuilder.selectors'
-import { IElementStyles } from 'src/app/reducers/interfaces';
-import { INITIAL_STYLES,BORDER_STYLES, FONT_WEIGHT } from 'src/app/utils/data';
+import { addElementStyles, addGeneralStyles } from 'src/app/reducers/formBuilder/formBuilder.actions';
+import { getCurrentElementStyles, getGeneralStyles } from 'src/app/reducers/formBuilder/formBuilder.selectors'
+import { IGeneralStylesData } from 'src/app/reducers/interfaces';
+import { INITIAL_STYLES,BORDER_STYLES, FONT_WEIGHT, INITIAL_GENERAL_STYLES } from 'src/app/utils/data';
 
 @Component({
   selector: 'app-general-styles',
@@ -19,7 +19,7 @@ export class GeneralStylesComponent implements OnInit {
   public formGeneralStyles: FormGroup;
   public borderStyles: string[] = BORDER_STYLES;
   public fontWeight: string[] = FONT_WEIGHT;
-  private initialSetup: IElementStyles;
+  private initialSetup: IGeneralStylesData;
   private destroy$: Subject<void> = new Subject();
 
   constructor(
@@ -29,13 +29,13 @@ export class GeneralStylesComponent implements OnInit {
 
   ngOnInit(): void {
     this.store$.pipe(
-      select(getCurrentElementStyles),
+      select(getGeneralStyles),
       takeUntil(this.destroy$))
       .subscribe(val => {
         if (val) {
           this.initialSetup = val;
         } else {
-          this.initialSetup = INITIAL_STYLES;
+          this.initialSetup = INITIAL_GENERAL_STYLES;
         }
       })
     
@@ -44,14 +44,14 @@ export class GeneralStylesComponent implements OnInit {
       formGeneralFontSize: [this.initialSetup.formGeneralFontSize],
       formGeneralFontWeight: [this.initialSetup.formGeneralFontWeight],
       formGeneralColor: [this.initialSetup.formGeneralColor],
-      formGeneralBkgColor: [this.initialSetup.formGeneralBcgColor],
+      formGeneralBcgColor: [this.initialSetup.formGeneralBcgColor],
       formGeneralBorderColor: [this.initialSetup.formGeneralBorderColor],
     })
 
     this.formGeneralStyles.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(value => {
-        this.store$.dispatch(addElementStyles(value));
+        this.store$.dispatch(addGeneralStyles(value));
       });    
   }
  

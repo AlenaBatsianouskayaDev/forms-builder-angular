@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { IElementStyles, IElementData } from '../interfaces';
+import { IElementStyles, IElementData, IGeneralStylesData } from '../interfaces';
 
 export const addElementStyles = createAction(
   '[FORMBUILDER] addStylesToElement',
@@ -24,4 +24,9 @@ export const changeElementsOrder = createAction(
 export const deleteElement = createAction(
   '[FORMBUILDER] deleteElement',
   props<{ id: string }>()
+)
+
+export const addGeneralStyles = createAction(
+  '[FORMBUILDER] addGeneralStyles',
+  props< IGeneralStylesData >()
 )

@@ -4,11 +4,11 @@ import { Subject, Observable} from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { takeUntil } from 'rxjs/operators';
 
-import { IElementData, IFormElement } from './../../reducers/interfaces';
+import { IElementData, IFormElement, IGeneralStylesData } from './../../reducers/interfaces';
 import { INITIAL_ELEMENTS, COLORS } from '../../utils/data';
 // import { Elements } from '../../utils/enums';
 import * as formBuilderActions from 'src/app/reducers/formBuilder/formBuilder.actions';
-import { getFormElement, getCurrentElementId } from 'src/app/reducers/formBuilder/formBuilder.selectors';
+import { getFormElement, getCurrentElementId, getGeneralStyles } from 'src/app/reducers/formBuilder/formBuilder.selectors';
 
 @Component({
   selector: 'app-form-display',
@@ -23,6 +23,7 @@ export class FormDisplayComponent implements OnInit {
   public colors = COLORS;
   private destroy$: Subject<void> = new Subject();
   public shownElements$: Observable<IFormElement[]>;
+  public generalStyles$: Observable<IGeneralStylesData>;
   private prevCurrentElementId: string | undefined;
   private currentElementId: string;
   private toDeleteElementId: string;
@@ -35,6 +36,11 @@ export class FormDisplayComponent implements OnInit {
         select(getFormElement),
         takeUntil(this.destroy$))
     
+    this.generalStyles$ = this.store$
+      .pipe(
+        select(getGeneralStyles),
+        takeUntil(this.destroy$))
+
     this.store$.pipe(
         select(getCurrentElementId),
         takeUntil(this.destroy$))

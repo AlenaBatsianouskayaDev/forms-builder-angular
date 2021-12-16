@@ -4,13 +4,6 @@ export interface IFormElement {
   name: string,
   id: string,
 
-  formTitle?: string,
-  formGeneralFontSize?: string,
-  formGeneralFontWeight?: string,
-  formGeneralColor?: string,
-  formGeneralBcgColor?: string,
-  formGeneralBorderColor?: string,
-
   inputFieldText?: string,
   inputLabel?: string,
   inputPlaceholder?: string,
@@ -60,12 +53,6 @@ export interface IFormElement {
 }
 
 export interface IElementStyles {
-  formTitle?: string,
-  formGeneralFontSize?: string,
-  formGeneralFontWeight?: string,
-  formGeneralColor?: string,
-  formGeneralBcgColor?: string,
-  formGeneralBorderColor?: string,
   
   inputFieldText?: string,
   inputLabel?: string,
@@ -116,4 +103,13 @@ export interface IElementStyles {
 export interface IElementData {
   name: string,
   id: string,
+}
+  
+export interface IGeneralStylesData {
+  formTitle?: string,
+  formGeneralFontSize?: string,
+  formGeneralFontWeight?: string,
+  formGeneralColor?: string,
+  formGeneralBcgColor?: string,
+  formGeneralBorderColor?: string,
 }
