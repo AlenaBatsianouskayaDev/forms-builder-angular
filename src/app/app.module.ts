@@ -9,7 +9,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppTopBarComponent } from './components/app-top-bar/app-top-bar.component';
-import { AppNavComponent } from './components/app-top-bar/app-nav/app-nav.component';
 import { AuthNavComponent } from './components/app-top-bar/auth-nav/auth-nav.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
@@ -43,7 +42,6 @@ import { FormBuilderComponent } from './components/form-builder/form-builder.com
   declarations: [
     AppComponent,
     AppTopBarComponent, 
-    AppNavComponent,
     AuthNavComponent,
     LoginFormComponent,
     RegistrationFormComponent,
