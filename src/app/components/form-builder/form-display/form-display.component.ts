@@ -4,8 +4,8 @@ import { Subject, Observable} from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { takeUntil } from 'rxjs/operators';
 
-import { IElementData, IFormElement, IGeneralStylesData } from './../../reducers/interfaces';
-import { INITIAL_ELEMENTS, COLORS } from '../../utils/data';
+import { IElementData, IFormElement, IGeneralStylesData } from '../../../reducers/interfaces';
+import { INITIAL_ELEMENTS, COLORS } from '../../../utils/data';
 // import { Elements } from '../../utils/enums';
 import * as formBuilderActions from 'src/app/reducers/formBuilder/formBuilder.actions';
 import { getFormElement, getCurrentElementId, getGeneralStyles } from 'src/app/reducers/formBuilder/formBuilder.selectors';

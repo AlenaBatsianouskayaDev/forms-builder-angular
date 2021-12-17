@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 
 import { User } from './../../models/user.models';
 import * as authActions from './auth.actions';
-import * as formBuilderActions from './../formBuilder/formBuilder.actions';
+import * as formBuilderActions from '../formBuilder/formBuilder.actions';
 import { AuthService } from "src/app/services/auth.service";
 import { addGeneralStyles, addElementStyles } from "../formBuilder/formBuilder.actions";
 import { IGeneralStylesData } from "../interfaces";

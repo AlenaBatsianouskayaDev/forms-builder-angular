@@ -4,7 +4,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil, map } from 'rxjs/operators';
 
-import { getCurrentElementName } from './../../reducers/formBuilder/formBuilder.selectors';
+import { getCurrentElementName } from '../../../reducers/formBuilder/formBuilder.selectors';
 
 @Component({
   selector: 'app-form-styles',
@@ -17,9 +17,10 @@ export class FormStylesComponent implements OnInit{
   public currentElement$: Observable<string | undefined>;
   private destroy$: Subject<void> = new Subject();
   public index = 0;
-  public accordionSections: string[] = ['General Styles', 'Element Styles']
+  public accordionSections: string[] = ['General Styles', 'Field Styles']
   public isOpenGeneralSection: boolean = true;
   public isOpenElementSection: boolean = false;
+  public isOpenSection: boolean;
   constructor(private store: Store) { }
 
   

@@ -2,6 +2,8 @@ body {
   width: 100%;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 img {
@@ -24,8 +26,7 @@ h2,
 h3,
 h4,
 p {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 ul,
@@ -40,28 +41,12 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
-// TODO: change comp Container to class
-// ._container {
-//   max-width: 100%;
-//   margin: 0 auto;
-
-//   @include breakpoint(mobile) {
-//     width: 290px;
-//     padding: 0 10px;
-//   }
-
-//   @include breakpoint(tablet) {
-//     width: 622px;
-//     padding: 0 14px;
-//   }
-
-//   @include breakpoint(desktop) {
-//     width: 958px;
-//     padding: 0 14px;
-//   }
-// }
+.container {
+  padding: 0 50px;
+}

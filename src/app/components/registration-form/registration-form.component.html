@@ -1,15 +1,18 @@
-<form [formGroup]="registrationForm" novalidate class="registrationForm">
-  <mat-form-field appearance="fill" class="registrationForm__input">
-    <mat-label>Username</mat-label>
-    <input matInput formControlName="username" placeholder="Username" placeholder="Username" name="username" type="text">
-  </mat-form-field>
+<div class="registrationForm">
+  <form [formGroup]="registrationForm" novalidate class="registrationForm__form">
+    <mat-form-field appearance="fill" class="registrationForm__input">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" placeholder="Username" name="username" type="text">
+    </mat-form-field>
 
-  <mat-form-field appearance="fill" class="registrationForm__input">
-    <mat-label>Password</mat-label>
-    <input matInput formControlName="password" 
-    placeholder="Password"
-    name="password" type="password">
-  </mat-form-field>
+    <mat-form-field appearance="fill" class="registrationForm__input">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" placeholder="Password" name="password" type="password">
+    </mat-form-field>
 
-  <app-button-submit (click)="registerUser()"></app-button-submit>
-</form>
+    <button type="button" class="registrationForm__btn" aria-label="Button submit" mat-flat-button color="customColor" (click)="registerUser()">
+      Sign Up
+    </button>
+  </form>
+</div>
+

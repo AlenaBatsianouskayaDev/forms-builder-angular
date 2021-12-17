@@ -2,7 +2,7 @@ import { createReducer, on } from "@ngrx/store";
 
 import { CommonService } from "src/app/services/common.service";
 import * as formBuilderActions from "./formBuilder.actions";
-import { IFormElement, IGeneralStylesData } from './../interfaces';
+import { IFormElement, IGeneralStylesData } from '../interfaces';
 import { INITIAL_STYLES, INITIAL_GENERAL_STYLES } from "src/app/utils/data";
 
 export interface FormBuilderState {

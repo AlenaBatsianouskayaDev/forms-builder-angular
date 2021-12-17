@@ -12,7 +12,7 @@ import { loginRequest } from 'src/app/reducers/auth/auth.actions';
   
 export class LoginFormComponent implements OnInit {
   
-  loginForm: FormGroup;
+  public loginForm: FormGroup;
   
   constructor(
     private fb: FormBuilder,
@@ -27,6 +27,8 @@ export class LoginFormComponent implements OnInit {
   }
 
   loginUser() {
-    this.store$.dispatch(loginRequest(this.loginForm.value));
+    this.store$.dispatch(loginRequest(
+      this.loginForm.value
+    ));
   }
 }

@@ -2,17 +2,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { FormBuilderViewComponent } from './views/form-builder-view/form-builder-view.component';
-import { LoginViewComponent } from './views/login-view/login-view.component';
-import { RegistrationViewComponent } from './views/registration-view/registration-view.component';
+import { FormBuilderComponent } from './components/form-builder/form-builder.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 import { AuthGuard } from './guards/auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginViewComponent },
-  { path: 'form-builder', component: FormBuilderViewComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginViewComponent }, 
-  { path: 'registration', component: RegistrationViewComponent }, 
-  // { path: '**', component: NotFoundComponent }, //TODO: add view for not found route
+  { path: '', component: LoginFormComponent },
+  { path: 'form-builder', component: FormBuilderComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginFormComponent  }, 
+  { path: 'registration', component: RegistrationFormComponent }
 ]
 
 @NgModule({

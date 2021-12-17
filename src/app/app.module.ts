@@ -9,17 +9,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppTopBarComponent } from './components/app-top-bar/app-top-bar.component';
-import { LogoComponent } from './components/app-top-bar/logo/logo.component';
 import { AppNavComponent } from './components/app-top-bar/app-nav/app-nav.component';
 import { AuthNavComponent } from './components/app-top-bar/auth-nav/auth-nav.component';
-import { ContainerComponent } from './shared/container/container.component';
-import { FormBuilderViewComponent } from './views/form-builder-view/form-builder-view.component';
-import { LoginViewComponent } from './views/login-view/login-view.component';
-import { RegistrationViewComponent } from './views/registration-view/registration-view.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 import { InputComponent } from './shared/input/input.component';
-import { ButtonSubmitComponent } from './shared/button-submit/button-submit.component';
 
 import { StoreModule } from '@ngrx/store';
 import { appReducers, metaReducers } from './reducers/app.reducers';
@@ -34,8 +28,8 @@ import { AuthEffects } from './reducers/auth/auth.effects';
 import { PortalModule } from '@angular/cdk/portal';
 import { FormSetupInputComponent } from './components/setup-form/form-setup-input/form-setup-input.component';
 
-import { FormStylesComponent } from './components/form-styles/form-styles.component';
-import { FormDisplayComponent } from './components/form-display/form-display.component';
+import { FormStylesComponent } from './components/form-builder/form-styles/form-styles.component';
+import { FormDisplayComponent } from './components/form-builder/form-display/form-display.component';
 import { ReactiveComponentModule } from '@ngrx/component';
 import { FormSetupTextareaComponent } from './components/setup-form/form-setup-textarea/form-setup-textarea.component';
 import { FormSetupSelectComponent } from './components/setup-form/form-setup-select/form-setup-select.component';
@@ -43,22 +37,17 @@ import { FormSetupButtonComponent } from './components/setup-form/form-setup-but
 import { FormSetupCheckboxComponent } from './components/setup-form/form-setup-checkbox/form-setup-checkbox.component';
 import { GeneralStylesComponent } from './components/setup-form/general-styles/general-styles.component';
 import { FormBuilderEffects } from './reducers/formBuilder/formBuilder.effects';
+import { FormBuilderComponent } from './components/form-builder/form-builder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppTopBarComponent,
-    LogoComponent,  
+    AppTopBarComponent, 
     AppNavComponent,
     AuthNavComponent,
-    FormBuilderViewComponent,
-    LoginViewComponent,
-    RegistrationViewComponent,
     LoginFormComponent,
     RegistrationFormComponent,
     InputComponent,
-    ButtonSubmitComponent,
-    ContainerComponent,
     FormSetupInputComponent,
     FormStylesComponent,
     FormDisplayComponent,
@@ -66,7 +55,8 @@ import { FormBuilderEffects } from './reducers/formBuilder/formBuilder.effects';
     FormSetupSelectComponent,
     FormSetupButtonComponent,
     FormSetupCheckboxComponent,
-    GeneralStylesComponent
+    GeneralStylesComponent,
+    FormBuilderComponent
   ],
   imports: [
     FormsModule,

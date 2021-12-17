@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from "@ngrx/store";
 
 import { registerRequest } from './../../reducers/auth/auth.actions';
@@ -10,18 +10,23 @@ import { registerRequest } from './../../reducers/auth/auth.actions';
   styleUrls: ['./registration-form.component.scss']
 })
   
-export class RegistrationFormComponent {
+export class RegistrationFormComponent implements OnInit {
   
-  registrationForm: FormGroup;
+  public registrationForm: FormGroup;
   
-  constructor(fb: FormBuilder, private store$: Store) {
-     this.registrationForm = fb.group({
-      username: new FormControl(''),
-      password: new FormControl(''),
+  constructor(
+    private fb: FormBuilder,
+    private store$: Store
+  ) { }
+
+  ngOnInit(): void {
+    this.registrationForm = this.fb.group({
+      username: [''],
+      password: [''],
     })
   }
 
-  registerUser() {
+  registerUser(): void {
     this.store$.dispatch(registerRequest(
       this.registrationForm.value
     ))

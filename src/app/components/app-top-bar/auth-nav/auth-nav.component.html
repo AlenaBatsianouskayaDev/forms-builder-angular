@@ -1,15 +1,17 @@
 <nav class="authNav">
-  <p *ngIf="isAuth$ | ngrxPush" class="authNav__hello">Hello, {{username$ | async}}</p>
+  <p *ngIf="isAuth$ | ngrxPush" class="authNav__greeting">Hello, {{username$ | async}}</p>
   <ul class="authNav__list">
     <li class="authNav__item">
-      <a *ngIf="!(isAuth$ | ngrxPush)" routerLink="/login" routerLinkActive="activeLink" class="athNav__link" mat-button aria-label="Log In">Log In</a>
+      <a *ngIf="!(isAuth$ | ngrxPush)" routerLink="/login" routerLinkActive="activeLink" class="athNav__link" mat-button
+        aria-label="Log In">Log In</a>
     </li>
     <li class="authNav__item">
-      <a *ngIf="!(isAuth$ | ngrxPush)" routerLink="/registration" routerLinkActive="activeLink" class="authNav__link" mat-button aria-label="Sign Up">Sign Up</a>
+      <a *ngIf="!(isAuth$ | ngrxPush)" routerLink="/registration" routerLinkActive="activeLink" class="authNav__link"
+        mat-button aria-label="Sign Up">Sign Up</a>
     </li>
     <li class="authNav__item">
-      <a *ngIf="isAuth$ | ngrxPush" routerLink="/login" routerLinkActive="activeLink" class="authNav__link"
-        mat-button aria-label="Log Out" (click)="logoutUser()">Log Out</a>
+      <a *ngIf="isAuth$ | ngrxPush" routerLink="/login" routerLinkActive="activeLink" class="authNav__link" mat-button
+        aria-label="Log Out" (click)="logoutUser()">Log Out</a>
     </li>
   </ul>
 </nav>

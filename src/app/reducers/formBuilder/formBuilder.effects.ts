@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { getFormElement } from "./formBuilder.selectors";
 
-import { IGeneralStylesData } from './../interfaces';
+import { IGeneralStylesData } from '../interfaces';
 import * as formBuilderActions from './formBuilder.actions';
 
 @Injectable()
