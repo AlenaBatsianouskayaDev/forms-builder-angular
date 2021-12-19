@@ -4,7 +4,7 @@ import { Subject, Observable} from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { takeUntil } from 'rxjs/operators';
 
-import { IElementData, IFormElement, IGeneralStylesData } from '../../../reducers/interfaces';
+import { IFormFieldData, IGeneralStylesData } from '../../../reducers/reducers.interfaces';
 import { INITIAL_ELEMENTS, COLORS } from '../../../utils/data';
 // import { Elements } from '../../utils/enums';
 import * as formBuilderActions from 'src/app/reducers/formBuilder/formBuilder.actions';
@@ -19,10 +19,10 @@ import { getFormElement, getCurrentElementId, getGeneralStyles } from 'src/app/r
 export class FormDisplayComponent implements OnInit {
 
   public dragElements: string[] = INITIAL_ELEMENTS;
-  public droppedElements: IElementData[] = [];
+  public droppedElements: IFormFieldData[] = [];
   public colors = COLORS;
   private destroy$: Subject<void> = new Subject();
-  public shownElements$: Observable<IFormElement[]>;
+  public shownElements$: Observable<IFormFieldData[]>;
   public generalStyles$: Observable<IGeneralStylesData>;
   private prevCurrentElementId: string | undefined;
   private currentElementId: string;
@@ -59,7 +59,7 @@ export class FormDisplayComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
       if (event.container.id === 'cdk-drop-list-1') {
-        this.store$.dispatch(formBuilderActions.changeElementsOrder(
+        this.store$.dispatch(formBuilderActions.changeFieldsOrder(
         {prevIndex: event.previousIndex, currentIndex: event.currentIndex}
       ));
       }
@@ -71,7 +71,7 @@ export class FormDisplayComponent implements OnInit {
         event.previousIndex,
         event.currentIndex,
       );
-      this.store$.dispatch(formBuilderActions.addFormElement(
+      this.store$.dispatch(formBuilderActions.addFormField(
         { name: this.dragElements[event.previousIndex] }
       ));
     }
@@ -82,7 +82,7 @@ export class FormDisplayComponent implements OnInit {
       return;
     }
     this.toDeleteElementId = event.target.closest('div').id; 
-      this.store$.dispatch(formBuilderActions.deleteElement({ id: this.toDeleteElementId }));
+      this.store$.dispatch(formBuilderActions.deleteFormField({ id: this.toDeleteElementId }));
    }
   
   setActiveElement(event: any) { 
@@ -97,7 +97,7 @@ export class FormDisplayComponent implements OnInit {
     }
     if (this.prevCurrentElementId !== this.currentElementId) {
       this.store$.dispatch(
-      formBuilderActions.setCurrentElement({ id: this.currentElementId })
+      formBuilderActions.setCurrentField({ id: this.currentElementId })
     );
     }    
   }

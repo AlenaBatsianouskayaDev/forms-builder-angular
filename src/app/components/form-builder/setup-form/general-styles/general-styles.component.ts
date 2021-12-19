@@ -4,9 +4,9 @@ import { Store, select } from "@ngrx/store";
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { addElementStyles, addGeneralStyles } from 'src/app/reducers/formBuilder/formBuilder.actions';
+import { addFormFieldStyles, addGeneralStylesData } from 'src/app/reducers/formBuilder/formBuilder.actions';
 import { getCurrentElementStyles, getGeneralStyles } from 'src/app/reducers/formBuilder/formBuilder.selectors'
-import { IGeneralStylesData } from 'src/app/reducers/interfaces';
+import { IGeneralStylesData } from 'src/app/reducers/reducers.interfaces';
 import { INITIAL_STYLES,BORDER_STYLES, FONT_WEIGHT, INITIAL_GENERAL_STYLES } from 'src/app/utils/data';
 
 @Component({
@@ -51,7 +51,7 @@ export class GeneralStylesComponent implements OnInit {
     this.formGeneralStyles.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(value => {
-        this.store$.dispatch(addGeneralStyles(value));
+        this.store$.dispatch(addGeneralStylesData(value));
       });    
   }
  

@@ -1,10 +1,10 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { FormBuilderState } from "./formBuilder.reducers";
+import { IFormBuilderState } from "../reducers.interfaces";
 
-const getFeature = createFeatureSelector<FormBuilderState>('formBuilder');
+const getFeature = createFeatureSelector<IFormBuilderState>('formBuilder');
 
 export const getFormElement = createSelector(
-  getFeature, (state: FormBuilderState) => state.components)
+  getFeature, (state: IFormBuilderState) => state.components)
 
 export const getCurrentElementName = createSelector(
   getFormElement, (components) => {
@@ -31,5 +31,9 @@ export const getCurrentElementStyles = createSelector(
 )
 
 export const getGeneralStyles = createSelector(
-  getFeature, (state: FormBuilderState) => state.generalStyles
+  getFeature, (state: IFormBuilderState) => state.generalStyles
+)
+
+export const getFullFormData = createSelector(
+  getFeature, (state: IFormBuilderState) => state
 )

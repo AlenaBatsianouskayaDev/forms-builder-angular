@@ -1,45 +1,34 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { of } from 'rxjs';
-import { map, tap, exhaustMap, mergeMap, catchError } from 'rxjs/operators';
-import { Router } from '@angular/router';
-import { Store, select } from '@ngrx/store';
-import { getFormElement } from "./formBuilder.selectors";
+import { interval } from 'rxjs';
+import { map, debounce } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
 
-import { IGeneralStylesData } from '../interfaces';
 import * as formBuilderActions from './formBuilder.actions';
+import * as formBuilderSelectors from './formBuilder.selectors';
+import { CommonService } from "src/app/services/common.service";
+
 
 @Injectable()
 export class FormBuilderEffects {
 
   constructor(
     private actions$: Actions,
-    private _router: Router,
     private store: Store,
+    private commonService: CommonService,
   ) { }  
   
-  saveGeneralStyles$ = createEffect(
+  saveFormFieldData$ = createEffect(
     () => this.actions$.pipe(
-      ofType(formBuilderActions.addGeneralStyles),
-      map((data: IGeneralStylesData) => {
-        const serializedData = JSON.stringify(data);
-        localStorage.setItem('generalStyles', serializedData)
-       })
-    ),
-      { dispatch: false }
-  );
-  
-  addElementStyles$ = createEffect(
-    () => this.actions$.pipe(
-      ofType(formBuilderActions.addElementStyles),
+      ofType(formBuilderActions.addFormFieldStyles,
+        formBuilderActions.addGeneralStylesData,
+        formBuilderActions.addFormField),
       map(action => {
-        this.store.select(getFormElement).subscribe(val => {
-          const serializedData = JSON.stringify(val);
-          localStorage.setItem('formElement', serializedData)
-        }
-          )
-       })
-    ),
-      { dispatch: false }
+        this.store.select(formBuilderSelectors.getFullFormData)
+          .subscribe(val => {
+            debounce(() => interval(1000)),
+          this.commonService.saveToLocalStorage('formData', val)
+      })})
+    ), { dispatch: false }
   );
 }

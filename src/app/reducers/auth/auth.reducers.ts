@@ -1,14 +1,10 @@
 import { createReducer, on } from "@ngrx/store";
-import { registerRequest, registerSuccess, registerError, loginRequest, loginSuccess, loginError, logoutRequest, logoutSuccess, logoutError } from "./auth.actions";
 
-export interface AuthState {
-  username: string,
-  token: string,
-  isLoading: boolean,
-  error: string,
-}
+import * as authActions from "./auth.actions";
+import { IAuthState } from '../reducers.interfaces';
 
-export const initialAuthState: AuthState = {
+
+export const initialAuthState: IAuthState  = {
   username: '',
   token: '',
   isLoading: false,
@@ -17,16 +13,34 @@ export const initialAuthState: AuthState = {
 
 export const authReducers = createReducer(
   initialAuthState,
-  on(registerRequest, state => ({ ...state, isLoading: true })),
-  on(loginRequest, state => ({ ...state, isLoading: true })),
-  on(logoutRequest, state => ({ ...state, isLoading: true })),
+  on(authActions.registerRequest, state => ({
+    ...state, isLoading: true
+  })),
+  on(authActions.loginRequest, state => ({
+    ...state, isLoading: true
+  })),
+  on(authActions.logoutRequest, state => ({
+    ...state, isLoading: true
+  })),
 
-  on(registerSuccess, (state, {username, token}) => ({ ...state, username, token, isLoading: false, error: '' })),
-  on(loginSuccess, (state, {username, token}) => ({ ...state, username, token, isLoading: false, error: '' })),
+  on(authActions.registerSuccess, (state, { username, token }) => ({
+    ...state, username, token, isLoading: false, error: ''
+  })),
+  on(authActions.loginSuccess, (state, { username, token }) => ({
+    ...state, username, token, isLoading: false, error: ''
+  })),
 
-  on(logoutSuccess, (state) => ({ ...state, username: '', token: '', isLoading: false })),
+  on(authActions.logoutSuccess, (state) => ({
+    ...state, username: '', token: '', isLoading: false
+  })),
   
-  on(registerError, (state, { error }) => ({ ...state, error })),
-  on(loginError, (state, { error }) => ({ ...state, error })),
-  on(logoutError, (state, {error}) => ({...state, error}))
+  on(authActions.registerError, (state, { error }) => ({
+    ...state, error
+  })),
+  on(authActions.loginError, (state, { error }) => ({
+    ...state, error
+  })),
+  on(authActions.logoutError, (state, { error }) => ({
+    ...state, error
+  }))
 );

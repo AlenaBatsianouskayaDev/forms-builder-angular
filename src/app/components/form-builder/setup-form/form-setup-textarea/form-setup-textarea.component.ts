@@ -4,9 +4,9 @@ import { Store, select } from "@ngrx/store";
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { addElementStyles } from 'src/app/reducers/formBuilder/formBuilder.actions';
+import { addFormFieldStyles } from 'src/app/reducers/formBuilder/formBuilder.actions';
 import { getCurrentElementStyles } from 'src/app/reducers/formBuilder/formBuilder.selectors'
-import { IElementStyles } from 'src/app/reducers/interfaces';
+import { IFormFieldData } from 'src/app/reducers/reducers.interfaces';
 import { INITIAL_STYLES,BORDER_STYLES, FONT_WEIGHT } from 'src/app/utils/data';
 
 @Component({
@@ -19,7 +19,7 @@ export class FormSetupTextareaComponent implements OnInit {
   public formElementsStyles: FormGroup;
   public borderStyles: string[] = BORDER_STYLES;
   public fontWeight: string[] = FONT_WEIGHT;
-  private initialSetup: IElementStyles;
+  private initialSetup: IFormFieldData;
   private destroy$: Subject<void> = new Subject();
 
   constructor(
@@ -55,7 +55,7 @@ export class FormSetupTextareaComponent implements OnInit {
     this.formElementsStyles.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(value => {
-        this.store$.dispatch(addElementStyles(value));
+        this.store$.dispatch(addFormFieldStyles(value));
       });    
   }
  

@@ -1,29 +1,32 @@
 import { createAction, props } from '@ngrx/store';
 
+import { IRequestData, IAccessData, IErrorData } from '../reducers.interfaces';
+
+
 export const registerRequest = createAction(
   '[AUTH] registerRequest',
-  props<{username: string, password: string}>()
+  props<IRequestData>()
 );
 export const registerSuccess = createAction(
   '[AUTH] registerSuccess',
-  props<{username: string, token: string}>()
+  props<IAccessData>()
 );
 export const registerError = createAction(
   '[AUTH] registerError',
-  props<{error: string}>()
+  props<IErrorData>()
 );
 
 export const loginRequest = createAction(
   '[AUTH] loginRequest',
-  props<{username: string, password: string}>()
+  props<IRequestData>()
 );
 export const loginSuccess = createAction(
   '[AUTH] loginSuccess',
-  props<{username: string, token: string}>()
+  props<IAccessData>()
 );
 export const loginError = createAction(
   '[AUTH] loginError',
-  props<{error: string}>()
+  props<IErrorData>()
 );
 
 export const logoutRequest = createAction(
@@ -34,5 +37,5 @@ export const logoutSuccess = createAction(
 );
 export const logoutError = createAction(
   '[AUTH] logoutError',
-  props<{error: string}>()
+  props<IErrorData>()
 );

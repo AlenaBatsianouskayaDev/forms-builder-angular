@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 
-import {User} from './../models/user.models'
+import { IRequestData, IAccessData } from './../reducers/reducers.interfaces';
 
 @Injectable()
 export class AuthService {
@@ -12,20 +12,29 @@ export class AuthService {
   
   constructor( private _http: HttpClient,  private _router: Router) { }
 
-  
-  registerUser(user: User) {
-    return this._http.post<any>(this._registerUrl, user)
+  registerUser(user: IRequestData) {
+    return this._http.post<IAccessData>(this._registerUrl, user)
   }
 
-  loginUser(user: User) {
-    return this._http.post<any>(this._loginUrl, user)
+  loginUser(user: IRequestData) {
+    return this._http.post<IAccessData>(this._loginUrl, user)
   }
 
-  loggedIn() {
-    return !!localStorage.getItem('token'); /// посмотреть куда их перенести
+  onLoggedIn(token: string) {
+    localStorage.setItem('token', token);
+    this._router.navigate(['/form-builder']);
+  }
+
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    this._router.navigate(['/']);
+  }
+   
+  isLoggedIn() {
+    return !!localStorage.getItem('token'); 
   }
 
   getToken() {
-    return localStorage.getItem('token'); /// посмотреть куда их перенести
+    return localStorage.getItem('token');
   }
 }

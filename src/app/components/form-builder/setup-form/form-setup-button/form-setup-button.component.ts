@@ -4,22 +4,22 @@ import { Store, select } from "@ngrx/store";
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { addElementStyles } from 'src/app/reducers/formBuilder/formBuilder.actions';
+import { addFormFieldStyles } from 'src/app/reducers/formBuilder/formBuilder.actions';
 import { getCurrentElementStyles } from 'src/app/reducers/formBuilder/formBuilder.selectors'
-import { IElementStyles } from 'src/app/reducers/interfaces';
+import { IFormFieldData } from 'src/app/reducers/reducers.interfaces';
 import { INITIAL_STYLES,BORDER_STYLES, FONT_WEIGHT } from 'src/app/utils/data';
 
 @Component({
-  selector: 'app-form-setup-checkbox',
-  templateUrl: './form-setup-checkbox.component.html',
-  styleUrls: ['./form-setup-checkbox.component.scss']
+  selector: 'app-form-setup-button',
+  templateUrl: './form-setup-button.component.html',
+  styleUrls: ['./form-setup-button.component.scss']
 })
-export class FormSetupCheckboxComponent implements OnInit {
+export class FormSetupButtonComponent implements OnInit {
 
   public formElementsStyles: FormGroup;
   public borderStyles: string[] = BORDER_STYLES;
   public fontWeight: string[] = FONT_WEIGHT;
-  private initialSetup: IElementStyles;
+  private initialSetup: IFormFieldData;
   private destroy$: Subject<void> = new Subject();
 
   constructor(
@@ -40,15 +40,19 @@ export class FormSetupCheckboxComponent implements OnInit {
       })
     
     this.formElementsStyles = this.fb.group({
-      checkboxFieldText: [this.initialSetup.checkboxFieldText],
-      checkboxLabel: [this.initialSetup.checkboxLabel],
-      checkboxRequired: [this.initialSetup.checkboxRequired],
+      buttonText: [this.initialSetup.buttonText],
+      buttonWidth: [this.initialSetup.buttonWidth],
+      buttonHeight: [this.initialSetup.buttonHeight],
+      buttonFontSize: [this.initialSetup.buttonFontSize],
+      buttonFontWeight: [this.initialSetup.buttonFontWeight],
+      buttonColor: [this.initialSetup.buttonColor],
+      buttonBackgroundColor: [this.initialSetup.buttonBackgroundColor]
     })
-
+    
     this.formElementsStyles.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(value => {
-        this.store$.dispatch(addElementStyles(value));
+        this.store$.dispatch(addFormFieldStyles(value));
       });    
   }
  
@@ -56,5 +60,4 @@ export class FormSetupCheckboxComponent implements OnInit {
     this.destroy$.next();
     this.destroy$.complete();
   }
-
 }

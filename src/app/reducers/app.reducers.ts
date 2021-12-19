@@ -1,30 +1,25 @@
 import { ActionReducerMap, MetaReducer} from '@ngrx/store';
 import { environment } from '../../environments/environment';
-import { RouterReducerState, routerReducer } from '@ngrx/router-store';
+import {  routerReducer } from '@ngrx/router-store';
 
-import { AuthState, initialAuthState, authReducers } from './auth/auth.reducers';
-import { FormBuilderState, initialFormBuilderState, formBuilderReducers } from './formBuilder/formBuilder.reducers';
+import { initialAuthState, authReducers } from './auth/auth.reducers';
+import { initialFormBuilderState, formBuilderReducers } from './formBuilder/formBuilder.reducers';
+import { IAppState } from './reducers.interfaces';
 
 
-export interface AppState {
-  router?: RouterReducerState,
-  auth: AuthState,
-  formBuilder: FormBuilderState,
-}
-
-export const initialAppState: AppState = {
+export const initialAppState: IAppState = {
   auth: initialAuthState,
   formBuilder: initialFormBuilderState,
 }
 
-export function getInitialState(): AppState{
+export function getInitialState(): IAppState{
   return initialAppState;
 }
 
-export const appReducers: ActionReducerMap<AppState, any> = {
+export const appReducers: ActionReducerMap<IAppState, any> = {
   router: routerReducer,
   auth: authReducers,
   formBuilder: formBuilderReducers,
 }
 
-export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];
+export const metaReducers: MetaReducer<IAppState>[] = !environment.production ? [] : [];

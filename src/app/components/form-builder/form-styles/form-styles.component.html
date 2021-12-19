@@ -58,8 +58,8 @@
       </div>
     </cdk-accordion-item>
   </cdk-accordion>
-
-  <!-- <cdk-accordion class="example-accordion" *ngrxLet="currentElement$ as currentElement" [multi]="false"
+<!-- 
+  <cdk-accordion class="example-accordion" *ngrxLet="currentElement$ as currentElement" [multi]="false"
   >
     <cdk-accordion-item 
       *ngFor="let section of accordionSections; let index = index" 
@@ -68,13 +68,13 @@
       role="button" 
       tabindex="0" 
       [attr.id]="'accordion-header-' + index"
-      [attr.aria-expanded]="section ==='General Styles'"
+      [attr.aria-expanded]="isOpenGeneralSection"
       [attr.aria-controls]="'accordion-body-' + index"
-      > -->
-      <!-- expanded="section ==='Element Styles' & currentElement! ? true : null" 
-      expanded="section ==='General Styles' & !currentElement ? true : false"  -->
+      >
+      expanded= "section ==='Element Styles' && currentElement" 
+      expanded= "section ==='General Styles' && !currentElement" 
 
-      <!-- <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
+      <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
         {{ section }}
         <span class="example-accordion-item-description">
           Click to {{ accordionItem.expanded ? 'close' : 'open' }}

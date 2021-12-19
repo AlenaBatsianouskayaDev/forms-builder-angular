@@ -1,14 +1,15 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { AuthState } from "./auth.reducers";
 
-const getFeature = createFeatureSelector<AuthState>('auth');
+import { IAuthState } from "../reducers.interfaces";
+
+const getFeature = createFeatureSelector<IAuthState>('auth');
 
 export const getUsername = createSelector(
   getFeature, (state) => state.username
 );
 
 export const getToken = createSelector(
-  getFeature, (state: AuthState) => state.token
+  getFeature, (state: IAuthState) => state.token
 );
 
 export const isAuth = createSelector(
@@ -16,10 +17,10 @@ export const isAuth = createSelector(
 );
 
 export const getError = createSelector(
-  getFeature, (state: AuthState) => state.error
+  getFeature, (state: IAuthState) => state.error
 );
 
 export const isLoading = createSelector(
-  getFeature, (state: AuthState) => state.isLoading
+  getFeature, (state: IAuthState) => state.isLoading
 );
 
