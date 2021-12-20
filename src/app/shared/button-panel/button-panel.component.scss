@@ -1,0 +1,21 @@
+@import './../../scss/variables.scss';
+
+.btnPanel {
+  &__btn {
+    width: 36px;
+    height: 36px;
+    display: inline-block;
+    padding: 5px 5px;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
+  &__icon {
+    font-size: 20px;
+    line-height: 6px;
+    color: $btnFontColor;
+  }
+}

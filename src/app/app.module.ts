@@ -38,7 +38,7 @@ import { ReactiveComponentModule } from '@ngrx/component';
 
 import { FormBuilderEffects } from './reducers/formBuilder/formBuilder.effects';
 import { FormBuilderComponent } from './components/form-builder/form-builder.component';
-import { ButtonPanelComponent } from './button-panel/button-panel.component';
+import { ButtonPanelComponent } from './shared/button-panel/button-panel.component';
 
 @NgModule({
   declarations: [

@@ -22,14 +22,7 @@
             </mat-form-field>
           </div>
          
-          <div class="fieldElement__btnPanel">
-            <button name="btnEdit" mat-fab color="primary" aria-label="edit button">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </div>
+          <app-button-panel></app-button-panel>
         </div>
         
         <div [id]="item.id" *ngIf="item.name === 'textarea'" class="fieldElement" [ngClass]='{isActiveElement: item.isCurrentElement}'>
@@ -45,14 +38,7 @@
             </mat-form-field>
           </div>
 
-          <div class="fieldElement__btnPanel">
-            <button name="btnEdit" mat-fab color="primary" aria-label="edit button">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </div>
+          <app-button-panel></app-button-panel>
         </div>
         
         <div [id]="item.id" *ngIf="item.name === 'select'" class="fieldElement" [ngClass]='{isActiveElement: item.isCurrentElement}'>
@@ -72,14 +58,7 @@
             </mat-form-field>
           </div>
           
-          <div class="fieldElement__btnPanel">
-            <button name="btnEdit" mat-fab color="primary" aria-label="edit button">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </div>
+          <app-button-panel></app-button-panel>
         </div>
 
         <div [id]="item.id" *ngIf="item.name === 'checkbox'" class="fieldElement" [ngClass] = '{isActiveElement: item.isCurrentElement}'>
@@ -90,14 +69,7 @@
             <mat-checkbox name="checkbox" [attr.required]="item.selectRequired">{{ item.checkboxLabel }}</mat-checkbox>
           </div>
           
-          <div class="fieldElement__btnPanel">
-            <button name="btnEdit" mat-fab color="primary" aria-label="edit button">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </div>
+          <app-button-panel></app-button-panel>
         </div>
 
         <div [id]="item.id" *ngIf="item.name === 'button'" class="fieldElement" [ngClass] = '{isActiveElement: item.isCurrentElement}'>
@@ -107,14 +79,7 @@
             item.buttonText }}</button>
           </div>
           
-          <div class="fieldElement__btnPanel">
-            <button name="btnEdit" mat-fab color="primary" aria-label="edit button">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </div>
+          <app-button-panel></app-button-panel>
         </div>
 
       </div>
