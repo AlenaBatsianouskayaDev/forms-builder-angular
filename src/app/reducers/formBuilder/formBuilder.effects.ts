@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { interval } from 'rxjs';
-import { map, debounce } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
 import * as formBuilderActions from './formBuilder.actions';
@@ -26,9 +26,8 @@ export class FormBuilderEffects {
       map(action => {
         this.store.select(formBuilderSelectors.getFullFormData)
           .subscribe(val => {
-            debounce(() => interval(1000)),
-          this.commonService.saveToLocalStorage('formData', val)
-      })})
+            this.commonService.saveToLocalStorage('formData', val) 
+          })})
     ), { dispatch: false }
   );
 }

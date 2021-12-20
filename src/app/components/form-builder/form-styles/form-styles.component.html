@@ -1,22 +1,21 @@
 <div class="formStyles" >
-  <h2>Set your styles</h2>
-  <cdk-accordion class="example-accordion" [multi]="false">
+  <cdk-accordion class="accordion" [multi]="false">
     <cdk-accordion-item 
       #accordionItem="cdkAccordionItem" 
-      class="example-accordion-item" 
+      class="accordion__item" 
       role="button" 
       tabindex="0"
       [attr.id]="'accordion-header-' + index" 
       [attr.aria-expanded]= "isOpenGeneralSection"
       [attr.aria-controls]="'accordion-body-' + index">
-    <div class="example-accordion-item-header" (click)="onToggle($event)">
+    <div class="accordion__itemHeader" (click)="onToggle($event)">
       General Styles
-      <span class="example-accordion-item-description">
+      <span class="accordion__itemDescription">
         Click to {{ isOpenGeneralSection ? 'close' : 'open' }}
       </span>
     </div>
 
-    <div class="example-accordion-item-body " 
+    <div class="accordion__itemBody " 
       role="region" 
       [style.display]="isOpenGeneralSection ? '' : 'none'"
       [attr.id]="'accordion-body-' + index" 
@@ -26,24 +25,23 @@
     </cdk-accordion-item>
 
     <cdk-accordion-item 
-    
       #accordionItem="cdkAccordionItem"
-      class="example-accordion-item" 
+      class="accordion__item" 
       role="button" 
       tabindex="0" 
       [attr.id]="'accordion-header-' + index"
       [attr.aria-expanded]="isOpenElementSection" 
       [attr.aria-controls]="'accordion-body-' + index">
-      <div class="example-accordion-item-header" (click)="onToggle($event)">
+      <div class="accordion__itemHeader" (click)="onToggle($event)">
         Element Styles
-        <span class="example-accordion-item-description">
+        <span class="accordion__itemDescription">
           Click to {{ isOpenElementSection ? 'close' : 'open' }}
         </span>
       </div>
     
       <div
       *ngIf="currentElement$ | ngrxPush as currentElement"  
-      class="example-accordion-item-body " 
+      class="accordion__itemBody " 
         role="region" 
         [style.display]="isOpenElementSection ? '' : 'none'"
         [attr.id]="'accordion-body-' + index" 

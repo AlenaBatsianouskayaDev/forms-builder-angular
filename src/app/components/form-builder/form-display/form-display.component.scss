@@ -1,75 +1,68 @@
-.example-container {
-  // max-width: 100%;
-  margin: 0 25px 25px 0;
-  display: flex;
-  vertical-align: top;
-}
+.dragDrop {
+  &__container {
+    margin: 0 25px 25px 0;
+    display: flex;
+    vertical-align: top;
+  }
 
-.example-list {
-  width: 400px;
-  border: solid 1px #ccc;
-  min-height: 60px;
-  background: white;
-  border-radius: 4px;
-  overflow: hidden;
-  display: block;
-}
+  &__list {
+    width: 500px;
+    max-width: 100%;
+    border: solid 1px #ccc;
+    min-height: 60px;
+    display: block;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
 
-.example-box {
-  // padding: 20px 10px;
-  position: relative;
-  border-bottom: solid 1px #ccc;
-  color: rgba(0, 0, 0, 0.87);
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  cursor: move;
-  font-size: 14px;
-}
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
 
-.cdk-drag-preview {
-  box-sizing: border-box;
-  border-radius: 4px;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
-}
+  &__header {
+    text-align: center;
+    padding-top: 15px;
+  }
 
-.cdk-drag-placeholder {
-  opacity: 0;
-}
+  &__box {
+    padding: 20px 10px;
+    border-bottom: solid 1px #ccc;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+    background: white;
+    font-size: 14px;
+    &:last-child {
+      border: none;
+    }
+  }
 
-.cdk-drag-animating {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
+  &__customPlaceholder {
+    background: #ccc;
+    border: dotted 3px #999;
+    min-height: 60px;
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
 
-.example-box:last-child {
-  border: none;
-}
+  .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
 
-.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
 
-button[type='button'] {
-  display: inline-block;
-  min-width: 100px;
-  padding: 10px 5px;
-  border: transparent;
-  border-radius: 5px;
-  text-align: center;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-label[for='checkbox'] {
-  display: flex;
-  align-items: center;
-
-  & span {
-    display: inline-block;
-    padding-right: 15px;
+  .dragDrop__list.cdk-drop-list-dragging
+    .dragDrop__box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }
 }
 
@@ -86,33 +79,12 @@ label[for='checkbox'] {
   }
 }
 
-.isActiveElement {
-  border: 1px solid rgba(15, 120, 168, 0.4);
-}
-
-button[mat-fab] {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-
-  width: 36px;
-  height: 36px;
-  background-color: rgba(15, 120, 168, 0.5);
-}
-
-button mat-icon {
-  font-size: 18px;
-  line-height: 6px;
-}
-
-////
 .fieldElement {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px 10px 10px 20px;
   width: 100%;
-  // background: inherit;
 
   &__container {
     display: flex;
@@ -123,9 +95,44 @@ button mat-icon {
     font-weight: inherit;
     color: current;
   }
-}
 
-.formHeader {
-  text-align: center;
-  padding-top: 15px;
+  & label[for='checkbox'] {
+    display: flex;
+    align-items: center;
+
+    & span {
+      display: inline-block;
+      padding-right: 15px;
+    }
+  }
+
+  & button[mat-fab] {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+
+    width: 36px;
+    height: 36px;
+    background-color: rgba(15, 120, 168, 0.5);
+  }
+
+  & button mat-icon {
+    font-size: 18px;
+    line-height: 6px;
+  }
+
+  button[type='button'] {
+    display: inline-block;
+    min-width: 100px;
+    padding: 10px 5px;
+    border: transparent;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .isActiveElement {
+    border: 1px solid rgba(15, 120, 168, 0.4);
+  }
 }

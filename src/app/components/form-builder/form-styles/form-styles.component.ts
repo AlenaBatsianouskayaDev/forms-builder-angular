@@ -1,10 +1,10 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
-import { takeUntil, map, tap } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 
 import { getCurrentElementName } from '../../../reducers/formBuilder/formBuilder.selectors';
+import { StylesSections } from 'src/app/utils/enums';
 
 @Component({
   selector: 'app-form-styles',
@@ -17,21 +17,22 @@ export class FormStylesComponent implements OnInit{
   public currentElement$: Observable<string | undefined>;
   private destroy$: Subject<void> = new Subject();
   public index = 0;
-  public accordionSections: string[] = ['General Styles', 'Field Styles']
-  // public set fetchOpenSection(value: boolean) {
-  //   this.isOpenGeneralSection = value
-  // }
   public isOpenGeneralSection: boolean = true;
   public isOpenElementSection: boolean = false;
-  public isOpenSection: boolean;
+  public accordionSections(): Array<string> {
+    const keys = Object.keys(StylesSections);
+    return keys.slice(keys.length / 2);
+  }
+
   constructor(private store: Store) { }
 
-  
   ngOnInit(): void {
-    this.currentElement$ = this.store.select(getCurrentElementName)
-      // .pipe(
-      //   tap(res => this.fetchOpenSection = !!res)
-      // )
+    const a = document.getElementById('accordion-header-0');
+    console.log(a);
+    this.currentElement$ = this.store
+      .pipe(
+        select(getCurrentElementName),
+        takeUntil(this.destroy$))
     this.currentElement$.subscribe(val => {
       if (val) {
         this.isOpenElementSection = true;
@@ -41,10 +42,6 @@ export class FormStylesComponent implements OnInit{
         this.isOpenGeneralSection = true;
       }
     });
-  }
-
-  getExpanded(section: string, element:any): boolean {
-      return section === 'General Styles' && !element
   }
 
   onToggle(event: Event) {

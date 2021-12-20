@@ -1,13 +1,13 @@
-<div cdkDropListGroup class="example-container" *ngIf="generalStyles$ | ngrxPush as generalStyles">
-  <!-- cdk-drag-placeholder -->
-  <div cdkDropList [cdkDropListData]="droppedElements" class="example-list"
+<div cdkDropListGroup class="dragDrop__container" *ngIf="generalStyles$ | ngrxPush as generalStyles">
+  
+  <div cdkDropList [cdkDropListData]="droppedElements" class="dragDrop__list"
     (cdkDropListDropped)="drop($event)" (click)=deleteElement($event) (click)=setActiveElement($event) *ngIf="shownElements$ | ngrxPush as shownElements"
     [ngStyle]="{'font-weight': generalStyles.formGeneralFontWeight, 'color': generalStyles.formGeneralColor, 'background-color': generalStyles.formGeneralBcgColor, 'border-color': generalStyles.formGeneralBorderColor}"
     >
-      <h1 class="formHeader">{{ generalStyles.formTitle }}</h1>
+      <h1 class="dragDrop__header">{{ generalStyles.formTitle }}</h1>
 
-      <div class="example-box" *ngFor="let item of shownElements" cdkDrag>
-        <!-- <div class="example-custom-placeholder" *cdkDragPlaceholder></div> -->
+      <div class="dragDrop__box" *ngFor="let item of shownElements" cdkDrag>
+        <div class="dragDrop__customPlaceholder" *cdkDragPlaceholder></div>
 
         <div [id]="item.id" *ngIf="item.name === 'input'" class="fieldElement" [ngClass]='{isActiveElement: item.isCurrentElement}'>
           <p class="fieldElement__fieldText" [ngStyle]="{'font-size.px': generalStyles.formGeneralFontSize, 'color': generalStyles.formGeneralColor}">{{ item.inputFieldText }}</p>
@@ -72,9 +72,13 @@
       </div>
   </div>
 
-  <div class="example-list collectionElements" cdkDropList [cdkDropListData]="dragElements"
+  <div class="dragDrop__list collectionElements" 
+    cdkDropList [cdkDropListData]="dragElements"
     (cdkDropListDropped)="drop($event)">
-    <div class="example-box collectionElements__item" *ngFor="let item of dragElements" cdkDrag>
+    <div class="dragDrop__box collectionElements__item" 
+      *ngFor="let item of dragElements" 
+      cdkDrag>
+      <div class="dragDrop__customPlaceholder" *cdkDragPlaceholder></div>
       <h2 class="collectionElements__element">{{ item }}</h2>
     </div>
   </div>

@@ -60,7 +60,7 @@
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Font weight</mat-label>
           <mat-select formControlName="inputFontWeight">
-            <mat-option *ngFor="let item of fontWeight" [value]="item">
+            <mat-option *ngFor="let item of fontWeight()" [value]="item">
               {{item}}
             </mat-option>
           </mat-select>
@@ -73,7 +73,7 @@
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Border style</mat-label>
           <mat-select formControlName="inputBorderStyle">
-            <mat-option *ngFor="let style of borderStyles" [value]="style">
+            <mat-option *ngFor="let style of borderStyles()" [value]="style">
               {{style}}
             </mat-option>
           </mat-select>

@@ -1,7 +1,27 @@
-export enum Elements {
-  Input = 'input',
-  Textarea = "textarea",
-  Select = 'select',
-  Checkbox = 'checkbox',
-  Button = 'button'
+export enum FieldElements {
+  input,
+  textarea,
+  select,
+  checkbox,
+  button,
+}
+
+export enum BorderStyles {
+  solid,
+  dotted,
+  insent,
+  double,
+  groove,
+  none
+}
+
+export enum FontWeight {
+  normal,
+  bold,
+  lighter
+}
+
+export enum StylesSections {
+  'General Styles',
+  'Field Styles',
 }

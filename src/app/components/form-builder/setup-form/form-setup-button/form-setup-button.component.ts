@@ -7,7 +7,8 @@ import { takeUntil } from 'rxjs/operators';
 import { addFormFieldStyles } from 'src/app/reducers/formBuilder/formBuilder.actions';
 import { getCurrentElementStyles } from 'src/app/reducers/formBuilder/formBuilder.selectors'
 import { IFormFieldData } from 'src/app/reducers/reducers.interfaces';
-import { INITIAL_STYLES,BORDER_STYLES, FONT_WEIGHT } from 'src/app/utils/data';
+import { INITIAL_STYLES } from 'src/app/utils/data';
+import { FontWeight } from 'src/app/utils/enums'
 
 @Component({
   selector: 'app-form-setup-button',
@@ -17,10 +18,12 @@ import { INITIAL_STYLES,BORDER_STYLES, FONT_WEIGHT } from 'src/app/utils/data';
 export class FormSetupButtonComponent implements OnInit {
 
   public formElementsStyles: FormGroup;
-  public borderStyles: string[] = BORDER_STYLES;
-  public fontWeight: string[] = FONT_WEIGHT;
   private initialSetup: IFormFieldData;
   private destroy$: Subject<void> = new Subject();
+  public fontWeight(): Array<string> {
+    const keys = Object.keys(FontWeight);
+    return keys.slice(keys.length / 2);
+  }
 
   constructor(
     private fb: FormBuilder,

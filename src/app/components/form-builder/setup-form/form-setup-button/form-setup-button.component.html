@@ -41,7 +41,7 @@
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Font weight</mat-label>
           <mat-select formControlName="buttonFontWeight">
-            <mat-option *ngFor="let item of fontWeight" [value]="item">
+            <mat-option *ngFor="let item of fontWeight()" [value]="item">
               {{item}}
             </mat-option>
           </mat-select>

@@ -4,10 +4,11 @@ import { Store, select } from "@ngrx/store";
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { addFormFieldStyles, addGeneralStylesData } from 'src/app/reducers/formBuilder/formBuilder.actions';
-import { getCurrentElementStyles, getGeneralStyles } from 'src/app/reducers/formBuilder/formBuilder.selectors'
+import { addGeneralStylesData } from 'src/app/reducers/formBuilder/formBuilder.actions';
+import { getGeneralStyles } from 'src/app/reducers/formBuilder/formBuilder.selectors'
 import { IGeneralStylesData } from 'src/app/reducers/reducers.interfaces';
-import { INITIAL_STYLES,BORDER_STYLES, FONT_WEIGHT, INITIAL_GENERAL_STYLES } from 'src/app/utils/data';
+import { INITIAL_GENERAL_STYLES } from 'src/app/utils/data';
+import { FontWeight } from 'src/app/utils/enums'
 
 @Component({
   selector: 'app-general-styles',
@@ -17,10 +18,12 @@ import { INITIAL_STYLES,BORDER_STYLES, FONT_WEIGHT, INITIAL_GENERAL_STYLES } fro
 export class GeneralStylesComponent implements OnInit {
 
   public formGeneralStyles: FormGroup;
-  public borderStyles: string[] = BORDER_STYLES;
-  public fontWeight: string[] = FONT_WEIGHT;
   private initialSetup: IGeneralStylesData;
   private destroy$: Subject<void> = new Subject();
+  public fontWeight(): Array<string> {
+    const keys = Object.keys(FontWeight);
+    return keys.slice(keys.length / 2);
+  }
 
   constructor(
     private fb: FormBuilder,

@@ -63,9 +63,9 @@ export const INITIAL_GENERAL_STYLES = {
   formGeneralBorderColor: COLORS.greyColor,
 }
 
-export const INITIAL_ELEMENTS = ['input', 'textarea', 'select', 'checkbox', 'button']
-
-export const BORDER_STYLES = ['solid', 'dotted', 'insent', 'double', 'groove', 'none']
-
-export const FONT_WEIGHT = ['normal', 'bold', 'lighter'];
-
+export const GENERAL = {
+  'font-weight': 'generalStyles.formGeneralFontWeight',
+  'color': 'generalStyles.formGeneralColor',
+  'background-color': 'generalStyles.formGeneralBcgColor',
+  'border-color': 'generalStyles.formGeneralBorderColor'
+}
