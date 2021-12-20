@@ -30,7 +30,7 @@ export const INITIAL_STYLES = {
   textareaFieldText: 'Field text',
   textareaLabel: 'Field label',
   textareaPlaceholder: 'Placeholder text',
-  textareaWidth: '250',
+  textareaWidth: '200',
   textareaHeight: '30',
   textareaRequired: '',
   textareaBorderStyle: 'insent',
@@ -63,9 +63,3 @@ export const INITIAL_GENERAL_STYLES = {
   formGeneralBorderColor: COLORS.greyColor,
 }
 
-export const GENERAL = {
-  'font-weight': 'generalStyles.formGeneralFontWeight',
-  'color': 'generalStyles.formGeneralColor',
-  'background-color': 'generalStyles.formGeneralBcgColor',
-  'border-color': 'generalStyles.formGeneralBorderColor'
-}

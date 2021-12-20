@@ -12,17 +12,17 @@ import {
 
 
 export const addFormFieldStyles = createAction(
-  '[FORMBUILDER] addFormFieldData',
+  '[FORMBUILDER] addFormFieldStyles',
   props< IFormFieldData >()
 );
 
 export const addGeneralStylesData = createAction(
-  '[FORMBUILDER] addGeneralStyles',
+  '[FORMBUILDER] addGeneralStylesData',
   props< IGeneralStylesData >()
 )
 
 export const addFormField = createAction(
-  '[FORMBUILDER] addFormFieldData',
+  '[FORMBUILDER] addFormField',
   props< IFormFieldName >()
 )
 

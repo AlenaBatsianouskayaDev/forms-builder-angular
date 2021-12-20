@@ -10,63 +10,111 @@
         <div class="dragDrop__customPlaceholder" *cdkDragPlaceholder></div>
 
         <div [id]="item.id" *ngIf="item.name === 'input'" class="fieldElement" [ngClass]='{isActiveElement: item.isCurrentElement}'>
-          <p class="fieldElement__fieldText" [ngStyle]="{'font-size.px': generalStyles.formGeneralFontSize, 'color': generalStyles.formGeneralColor}">{{ item.inputFieldText }}</p>
-          <mat-form-field class="example-full-width" appearance="fill" [attr.required]="item.selectRequired" [ngStyle]="{'color': item.inputColor, 'width.px': item.inputWidth, 'border': item.inputBorderStyle, 'font-size.px': item.inputFontSize, 'font-weight': item.inputFontWeight}">
-            <mat-label class="fieldElement__label">{{ item.inputLabel }}</mat-label>
-            <input class="fieldElement__input" name="input" matInput [attr.placeholder]='item.inputPlaceholder' [ngStyle]="{'height.px': item.inputHeight}" >
-          </mat-form-field>
-          <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
-            <mat-icon>delete</mat-icon>
-          </button>
-
-          добавить кнопку редактирования
-          <!-- <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
-            <mat-icon>edit</mat-icon>
-          </button> -->
+          <div class="fieldElement__content">
+            <p class="fieldElement__fieldText"
+              [ngStyle]="{'font-size.px': generalStyles.formGeneralFontSize, 'color': generalStyles.formGeneralColor}">{{
+              item.inputFieldText }}</p>
+            <mat-form-field class="example-full-width" appearance="fill" [attr.required]="item.selectRequired"
+              [ngStyle]="{'color': item.inputColor, 'width.px': item.inputWidth, 'border': item.inputBorderStyle, 'font-size.px': item.inputFontSize, 'font-weight': item.inputFontWeight}">
+              <mat-label class="fieldElement__label">{{ item.inputLabel }}</mat-label>
+              <input class="fieldElement__input" name="input" matInput placeholder={{item.inputPlaceholder}}
+                [ngStyle]="{'height.px': item.inputHeight}">
+            </mat-form-field>
+          </div>
+         
+          <div class="fieldElement__btnPanel">
+            <button name="btnEdit" mat-fab color="primary" aria-label="edit button">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
         </div>
         
         <div [id]="item.id" *ngIf="item.name === 'textarea'" class="fieldElement" [ngClass]='{isActiveElement: item.isCurrentElement}'>
-          <p class="fieldElement__fieldText" [ngStyle]="{'font-size.px': generalStyles.formGeneralFontSize, 'color': generalStyles.formGeneralColor}">{{ item.textareaFieldText }}</p>
-          <mat-form-field class="example-full-width" appearance="fill" [attr.required]="item.selectRequired"
-            [ngStyle]="{'color': item.textareaColor, 'width.px': item.textareaWidth, 'border': item.textareaBorderStyle, 'font-size.px': item.textareaFontSize, 'font-weight': item.textareaFontWeight}">
-            <mat-label class="fieldElement__label">{{ item.textareaLabel }}</mat-label>
-            <textarea class="fieldElement__input" name="input" matInput [attr.placeholder]="item.textareaPlaceholder"
-              [ngStyle]="{'height.px': item.textareaHeight}"></textarea>
-          </mat-form-field>
-          <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
-            <mat-icon>delete</mat-icon>
-          </button>
+          <div class="fieldElement__content">
+            <p class="fieldElement__fieldText"
+              [ngStyle]="{'font-size.px': generalStyles.formGeneralFontSize, 'color': generalStyles.formGeneralColor}">{{
+              item.textareaFieldText }}</p>
+            <mat-form-field class="example-full-width" appearance="fill" [attr.required]="item.selectRequired"
+              [ngStyle]="{'color': item.textareaColor, 'width.px': item.textareaWidth, 'border': item.textareaBorderStyle, 'font-size.px': item.textareaFontSize, 'font-weight': item.textareaFontWeight}">
+              <mat-label class="fieldElement__label">{{ item.textareaLabel }}</mat-label>
+              <textarea class="fieldElement__input" name="input" matInput placeholder={{item.inputPlaceholder}}
+                [ngStyle]="{'height.px': item.textareaHeight}"></textarea>
+            </mat-form-field>
+          </div>
+
+          <div class="fieldElement__btnPanel">
+            <button name="btnEdit" mat-fab color="primary" aria-label="edit button">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
         </div>
         
         <div [id]="item.id" *ngIf="item.name === 'select'" class="fieldElement" [ngClass]='{isActiveElement: item.isCurrentElement}'>
-          <p class="fieldElement__fieldText" [ngStyle]="{'font-size.px': generalStyles.formGeneralFontSize, 'color': generalStyles.formGeneralColor}">{{ item.selectFieldText }}</p>          
-          <mat-form-field appearance="fill" [attr.required]="item.selectRequired"
-            [ngStyle]="{'width.px': item.selectWidth, 'border': item.selectBorderStyle, 'font-size.px': item.selectFontSize, 'font-weight': item.selectFontWeight}">
-            <mat-label [ngStyle]="{'color': item.selectColor}">{{ item.selectLabel }}</mat-label>
-            <mat-select class="fieldElement__input" name="select" [ngStyle]="{'color': item.selectColor, 'height.px': item.selectHeight}">
-              <mat-option *ngFor="let option of item.selectOptions" [value]="option" [ngStyle]="{'color': item.selectColor}">
-                {{ option }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
-            <mat-icon>delete</mat-icon>
-          </button>
+          <div class="fieldElement__content">
+            <p class="fieldElement__fieldText"
+              [ngStyle]="{'font-size.px': generalStyles.formGeneralFontSize, 'color': generalStyles.formGeneralColor}">{{
+              item.selectFieldText }}</p>
+            <mat-form-field appearance="fill" [attr.required]="item.selectRequired"
+              [ngStyle]="{'width.px': item.selectWidth, 'border': item.selectBorderStyle, 'font-size.px': item.selectFontSize, 'font-weight': item.selectFontWeight}">
+              <mat-label [ngStyle]="{'color': item.selectColor}">{{ item.selectLabel }}</mat-label>
+              <mat-select class="fieldElement__input" name="select"
+                [ngStyle]="{'color': item.selectColor, 'height.px': item.selectHeight}">
+                <mat-option *ngFor="let option of item.selectOptions" [value]="option" [ngStyle]="{'color': item.selectColor}">
+                  {{ option }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          
+          <div class="fieldElement__btnPanel">
+            <button name="btnEdit" mat-fab color="primary" aria-label="edit button">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
         </div>
 
         <div [id]="item.id" *ngIf="item.name === 'checkbox'" class="fieldElement" [ngClass] = '{isActiveElement: item.isCurrentElement}'>
-          <p class="fieldElement__fieldText" [ngStyle]="{'font-size.px': generalStyles.formGeneralFontSize, 'color': generalStyles.formGeneralColor}">{{ item.checkboxFieldText }}</p>
-          <mat-checkbox name="checkbox" [attr.required]="item.selectRequired">{{ item.checkboxLabel }}</mat-checkbox>
-          <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
-            <mat-icon>delete</mat-icon>
-          </button>
+          <div class="fieldElement__content">
+            <p class="fieldElement__fieldText"
+              [ngStyle]="{'font-size.px': generalStyles.formGeneralFontSize, 'color': generalStyles.formGeneralColor}">{{
+              item.checkboxFieldText }}</p>
+            <mat-checkbox name="checkbox" [attr.required]="item.selectRequired">{{ item.checkboxLabel }}</mat-checkbox>
+          </div>
+          
+          <div class="fieldElement__btnPanel">
+            <button name="btnEdit" mat-fab color="primary" aria-label="edit button">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
         </div>
 
         <div [id]="item.id" *ngIf="item.name === 'button'" class="fieldElement" [ngClass] = '{isActiveElement: item.isCurrentElement}'>
-          <button mat-flat-button name="button" [ngStyle]="{'color': item.buttonColor, 'background-color': item.buttonBackgroundColor, 'width.px': item.buttonWidth, 'height.px':item.buttonHeight, 'font-size.px': item.buttonFontSize, 'font-weight': item.buttonFontWeight } ">{{ item.buttonText }}</button>
-          <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
-            <mat-icon>delete</mat-icon>
-          </button>
+          <div class="fieldElement__content">
+          <button mat-flat-button name="button"
+            [ngStyle]="{'color': item.buttonColor, 'background-color': item.buttonBackgroundColor, 'width.px': item.buttonWidth, 'height.px':item.buttonHeight, 'font-size.px': item.buttonFontSize, 'font-weight': item.buttonFontWeight } ">{{
+            item.buttonText }}</button>
+          </div>
+          
+          <div class="fieldElement__btnPanel">
+            <button name="btnEdit" mat-fab color="primary" aria-label="edit button">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button name="btnDelete" mat-fab color="primary" aria-label="delete button">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
         </div>
 
       </div>

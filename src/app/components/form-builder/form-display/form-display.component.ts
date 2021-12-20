@@ -7,11 +7,10 @@ import { takeUntil } from 'rxjs/operators';
 
 import { IFormFieldData, IGeneralStylesData } from '../../../reducers/reducers.interfaces';
 import {  COLORS } from '../../../utils/data';
-// import { Elements } from '../../utils/enums';
 import * as formBuilderActions from 'src/app/reducers/formBuilder/formBuilder.actions';
 import { getFormElement, getCurrentElementId, getGeneralStyles } from 'src/app/reducers/formBuilder/formBuilder.selectors';
 import { FieldElements } from 'src/app/utils/enums';
-import { GENERAL } from '../../../utils/data';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-form-display',
@@ -34,9 +33,8 @@ export class FormDisplayComponent implements OnInit {
     return keys.slice(keys.length / 2);
   }
   public dragElements = this.getDragElements();
-  public general = GENERAL;
-
-  constructor(private readonly store$: Store) { }
+  
+  constructor(private readonly store$: Store, public commonService: CommonService) { }
    
   ngOnInit(): void {
     this.shownElements$ = this.store$
@@ -85,24 +83,21 @@ export class FormDisplayComponent implements OnInit {
     }
   }
 
-   deleteElement(event: any) {
+  deleteElement(event: any) {
     if (!event.target.closest('[name="btnDelete"]')) {
       return;
     }
-    this.toDeleteElementId = event.target.closest('div').id; 
-      this.store$.dispatch(formBuilderActions.deleteFormField({ id: this.toDeleteElementId }));
+    this.toDeleteElementId = event.target.closest('.fieldElement').id; 
+    this.store$.dispatch(formBuilderActions.deleteFormField({ id: this.toDeleteElementId }));
    }
   
   setActiveElement(event: any) { 
-    if (event.target.tagName === 'LABEL' ||
-      event.target.tagName === 'INPUT' ||
-      event.target.tagName === 'TEXTAREA' ||
-      event.target.tagName === 'SELECT' ||
-      event.target.tagName === 'BUTTON' ) {
-      this.currentElementId = event.target.closest('div').id;  
-    } else {
-      this.currentElementId = event.target.id;
+    if (!event.target.closest('[name="btnEdit"]')) {
+      return;
     }
+    this.currentElementId = event.target.closest('.fieldElement').id; 
+    console.log(this.currentElementId);
+    console.log(this.prevCurrentElementId);
     if (this.prevCurrentElementId !== this.currentElementId) {
       this.store$.dispatch(
       formBuilderActions.setCurrentField({ id: this.currentElementId })
