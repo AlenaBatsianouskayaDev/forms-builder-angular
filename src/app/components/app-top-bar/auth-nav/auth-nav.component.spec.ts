@@ -1,27 +1,29 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { StoreModule } from '@ngrx/store';
 
-import { FormStylesComponent } from './form-styles.component';
-import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { RouterTestingModule } from "@angular/router/testing";
 import { ReactiveComponentModule } from '@ngrx/component';
 
-describe('FormStylesComponent', () => {
-  let component: FormStylesComponent;
-  let fixture: ComponentFixture<FormStylesComponent>;
+import { AuthNavComponent } from './auth-nav.component';
+
+describe('AuthNavComponent', () => {
+  let component: AuthNavComponent;
+  let fixture: ComponentFixture<AuthNavComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
         StoreModule.forRoot({}),
-        CdkAccordionModule,
-        ReactiveComponentModule],
-      declarations: [ FormStylesComponent ]
+        RouterTestingModule.withRoutes([]),
+        ReactiveComponentModule
+      ], 
+      declarations: [ AuthNavComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormStylesComponent);
+    fixture = TestBed.createComponent(AuthNavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

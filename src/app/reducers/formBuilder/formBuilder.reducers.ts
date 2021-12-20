@@ -78,7 +78,6 @@ export const formBuilderReducers = createReducer(
 
   on(formBuilderActions.changeFieldsOrder, (state, { prevIndex, currentIndex }) => {
     const copyStateComponents = [...state.components];
-    console.log(prevIndex, currentIndex);
     [copyStateComponents[prevIndex], copyStateComponents[currentIndex]] =
       [copyStateComponents[currentIndex], copyStateComponents[prevIndex]];
     return ({

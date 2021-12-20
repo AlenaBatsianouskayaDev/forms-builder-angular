@@ -1,23 +1,23 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
+import { environment } from 'src/environments/environment';
 
 import { IRequestData, IAccessData } from './../reducers/reducers.interfaces';
 
 @Injectable()
 export class AuthService {
 
-  private _registerUrl = "http://localhost:5000/api/registration";
-  private _loginUrl = "http://localhost:5000/api/login";
+  private API_URL = environment.API_URL;
   
   constructor( private _http: HttpClient,  private _router: Router) { }
 
   registerUser(user: IRequestData) {
-    return this._http.post<IAccessData>(this._registerUrl, user)
+    return this._http.post<IAccessData>(`${this.API_URL}/registration`, user)
   }
 
   loginUser(user: IRequestData) {
-    return this._http.post<IAccessData>(this._loginUrl, user)
+    return this._http.post<IAccessData>(`${this.API_URL}/login`, user)
   }
 
   onLoggedIn(token: string) {

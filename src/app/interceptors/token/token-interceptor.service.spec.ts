@@ -6,7 +6,9 @@ describe('TokenInterceptorService', () => {
   let service: TokenInterceptorService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [ TokenInterceptorService ],
+    });
     service = TestBed.inject(TokenInterceptorService);
   });
 

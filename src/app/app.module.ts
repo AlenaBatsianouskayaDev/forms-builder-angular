@@ -6,7 +6,6 @@ import { MaterialModule } from './modules/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-
 import { AppComponent } from './app.component';
 import { AppTopBarComponent } from './components/app-top-bar/app-top-bar.component';
 import { AuthNavComponent } from './components/app-top-bar/auth-nav/auth-nav.component';

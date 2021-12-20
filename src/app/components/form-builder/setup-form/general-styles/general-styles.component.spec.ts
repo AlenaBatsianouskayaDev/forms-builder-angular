@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GeneralStylesComponent } from './general-styles.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
 
 describe('GeneralStylesComponent', () => {
   let component: GeneralStylesComponent;
@@ -8,7 +10,10 @@ describe('GeneralStylesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GeneralStylesComponent ]
+      imports: [
+        ReactiveFormsModule,
+        StoreModule.forRoot({}),],
+      declarations: [GeneralStylesComponent]
     })
     .compileComponents();
   });

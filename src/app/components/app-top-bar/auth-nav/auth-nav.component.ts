@@ -10,7 +10,7 @@ import { getUsername, isAuth } from 'src/app/reducers/auth/auth.selectors';
   templateUrl: './auth-nav.component.html',
   styleUrls: ['./auth-nav.component.scss']
 })
-  
+
 export class AuthNavComponent implements OnInit {
 
   public username$: Observable<string>;

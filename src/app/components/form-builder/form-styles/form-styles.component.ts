@@ -27,8 +27,6 @@ export class FormStylesComponent implements OnInit{
   constructor(private store: Store) { }
 
   ngOnInit(): void {
-    const a = document.getElementById('accordion-header-0');
-    console.log(a);
     this.currentElement$ = this.store
       .pipe(
         select(getCurrentElementName),

@@ -96,8 +96,6 @@ export class FormDisplayComponent implements OnInit {
       return;
     }
     this.currentElementId = event.target.closest('.fieldElement').id; 
-    console.log(this.currentElementId);
-    console.log(this.prevCurrentElementId);
     if (this.prevCurrentElementId !== this.currentElementId) {
       this.store$.dispatch(
       formBuilderActions.setCurrentField({ id: this.currentElementId })

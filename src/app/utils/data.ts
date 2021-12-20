@@ -63,3 +63,4 @@ export const INITIAL_GENERAL_STYLES = {
   formGeneralBorderColor: COLORS.greyColor,
 }
 
+
