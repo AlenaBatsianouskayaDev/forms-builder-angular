@@ -1,7 +1,12 @@
+html,
 body {
-  width: 100%;
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  height: 100%;
+}
+
+body {
+  width: 1280px;
+  margin: 0 auto;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
   font-size: 14px;
   font-weight: 400;
 }
@@ -37,16 +42,6 @@ li {
   list-style: none;
 }
 
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
-}
-
 .container {
-  padding: 0 50px;
+  padding: 0 25px;
 }

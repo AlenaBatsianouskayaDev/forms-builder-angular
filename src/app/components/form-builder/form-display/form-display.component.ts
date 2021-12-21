@@ -12,6 +12,7 @@ import { getFormElement, getCurrentElementId, getGeneralStyles } from 'src/app/r
 import { FieldElements } from 'src/app/utils/enums';
 import { CommonService } from 'src/app/services/common.service';
 
+
 @Component({
   selector: 'app-form-display',
   templateUrl: './form-display.component.html',
@@ -83,19 +84,19 @@ export class FormDisplayComponent implements OnInit {
     }
   }
 
-  deleteElement(event: any) {
-    if (!event.target.closest('[name="btnDelete"]')) {
+  deleteElement (event: Event) {
+    if (!(event.target as Element).closest('[name="btnDelete"]')) {
       return;
     }
-    this.toDeleteElementId = event.target.closest('.fieldElement').id; 
-    this.store$.dispatch(formBuilderActions.deleteFormField({ id: this.toDeleteElementId }));
-   }
+      this.toDeleteElementId = (event.target as Element).closest('.fieldElement')!.id; 
+      this.store$.dispatch(formBuilderActions.deleteFormField({ id: this.toDeleteElementId }));
+  }
   
-  setActiveElement(event: any) { 
-    if (!event.target.closest('[name="btnEdit"]')) {
+  setActiveElement(event: Event) { 
+    if (!(event.target as Element).closest('[name="btnEdit"]')) {
       return;
     }
-    this.currentElementId = event.target.closest('.fieldElement').id; 
+    this.currentElementId = (event.target as Element).closest('.fieldElement')!.id; 
     if (this.prevCurrentElementId !== this.currentElementId) {
       this.store$.dispatch(
       formBuilderActions.setCurrentField({ id: this.currentElementId })

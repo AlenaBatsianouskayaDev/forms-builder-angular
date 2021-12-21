@@ -2,6 +2,7 @@ import { TestBed, inject } from "@angular/core/testing";
 import { HttpClientTestingModule } from '@angular/common/http/testing'; 
 import { AuthService } from "./auth.service";
 import { RouterTestingModule } from "@angular/router/testing";
+import { Observable, of } from 'rxjs'
 
 describe('AuthService', () => {
   beforeEach(() => {
@@ -17,3 +18,7 @@ describe('AuthService', () => {
     expect(service).toBeTruthy();
   }));
 });
+
+
+
+  

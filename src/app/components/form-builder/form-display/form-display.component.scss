@@ -5,11 +5,11 @@
     margin: 0 25px 25px 0;
     display: flex;
     vertical-align: top;
+    justify-content: space-around;
   }
 
   &__list {
-    width: 500px;
-    max-width: 100%;
+    width: 400px;
     border: solid 1px $greyColor;
     min-height: 60px;
     display: block;

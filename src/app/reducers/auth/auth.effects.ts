@@ -8,7 +8,7 @@ import { map, exhaustMap, catchError } from 'rxjs/operators';
 import * as authActions from './auth.actions';
 import * as formBuilderActions from '../formBuilder/formBuilder.actions';
 import { AuthService } from "src/app/services/auth.service";
-import { CommonService } from "src/app/services/common.service";
+import { LocalStorageService } from "src/app/services/local-storage.service";
 import { IRequestData, IFormBuilderState } from "../reducers.interfaces";
 
 @Injectable()
@@ -19,7 +19,7 @@ export class AuthEffects {
   constructor(
     private actions$: Actions,
     private authService: AuthService,
-    private commonService: CommonService,
+    private localStorageService: LocalStorageService,
     private store: Store,
   ) { }  
   
@@ -43,7 +43,7 @@ export class AuthEffects {
         this.authService.loginUser(data).pipe(
         map(({ username, token }) => {
           this.authService.onLoggedIn(token);
-          this.dataFromStorage = this.commonService.loadFromLocalStorage('formData');
+          this.dataFromStorage = this.localStorageService.loadFromLocalStorage('formData');
           if (this.dataFromStorage) {
             this.store.dispatch(formBuilderActions.addFullFormData(this.dataFromStorage));
           }

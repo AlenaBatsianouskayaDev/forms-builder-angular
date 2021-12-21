@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 
 import * as formBuilderActions from './formBuilder.actions';
 import * as formBuilderSelectors from './formBuilder.selectors';
-import { CommonService } from "src/app/services/common.service";
+import { LocalStorageService } from "src/app/services/local-storage.service";
 
 
 @Injectable()
@@ -15,7 +15,7 @@ export class FormBuilderEffects {
   constructor(
     private actions$: Actions,
     private store: Store,
-    private commonService: CommonService,
+    private localStorageService: LocalStorageService,
   ) { }  
   
   saveFormFieldData$ = createEffect(
@@ -26,7 +26,7 @@ export class FormBuilderEffects {
       map(action => {
         this.store.select(formBuilderSelectors.getFullFormData)
           .subscribe(val => {
-            this.commonService.saveToLocalStorage('formData', val) 
+            this.localStorageService.saveToLocalStorage('formData', val) 
           })})
     ), { dispatch: false }
   );
