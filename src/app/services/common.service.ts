@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core"; 
 import * as uuid from 'uuid';
 import { IFormFieldData, IGeneralStylesData } from '../reducers/reducers.interfaces';
+import { IFieldStyles } from './../utils/interfaces';
 
 @Injectable()
 export class CommonService {
@@ -10,13 +11,13 @@ export class CommonService {
     return this.id = uuid.v4();
   }
 
-  inputHeightFactory(item: IFormFieldData) {
+  public inputHeightFactory(item: IFormFieldData): IFieldStyles {
     return ({
       'height.px': item.inputHeight
     })
   }
 
-  inputStylesFactory(item: IFormFieldData) {
+  public inputStylesFactory(item: IFormFieldData): IFieldStyles {
     return ({
       'width.px': item.inputWidth,
       'border': item.inputBorderStyle,
@@ -26,13 +27,13 @@ export class CommonService {
     })
   } 
 
-   textareaHeightFactory(item: IFormFieldData) {
+  public textareaHeightFactory(item: IFormFieldData):IFieldStyles {
     return ({
       'height.px': item.textareaHeight
     })
   }
 
-  textareaStylesFactory(item: IFormFieldData) {
+  public textareaStylesFactory(item: IFormFieldData): IFieldStyles {
     return ({
       'color': item.textareaColor,
       'width.px': item.textareaWidth,
@@ -42,7 +43,7 @@ export class CommonService {
     })
   } 
 
-  buttonStylesFactory(item: IFormFieldData) {
+  public buttonStylesFactory(item: IFormFieldData): IFieldStyles {
     return ({
       'width.px': item.buttonWidth,
       'height.px': item.buttonHeight,
@@ -53,20 +54,20 @@ export class CommonService {
     }) 
   }
 
-  selectColorFactory(item: IFormFieldData) {
+  public selectColorFactory(item: IFormFieldData): IFieldStyles {
     return ({
       'color': item.selectColor,
     }) 
   }
 
-  selectColorHeightFactory(item: IFormFieldData) {
+  public selectColorHeightFactory(item: IFormFieldData): IFieldStyles {
     return ({
       'height.px': item.selectHeight,
       'color': item.selectColor,
     }) 
   }
 
-  selectStylesFactory(item: IFormFieldData) {
+  public selectStylesFactory(item: IFormFieldData): IFieldStyles {
     return ({
       'width.px': item.selectWidth,
       'border': item.selectBorderStyle,
@@ -75,14 +76,14 @@ export class CommonService {
     }) 
   }
 
-  checkboxStylesFactory(item: IFormFieldData) {
+  public checkboxStylesFactory(item: IFormFieldData): IFieldStyles {
     return ({
       'width.px': item.checkboxWidth,
       'height.px': item.checkboxHeight,
     }) 
   }
 
-  generalStylesFactory(item: IGeneralStylesData) {
+  public generalStylesFactory(item: IGeneralStylesData): IFieldStyles {
     return ({
       'border-color': item.formGeneralBorderColor,
       'font-weight': item.formGeneralFontWeight,
@@ -91,7 +92,7 @@ export class CommonService {
     }) 
   }
 
-  generalFontSizeColorFactory(item: IGeneralStylesData) {
+  public generalFontSizeColorFactory(item: IGeneralStylesData): IFieldStyles {
     return ({
       'font-size.px': item.formGeneralFontSize,
       'color': item.formGeneralColor,

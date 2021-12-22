@@ -10,6 +10,7 @@ describe('AuthNavComponent', () => {
   let component: AuthNavComponent;
   let fixture: ComponentFixture<AuthNavComponent>;
 
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
@@ -27,7 +28,7 @@ describe('AuthNavComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
+  
   it('should create', () => {
     expect(component).toBeTruthy();
   });

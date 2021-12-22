@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from "@ngrx/store";
 
 import { registerRequest } from './../../reducers/auth/auth.actions';
@@ -21,8 +21,8 @@ export class RegistrationFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
-      username: [''],
-      password: [''],
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
     })
   }
 
