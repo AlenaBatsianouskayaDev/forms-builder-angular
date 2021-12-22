@@ -1,4 +1,3 @@
-
 import { OnInit, Component } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, copyArrayItem } from '@angular/cdk/drag-drop';
 import { Subject, Observable} from 'rxjs';
@@ -12,7 +11,6 @@ import { getFormElement, getCurrentElementId, getGeneralStyles } from 'src/app/r
 import { FieldElements } from 'src/app/utils/enums';
 import { CommonService } from 'src/app/services/common.service';
 
-
 @Component({
   selector: 'app-form-display',
   templateUrl: './form-display.component.html',
@@ -21,32 +19,33 @@ import { CommonService } from 'src/app/services/common.service';
 
 export class FormDisplayComponent implements OnInit {
 
-  public droppedElements: IFormFieldData[] = [];
   public colors = COLORS;
-  private destroy$: Subject<void> = new Subject();
+  public droppedElements: IFormFieldData[] = [];
   public shownElements$: Observable<IFormFieldData[]>;
   public generalStyles$: Observable<IGeneralStylesData>;
+   
   private prevCurrentElementId: string | undefined;
   private currentElementId: string;
   private toDeleteElementId: string;
-  private getDragElements(): Array<string> {
+  
+  private getDragElements(): string[] {
     const keys = Object.keys(FieldElements);
     return keys.slice(keys.length / 2);
   }
-  public dragElements = this.getDragElements();
-  
-  constructor(private readonly store$: Store, public commonService: CommonService) { }
+  public dragElements: string[] = this.getDragElements();
+  private destroy$: Subject<void> = new Subject();
+  private btnDeleteElAttr: string = '[name="btnDelete"]';
+  private btnEditElAttr: string = '[name="btnEdit"]';
+  private queryIdElAttr: string = '.fieldElement';
+
+  constructor(
+    private readonly store$: Store,
+    public commonService: CommonService
+  ) { }
    
   ngOnInit(): void {
-    this.shownElements$ = this.store$
-      .pipe(
-        select(getFormElement),
-        takeUntil(this.destroy$))
-    
-    this.generalStyles$ = this.store$
-      .pipe(
-        select(getGeneralStyles),
-        takeUntil(this.destroy$))
+    this.shownElements$ = this.store$.select(getFormElement);
+    this.generalStyles$ = this.store$.select(getGeneralStyles);
 
     this.store$.pipe(
         select(getCurrentElementId),
@@ -56,18 +55,17 @@ export class FormDisplayComponent implements OnInit {
       })
   }
   
-  ngOnDestroy() {
+  private ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }
 
-  drop(event: CdkDragDrop<any>) {
-    
+  public drop(event: CdkDragDrop<any>): void {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
       if (event.container.id === 'cdk-drop-list-1') {
         this.store$.dispatch(formBuilderActions.changeFieldsOrder(
-        {prevIndex: event.previousIndex, currentIndex: event.currentIndex}
+        { prevIndex: event.previousIndex, currentIndex: event.currentIndex }
       ));
       }
     }
@@ -84,26 +82,23 @@ export class FormDisplayComponent implements OnInit {
     }
   }
 
-  deleteElement (event: Event) {
-    if (!(event.target as Element).closest('[name="btnDelete"]')) {
+  public deleteElement (event: Event): void {
+    if (!(event.target as Element).closest(this.btnDeleteElAttr)) {
       return;
     }
-      this.toDeleteElementId = (event.target as Element).closest('.fieldElement')!.id; 
+      this.toDeleteElementId = (event.target as Element).closest(this.queryIdElAttr)!.id; 
       this.store$.dispatch(formBuilderActions.deleteFormField({ id: this.toDeleteElementId }));
   }
   
-  setActiveElement(event: Event) { 
-    if (!(event.target as Element).closest('[name="btnEdit"]')) {
+  public setActiveElement(event: Event): void {
+    if (!(event.target as Element).closest(this.btnEditElAttr)) {
       return;
     }
-    this.currentElementId = (event.target as Element).closest('.fieldElement')!.id; 
+    this.currentElementId = (event.target as Element).closest(this.queryIdElAttr)!.id;
     if (this.prevCurrentElementId !== this.currentElementId) {
       this.store$.dispatch(
-      formBuilderActions.setCurrentField({ id: this.currentElementId })
-    );
-    }    
+        formBuilderActions.setCurrentField({ id: this.currentElementId })
+      );
+    }
   }
-
- 
-    
 }

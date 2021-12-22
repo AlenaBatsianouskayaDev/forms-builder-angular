@@ -1,4 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
+import { Observable } from 'rxjs';
 import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 
 import { AuthService } from './../../services/auth.service';
@@ -9,7 +10,7 @@ export class TokenInterceptorService implements HttpInterceptor{
 
   constructor(private injector: Injector ) { }
 
-  intercept(req: HttpRequest<IRequestData>, next: HttpHandler) {
+  public intercept(req: HttpRequest<IRequestData>, next: HttpHandler): Observable<any> {
     let authService = this.injector.get(AuthService)
     let tokenizedReq = req.clone({
       setHeaders: {

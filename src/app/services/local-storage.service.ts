@@ -8,17 +8,17 @@ export class LocalStorageService {
 
   constructor() { }
 
-  saveToLocalStorage(dataName: string, data: IFormBuilderState): void {
+  public saveToLocalStorage(dataName: string, data: IFormBuilderState): void {
     const serializedData = JSON.stringify(data);
     localStorage.setItem(dataName, serializedData);
   }
 
-  loadFromLocalStorage(dataName:string): IFormBuilderState | undefined{
+  public loadFromLocalStorage(dataName:string): IFormBuilderState | undefined{
     const data = localStorage.getItem(dataName);
     return data === null ? undefined : JSON.parse(data); 
   }
 
-  removeFromLocalStorage(dataName: string):void {
+  public removeFromLocalStorage(dataName: string):void {
     localStorage.removeItem(dataName);
   }
 }

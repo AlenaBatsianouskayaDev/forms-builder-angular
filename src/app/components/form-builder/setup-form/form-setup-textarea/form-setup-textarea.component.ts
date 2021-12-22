@@ -20,11 +20,11 @@ export class FormSetupTextareaComponent implements OnInit {
   public formElementsStyles: FormGroup;
   private initialSetup: IFormFieldData;
   private destroy$: Subject<void> = new Subject();
-  public fontWeight(): Array<string> {
+  public fontWeight(): string[] {
     const keys = Object.keys(FontWeight);
     return keys.slice(keys.length / 2);
   }
-  public borderStyles(): Array<string> {
+  public borderStyles(): string[] {
     const keys = Object.keys(BorderStyles);
     return keys.slice(keys.length / 2);
   }
@@ -66,7 +66,7 @@ export class FormSetupTextareaComponent implements OnInit {
       });    
   }
  
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }

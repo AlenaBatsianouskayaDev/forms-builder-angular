@@ -20,7 +20,7 @@ export class GeneralStylesComponent implements OnInit {
   public formGeneralStyles: FormGroup;
   private initialSetup: IGeneralStylesData;
   private destroy$: Subject<void> = new Subject();
-  public fontWeight(): Array<string> {
+  public fontWeight(): string[] {
     const keys = Object.keys(FontWeight);
     return keys.slice(keys.length / 2);
   }
@@ -58,7 +58,7 @@ export class GeneralStylesComponent implements OnInit {
       });    
   }
  
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }

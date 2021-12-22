@@ -50,7 +50,7 @@ export class FormSetupCheckboxComponent implements OnInit {
       });    
   }
  
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }

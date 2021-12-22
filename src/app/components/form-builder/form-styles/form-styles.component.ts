@@ -25,7 +25,7 @@ export class FormStylesComponent implements OnInit{
   set elementsSection(value: boolean) {
     this.isOpenElementSection = value
   }
-  public accordionSections(): Array<string> {
+  public accordionSections(): string[] {
     const keys = Object.keys(StylesSections);
     return keys.slice(keys.length / 2);
   }
@@ -44,12 +44,12 @@ export class FormStylesComponent implements OnInit{
         takeUntil(this.destroy$))
   };
 
-  onToggle(event: Event) {
+  public onToggle(event: Event): void {
     this.generalSection = !this.generalSection;
     this.elementsSection = !!this.elementsSection;
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }

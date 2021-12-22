@@ -45,3 +45,49 @@ li {
 .container {
   padding: 0 25px;
 }
+
+.formElementsStyles {
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+
+    & input,
+    & mat-select {
+      padding: 10px;
+    }
+  }
+
+  &__label {
+    padding: 0 10px;
+  }
+}
+
+.colorInput {
+  &__input {
+    border: none;
+    background: transparent;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+  }
+}
+
+.radioBtn {
+  &__label {
+    text-align: right;
+  }
+
+  &__button:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &__fieldset {
+    border: none;
+  }
+}
+
+.mat-typography p {
+  margin-bottom: 0;
+}

@@ -26,7 +26,7 @@ export class LoginFormComponent implements OnInit {
     });
   }
 
-  loginUser() {
+  public loginUser(): void {
     this.store$.dispatch(loginRequest(
       this.loginForm.value
     ));

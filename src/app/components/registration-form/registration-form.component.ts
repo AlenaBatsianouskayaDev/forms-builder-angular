@@ -26,7 +26,7 @@ export class RegistrationFormComponent implements OnInit {
     })
   }
 
-  registerUser(): void {
+  public registerUser(): void {
     this.store$.dispatch(registerRequest(
       this.registrationForm.value
     ))

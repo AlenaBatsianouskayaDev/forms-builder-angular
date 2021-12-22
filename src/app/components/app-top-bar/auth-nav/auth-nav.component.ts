@@ -16,14 +16,14 @@ export class AuthNavComponent implements OnInit {
   public username$: Observable<string>;
   public isAuth$: Observable<boolean>;
   
-  constructor(private store$: Store) { }
+  constructor(private readonly store$: Store) { }
 
   ngOnInit(): void {
     this.username$ = this.store$.select(getUsername);
     this.isAuth$ = this.store$.select(isAuth);
   }
 
-  logoutUser():void {
+  public logoutUser():void {
     this.store$.dispatch(logoutRequest());
   }
 }

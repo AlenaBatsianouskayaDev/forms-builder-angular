@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 import { IRequestData, IAccessData } from './../reducers/reducers.interfaces';
 
@@ -12,29 +13,29 @@ export class AuthService {
   
   constructor( private _http: HttpClient,  private _router: Router) { }
 
-  registerUser(user: IRequestData) {
+  public registerUser(user: IRequestData): Observable<IAccessData> {
     return this._http.post<IAccessData>(`${this.API_URL}/registration`, user)
   }
 
-  loginUser(user: IRequestData) {
+  public loginUser(user: IRequestData): Observable<IAccessData> {
     return this._http.post<IAccessData>(`${this.API_URL}/login`, user)
   }
 
-  onLoggedIn(token: string) {
+  public onLoggedIn(token: string): void {
     localStorage.setItem('token', token);
     this._router.navigate(['/form-builder']);
   }
 
-  onLoggedOut() {
+  public onLoggedOut(): void {
     localStorage.removeItem('token');
     this._router.navigate(['/']);
   }
    
-  isLoggedIn() {
+  public isLoggedIn(): boolean {
     return !!localStorage.getItem('token'); 
   }
 
-  getToken() {
+  public getToken(): string | null{
     return localStorage.getItem('token');
   }
 }

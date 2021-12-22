@@ -1,97 +1,156 @@
-<div cdkDropListGroup class="dragDrop__container" *ngIf="generalStyles$ | ngrxPush as generalStyles">
-  
-  <div cdkDropList [cdkDropListData]="droppedElements" class="dragDrop__list"
-    (cdkDropListDropped)="drop($event)" (click)=deleteElement($event) (click)=setActiveElement($event) *ngIf="shownElements$ | ngrxPush as shownElements"
-    [ngStyle]="{'font-weight': generalStyles.formGeneralFontWeight, 'color': generalStyles.formGeneralColor, 'background-color': generalStyles.formGeneralBcgColor, 'border-color': generalStyles.formGeneralBorderColor}"
-    >
+<div 
+  cdkDropListGroup 
+  class="dragDrop__container" 
+  *ngrxLet="generalStyles$ as generalStyles">
+  <div 
+    cdkDropList 
+    *ngrxLet="shownElements$ as shownElements"
+    [cdkDropListData]="droppedElements" 
+    class="dragDrop__list"
+    (cdkDropListDropped)="drop($event)" 
+    (click)=deleteElement($event) 
+    (click)=setActiveElement($event) 
+    [ngStyle]="commonService.generalStylesFactory(generalStyles)">
       <h1 class="dragDrop__header">{{ generalStyles.formTitle }}</h1>
 
-      <div class="dragDrop__box" *ngFor="let item of shownElements" cdkDrag>
-        <div class="dragDrop__customPlaceholder" *cdkDragPlaceholder></div>
+      <div 
+        class="dragDrop__box" 
+        *ngFor="let item of shownElements" 
+        cdkDrag>
+        <div 
+          class="dragDrop__customPlaceholder" 
+          *cdkDragPlaceholder></div>
 
-        <div [id]="item.id" *ngIf="item.name === 'input'" class="fieldElement" [ngClass]='{isActiveElement: item.isCurrentElement}'>
+        <div 
+          [id]="item.id" 
+          *ngIf="item.name === 'input'" 
+          class="fieldElement" 
+          [ngClass]='{isActiveElement: item.isCurrentElement}'>
           <div class="fieldElement__content">
-            <p class="fieldElement__fieldText"
-              [ngStyle]="{'font-size.px': generalStyles.formGeneralFontSize, 'color': generalStyles.formGeneralColor}">{{
+            <p 
+              class="fieldElement__fieldText"
+              [ngStyle]="commonService.generalFontSizeColorFactory(generalStyles)">{{
               item.inputFieldText }}</p>
-            <mat-form-field class="example-full-width" appearance="fill" [attr.required]="item.selectRequired"
-              [ngStyle]="{'color': item.inputColor, 'width.px': item.inputWidth, 'border': item.inputBorderStyle, 'font-size.px': item.inputFontSize, 'font-weight': item.inputFontWeight}">
+            <mat-form-field 
+              class="example-full-width" 
+              appearance="fill" 
+              [attr.required]="item.selectRequired"
+              [ngStyle]="commonService.inputStylesFactory(item)">
               <mat-label class="fieldElement__label">{{ item.inputLabel }}</mat-label>
-              <input class="fieldElement__input" name="input" matInput placeholder={{item.inputPlaceholder}}
-                [ngStyle]="{'height.px': item.inputHeight}">
+              <input 
+                class="fieldElement__input" 
+                name="input" 
+                matInput 
+                placeholder={{item.inputPlaceholder}}
+                [ngStyle]="commonService.inputHeightFactory(item)">
             </mat-form-field>
           </div>
-         
           <app-button-panel></app-button-panel>
         </div>
         
-        <div [id]="item.id" *ngIf="item.name === 'textarea'" class="fieldElement" [ngClass]='{isActiveElement: item.isCurrentElement}'>
+        <div 
+          [id]="item.id" 
+          *ngIf="item.name === 'textarea'" 
+          class="fieldElement" 
+          [ngClass]='{isActiveElement: item.isCurrentElement}'>
           <div class="fieldElement__content">
-            <p class="fieldElement__fieldText"
-              [ngStyle]="{'font-size.px': generalStyles.formGeneralFontSize, 'color': generalStyles.formGeneralColor}">{{
+            <p 
+              class="fieldElement__fieldText"
+              [ngStyle]="commonService.generalFontSizeColorFactory(generalStyles)">{{
               item.textareaFieldText }}</p>
-            <mat-form-field class="example-full-width" appearance="fill" [attr.required]="item.selectRequired"
-              [ngStyle]="{'color': item.textareaColor, 'width.px': item.textareaWidth, 'border': item.textareaBorderStyle, 'font-size.px': item.textareaFontSize, 'font-weight': item.textareaFontWeight}">
+            <mat-form-field 
+              class="example-full-width" 
+              appearance="fill" 
+              [attr.required]="item.selectRequired"
+              [ngStyle]="commonService.textareaStylesFactory(item)">
               <mat-label class="fieldElement__label">{{ item.textareaLabel }}</mat-label>
-              <textarea class="fieldElement__input" name="input" matInput placeholder={{item.inputPlaceholder}}
-                [ngStyle]="{'height.px': item.textareaHeight}"></textarea>
+              <textarea 
+                class="fieldElement__input" 
+                name="input" 
+                matInput 
+                placeholder={{item.inputPlaceholder}}
+                [ngStyle]="commonService.textareaHeightFactory(item)"></textarea>
             </mat-form-field>
           </div>
-
           <app-button-panel></app-button-panel>
         </div>
         
-        <div [id]="item.id" *ngIf="item.name === 'select'" class="fieldElement" [ngClass]='{isActiveElement: item.isCurrentElement}'>
+        <div 
+          [id]="item.id" 
+          *ngIf="item.name === 'select'" 
+          class="fieldElement" 
+          [ngClass]='{isActiveElement: item.isCurrentElement}'>
           <div class="fieldElement__content">
-            <p class="fieldElement__fieldText"
-              [ngStyle]="{'font-size.px': generalStyles.formGeneralFontSize, 'color': generalStyles.formGeneralColor}">{{
+            <p 
+              class="fieldElement__fieldText"
+              [ngStyle]="commonService.generalFontSizeColorFactory(generalStyles)">{{
               item.selectFieldText }}</p>
-            <mat-form-field appearance="fill" [attr.required]="item.selectRequired"
-              [ngStyle]="{'width.px': item.selectWidth, 'border': item.selectBorderStyle, 'font-size.px': item.selectFontSize, 'font-weight': item.selectFontWeight}">
-              <mat-label [ngStyle]="{'color': item.selectColor}">{{ item.selectLabel }}</mat-label>
-              <mat-select class="fieldElement__input" name="select"
-                [ngStyle]="{'color': item.selectColor, 'height.px': item.selectHeight}">
-                <mat-option *ngFor="let option of item.selectOptions" [value]="option" [ngStyle]="{'color': item.selectColor}">
+            <mat-form-field 
+              appearance="fill" 
+              [attr.required]="item.selectRequired"
+              [ngStyle]="commonService.selectStylesFactory(item)">
+              <mat-label [ngStyle]="commonService.selectStylesFactory(item)">{{ item.selectLabel }}</mat-label>
+              <mat-select 
+                class="fieldElement__input" 
+                name="select"
+                [ngStyle]="commonService.selectColorHeightFactory(item)">
+                <mat-option 
+                  *ngFor="let option of item.selectOptions" 
+                  [value]="option" 
+                  [ngStyle]="commonService.selectColorFactory(item)">
                   {{ option }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
           </div>
-          
           <app-button-panel></app-button-panel>
         </div>
 
-        <div [id]="item.id" *ngIf="item.name === 'checkbox'" class="fieldElement" [ngClass] = '{isActiveElement: item.isCurrentElement}'>
+        <div 
+          [id]="item.id" 
+          *ngIf="item.name === 'checkbox'" 
+          class="fieldElement" 
+          [ngClass] = '{isActiveElement: item.isCurrentElement}'>
           <div class="fieldElement__content">
-            <p class="fieldElement__fieldText"
-              [ngStyle]="{'font-size.px': generalStyles.formGeneralFontSize, 'color': generalStyles.formGeneralColor}">{{
+            <p 
+              class="fieldElement__fieldText"
+              [ngStyle]="commonService.generalFontSizeColorFactory(generalStyles)">{{
               item.checkboxFieldText }}</p>
-            <mat-checkbox name="checkbox" [attr.required]="item.selectRequired">{{ item.checkboxLabel }}</mat-checkbox>
+            <mat-checkbox 
+              name="checkbox"
+              [ngStyle]="commonService.checkboxStylesFactory(item)" 
+              [attr.required]="item.selectRequired">{{ item.checkboxLabel }}</mat-checkbox>
           </div>
-          
           <app-button-panel></app-button-panel>
         </div>
 
-        <div [id]="item.id" *ngIf="item.name === 'button'" class="fieldElement" [ngClass] = '{isActiveElement: item.isCurrentElement}'>
+        <div 
+          [id]="item.id" 
+          *ngIf="item.name === 'button'" 
+          class="fieldElement" 
+          [ngClass] = '{isActiveElement: item.isCurrentElement}'>
           <div class="fieldElement__content">
-          <button mat-flat-button name="button"
-            [ngStyle]="{'color': item.buttonColor, 'background-color': item.buttonBackgroundColor, 'width.px': item.buttonWidth, 'height.px':item.buttonHeight, 'font-size.px': item.buttonFontSize, 'font-weight': item.buttonFontWeight } ">{{
+          <button 
+            mat-flat-button name="button"
+            [ngStyle]="commonService.buttonStylesFactory(item)">{{
             item.buttonText }}</button>
           </div>
-          
           <app-button-panel></app-button-panel>
         </div>
-
       </div>
   </div>
 
-  <div class="dragDrop__list collectionElements" 
+  <div 
+    class="dragDrop__list collectionElements" 
     cdkDropList [cdkDropListData]="dragElements"
     (cdkDropListDropped)="drop($event)">
-    <div class="dragDrop__box collectionElements__item" 
+    <div 
+      class="dragDrop__box collectionElements__item" 
       *ngFor="let item of dragElements" 
       cdkDrag>
-      <div class="dragDrop__customPlaceholder" *cdkDragPlaceholder></div>
+      <div 
+        class="dragDrop__customPlaceholder" 
+        *cdkDragPlaceholder></div>
       <h2 class="collectionElements__element">{{ item }}</h2>
     </div>
   </div>
