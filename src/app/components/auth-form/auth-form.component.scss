@@ -1,6 +1,6 @@
 @import './../../scss/variables.scss';
 
-.loginForm {
+.authForm {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,9 +16,16 @@
     min-width: 300px;
   }
 
+  &__btnGroup {
+    display: flex;
+  }
+
   &__btn {
     display: block;
     min-width: 100px;
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
   }
 
   .mat-customColor {

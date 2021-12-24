@@ -1,0 +1,56 @@
+<div class="authForm">
+ 
+  <form 
+    [formGroup]="authForm" 
+    novalidate 
+    class="authForm__form">
+    <mat-form-field 
+      appearance="fill" 
+      class="authForm__input">
+      <mat-label>Username</mat-label>
+      <input 
+        matInput 
+        formControlName="username" 
+        placeholder="Username" 
+        name="username" 
+        type="text">
+    </mat-form-field>
+
+    <mat-form-field 
+      appearance="fill" 
+      class="authForm__input">
+      <mat-label>Password</mat-label>
+      <input 
+        matInput 
+        formControlName="password" 
+        placeholder="Password" 
+        name="password" 
+        type="password">
+    </mat-form-field>
+
+    <div class="authForm__btnGroup">
+      
+      <button 
+        type="button" 
+        class="authForm__btn" 
+        aria-label="Button submit" 
+        mat-flat-button 
+        color="customColor"
+        (click)="loginUser()"
+        >
+        Log In
+      </button>
+      
+      <button 
+        type="button" 
+        class="authForm__btn" 
+        aria-label="Button submit" 
+        mat-flat-button 
+        color="customColor"
+        (click)="registerUser()">
+        Sign Up
+      </button>      
+    </div>
+  </form>
+</div>
+

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './routing/app-routing.module';
@@ -8,8 +8,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppTopBarComponent } from './components/app-top-bar/app-top-bar.component';
 import { AuthNavComponent } from './components/app-top-bar/auth-nav/auth-nav.component';
-import { LoginFormComponent } from './components/login-form/login-form.component';
-import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
+import { AuthFormComponent } from './components/auth-form/auth-form.component';
 import { InputComponent } from './shared/input/input.component';
 import { PortalModule } from '@angular/cdk/portal';
 import { StoreModule } from '@ngrx/store';
@@ -41,8 +40,7 @@ import { LocalStorageService } from './services/local-storage.service';
     AppComponent,
     AppTopBarComponent, 
     AuthNavComponent,
-    LoginFormComponent,
-    RegistrationFormComponent,
+    AuthFormComponent,
     InputComponent,
     FormSetupInputComponent,
     FormStylesComponent,
@@ -73,6 +71,7 @@ import { LocalStorageService } from './services/local-storage.service';
   ],
   exports: [],
   providers: [AuthService, CommonService, LocalStorageService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
   

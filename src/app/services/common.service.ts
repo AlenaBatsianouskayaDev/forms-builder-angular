@@ -11,91 +11,27 @@ export class CommonService {
     return this.id = uuid.v4();
   }
 
-  public inputHeightFactory(item: IFormFieldData): IFieldStyles {
-    return ({
-      'height.px': item.inputHeight
-    })
+  public stylesFactory(item: IGeneralStylesData | IFormFieldData, styles: string[]): IFieldStyles {
+    return [...styles]
+      .reduce((acc, style: string): IFieldStyles => {
+        const capitalizedStyle: string = this.capitalizeFirstLetter(style);
+        const styleKey = this.addingPx(style);
+        return (item.name === 'General styles') ?
+          ({ ...acc, [styleKey]: item[`${style}`]}) :
+          ({ ...acc, [styleKey]: item[`${item.name}${capitalizedStyle}`] })
+      }, {})
   }
 
-  public inputStylesFactory(item: IFormFieldData): IFieldStyles {
-    return ({
-      'width.px': item.inputWidth,
-      'border': item.inputBorderStyle,
-      'font-size.px': item.inputFontSize,
-      'font-weight': item.inputFontWeight,
-      'color': item.inputColor,
-    })
-  } 
-
-  public textareaHeightFactory(item: IFormFieldData):IFieldStyles {
-    return ({
-      'height.px': item.textareaHeight
-    })
+  private capitalizeFirstLetter(string: string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  public textareaStylesFactory(item: IFormFieldData): IFieldStyles {
-    return ({
-      'color': item.textareaColor,
-      'width.px': item.textareaWidth,
-      'border': item.textareaBorderStyle,
-      'font-size.px': item.textareaFontSize,
-      'font-weight': item.textareaFontWeight
-    })
-  } 
-
-  public buttonStylesFactory(item: IFormFieldData): IFieldStyles {
-    return ({
-      'width.px': item.buttonWidth,
-      'height.px': item.buttonHeight,
-      'font-size.px': item.buttonFontSize,
-      'font-weight': item.buttonFontWeight,
-      'color': item.buttonColor,
-      'background-color': item.buttonBackgroundColor,
-    }) 
-  }
-
-  public selectColorFactory(item: IFormFieldData): IFieldStyles {
-    return ({
-      'color': item.selectColor,
-    }) 
-  }
-
-  public selectColorHeightFactory(item: IFormFieldData): IFieldStyles {
-    return ({
-      'height.px': item.selectHeight,
-      'color': item.selectColor,
-    }) 
-  }
-
-  public selectStylesFactory(item: IFormFieldData): IFieldStyles {
-    return ({
-      'width.px': item.selectWidth,
-      'border': item.selectBorderStyle,
-      'font-size.px': item.selectFontSize,
-      'font-weight': item.selectFontWeight,
-    }) 
-  }
-
-  public checkboxStylesFactory(item: IFormFieldData): IFieldStyles {
-    return ({
-      'width.px': item.checkboxWidth,
-      'height.px': item.checkboxHeight,
-    }) 
-  }
-
-  public generalStylesFactory(item: IGeneralStylesData): IFieldStyles {
-    return ({
-      'border-color': item.formGeneralBorderColor,
-      'font-weight': item.formGeneralFontWeight,
-      'color': item.formGeneralColor,
-      'background-color': item.formGeneralBcgColor,
-    }) 
-  }
-
-  public generalFontSizeColorFactory(item: IGeneralStylesData): IFieldStyles {
-    return ({
-      'font-size.px': item.formGeneralFontSize,
-      'color': item.formGeneralColor,
-    }) 
+  private addingPx(style: string): string {
+    if (style === 'height' ||
+        style === 'width' ||
+      style === 'fontSize') {
+      return `${style}.px`;
+    }
+    return style;
   }
 }

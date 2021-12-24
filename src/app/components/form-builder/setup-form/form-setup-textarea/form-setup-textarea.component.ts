@@ -53,7 +53,7 @@ export class FormSetupTextareaComponent implements OnInit {
       textareaWidth: [this.initialSetup.textareaWidth],
       textareaHeight: [this.initialSetup.textareaHeight],
       textareaRequired: [this.initialSetup.textareaRequired],
-      textareaBorderStyle: [this.initialSetup.textareaBorderStyle],
+      textareaBorder: [this.initialSetup.textareaBorder],
       textareaFontSize: [this.initialSetup.textareaFontSize],
       textareaFontWeight: [this.initialSetup.textareaFontWeight],
       textareaColor: [this.initialSetup.textareaColor],

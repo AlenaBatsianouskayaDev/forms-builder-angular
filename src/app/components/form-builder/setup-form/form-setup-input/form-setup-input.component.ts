@@ -54,7 +54,7 @@ export class FormSetupInputComponent implements OnInit {
       inputWidth: [this.initialSetup.inputWidth],
       inputHeight: [this.initialSetup.inputHeight],
       inputRequired: [this.initialSetup.inputRequired],
-      inputBorderStyle: [this.initialSetup.inputBorderStyle],
+      inputBorder: [this.initialSetup.inputBorder],
       inputFontSize: [this.initialSetup.inputFontSize],
       inputFontWeight: [this.initialSetup.inputFontWeight],
       inputColor: [this.initialSetup.inputColor],

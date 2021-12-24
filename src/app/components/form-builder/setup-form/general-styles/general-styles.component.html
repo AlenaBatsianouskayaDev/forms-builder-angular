@@ -4,7 +4,7 @@
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Form Title</mat-label>
-          <input matInput type="text" placeholder="Enter your text" formControlName="formTitle">
+          <input matInput type="text" placeholder="Enter your text" formControlName="title">
         </mat-form-field>
       </div>
     </mat-grid-tile>
@@ -13,7 +13,7 @@
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Font size</mat-label>
-          <input matInput type="text" placeholder="Enter a number" formControlName="formGeneralFontSize" />
+          <input matInput type="text" placeholder="Enter a number" formControlName="fontSize" />
         </mat-form-field>
       </div>
     </mat-grid-tile>
@@ -22,7 +22,7 @@
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Font weight</mat-label>
-          <mat-select formControlName="formGeneralFontWeight">
+          <mat-select formControlName="fontWeight">
             <mat-option *ngFor="let item of fontWeight()" [value]="item">
               {{item}}
             </mat-option>
@@ -34,21 +34,21 @@
     <mat-grid-tile>
       <div class="formElementsStyles__item colorInput">
         <label class="formElementsStyles__label" for="fontColor"> Font color</label>
-        <input class="colorInput__input" type="color" formControlName="formGeneralColor" id="fontColor">
+        <input class="colorInput__input" type="color" formControlName="color" id="fontColor">
       </div>
     </mat-grid-tile>
 
     <mat-grid-tile>
       <div class="formElementsStyles__item colorInput">
         <label class="formElementsStyles__label" for="bcgColor"> Background color</label>
-        <input class="colorInput__input" type="color" formControlName="formGeneralBcgColor" id="bcgColor">
+        <input class="colorInput__input" type="color" formControlName="backgroundColor" id="bcgColor">
       </div>
     </mat-grid-tile>
 
     <mat-grid-tile>
       <div class="formElementsStyles__item colorInput">
         <label class="formElementsStyles__label" for="borderColor"> Border color</label>
-        <input class="colorInput__input" type="color" formControlName="formGeneralBorderColor" id="borderColor">
+        <input class="colorInput__input" type="color" formControlName="borderColor" id="borderColor">
       </div>
     </mat-grid-tile>
   </mat-grid-list>

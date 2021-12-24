@@ -52,7 +52,7 @@ export class FormSetupSelectComponent implements OnInit {
       selectWidth: [this.initialSetup.selectWidth],
       selectHeight: [this.initialSetup.selectHeight],
       selectRequired: [this.initialSetup.selectRequired],
-      selectBorderStyle: [this.initialSetup.selectBorderStyle],
+      selectBorder: [this.initialSetup.selectBorder],
       selectFontSize: [this.initialSetup. selectFontSize],
       selectFontWeight: [this.initialSetup.selectFontWeight],
       selectColor: [this.initialSetup.selectColor],

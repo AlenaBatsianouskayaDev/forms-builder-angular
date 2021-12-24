@@ -10,8 +10,8 @@
     (cdkDropListDropped)="drop($event)" 
     (click)=deleteElement($event) 
     (click)=setActiveElement($event) 
-    [ngStyle]="commonService.generalStylesFactory(generalStyles)">
-      <h1 class="dragDrop__header">{{ generalStyles.formTitle }}</h1>
+    [ngStyle]="commonService.stylesFactory(generalStyles, formGeneralStyles)">
+      <h1 class="dragDrop__header">{{ generalStyles.title }}</h1>
 
       <div 
         class="dragDrop__box" 
@@ -29,20 +29,20 @@
           <div class="fieldElement__content">
             <p 
               class="fieldElement__fieldText"
-              [ngStyle]="commonService.generalFontSizeColorFactory(generalStyles)">{{
-              item.inputFieldText }}</p>
+              [ngStyle]="commonService.stylesFactory(generalStyles, titleGeneralStyles)">
+              {{item.inputFieldText }}</p>
             <mat-form-field 
               class="example-full-width" 
               appearance="fill" 
               [attr.required]="item.selectRequired"
-              [ngStyle]="commonService.inputStylesFactory(item)">
-              <mat-label class="fieldElement__label">{{ item.inputLabel }}</mat-label>
+              [ngStyle]="commonService.stylesFactory(item, formFieldStyles)">
+              <mat-label [ngStyle]="commonService.stylesFactory(item, matLabelStyles)" class="fieldElement__label">{{ item.inputLabel }}</mat-label>
               <input 
                 class="fieldElement__input" 
                 name="input" 
                 matInput 
                 placeholder={{item.inputPlaceholder}}
-                [ngStyle]="commonService.inputHeightFactory(item)">
+                [ngStyle]="commonService.stylesFactory(item, inputStyles)">
             </mat-form-field>
           </div>
           <app-button-panel></app-button-panel>
@@ -56,20 +56,20 @@
           <div class="fieldElement__content">
             <p 
               class="fieldElement__fieldText"
-              [ngStyle]="commonService.generalFontSizeColorFactory(generalStyles)">{{
-              item.textareaFieldText }}</p>
+              [ngStyle]="commonService.stylesFactory(generalStyles, titleGeneralStyles)">
+              {{item.textareaFieldText }}</p>
             <mat-form-field 
               class="example-full-width" 
               appearance="fill" 
               [attr.required]="item.selectRequired"
-              [ngStyle]="commonService.textareaStylesFactory(item)">
-              <mat-label class="fieldElement__label">{{ item.textareaLabel }}</mat-label>
+              [ngStyle]="commonService.stylesFactory(item, formFieldStyles)">
+              <mat-label [ngStyle]="commonService.stylesFactory(item, matLabelStyles)" class="fieldElement__label">{{ item.textareaLabel }}</mat-label>
               <textarea 
                 class="fieldElement__input" 
                 name="input" 
                 matInput 
                 placeholder={{item.inputPlaceholder}}
-                [ngStyle]="commonService.textareaHeightFactory(item)"></textarea>
+                [ngStyle]="commonService.stylesFactory(item, textareaStyles)"></textarea>
             </mat-form-field>
           </div>
           <app-button-panel></app-button-panel>
@@ -83,21 +83,21 @@
           <div class="fieldElement__content">
             <p 
               class="fieldElement__fieldText"
-              [ngStyle]="commonService.generalFontSizeColorFactory(generalStyles)">{{
-              item.selectFieldText }}</p>
+              [ngStyle]="commonService.stylesFactory(generalStyles, titleGeneralStyles)">
+              {{item.selectFieldText }}</p>
             <mat-form-field 
               appearance="fill" 
               [attr.required]="item.selectRequired"
-              [ngStyle]="commonService.selectStylesFactory(item)">
-              <mat-label [ngStyle]="commonService.selectStylesFactory(item)">{{ item.selectLabel }}</mat-label>
+              [ngStyle]="commonService.stylesFactory(item, formFieldStyles)">
+              <mat-label [ngStyle]="commonService.stylesFactory(item, matLabelStyles)">{{ item.selectLabel }}</mat-label>
               <mat-select 
                 class="fieldElement__input" 
                 name="select"
-                [ngStyle]="commonService.selectColorHeightFactory(item)">
+                [ngStyle]="commonService.stylesFactory(item, matSelectStyles)">
                 <mat-option 
                   *ngFor="let option of item.selectOptions" 
                   [value]="option" 
-                  [ngStyle]="commonService.selectColorFactory(item)">
+                  [ngStyle]="commonService.stylesFactory(item, matOptionStyles)">
                   {{ option }}
                 </mat-option>
               </mat-select>
@@ -114,11 +114,11 @@
           <div class="fieldElement__content">
             <p 
               class="fieldElement__fieldText"
-              [ngStyle]="commonService.generalFontSizeColorFactory(generalStyles)">{{
-              item.checkboxFieldText }}</p>
+              [ngStyle]="commonService.stylesFactory(generalStyles, titleGeneralStyles)">
+              {{item.checkboxFieldText }}</p>
             <mat-checkbox 
               name="checkbox"
-              [ngStyle]="commonService.checkboxStylesFactory(item)" 
+              [ngStyle]="commonService.stylesFactory(item, checkboxStyles)" 
               [attr.required]="item.selectRequired">{{ item.checkboxLabel }}</mat-checkbox>
           </div>
           <app-button-panel></app-button-panel>
@@ -132,7 +132,7 @@
           <div class="fieldElement__content">
           <button 
             mat-flat-button name="button"
-            [ngStyle]="commonService.buttonStylesFactory(item)">{{
+            [ngStyle]="commonService.stylesFactory(item, buttonStyles)">{{
             item.buttonText }}</button>
           </div>
           <app-button-panel></app-button-panel>

@@ -43,12 +43,12 @@ export class GeneralStylesComponent implements OnInit {
       })
     
     this.formGeneralStyles = this.fb.group({
-      formTitle: [this.initialSetup.formTitle],
-      formGeneralFontSize: [this.initialSetup.formGeneralFontSize],
-      formGeneralFontWeight: [this.initialSetup.formGeneralFontWeight],
-      formGeneralColor: [this.initialSetup.formGeneralColor],
-      formGeneralBcgColor: [this.initialSetup.formGeneralBcgColor],
-      formGeneralBorderColor: [this.initialSetup.formGeneralBorderColor],
+      title: [this.initialSetup.title],
+      fontSize: [this.initialSetup.fontSize],
+      fontWeight: [this.initialSetup.fontWeight],
+      color: [this.initialSetup.color],
+      backgroundColor: [this.initialSetup.backgroundColor],
+      borderColor: [this.initialSetup.borderColor],
     })
 
     this.formGeneralStyles.valueChanges

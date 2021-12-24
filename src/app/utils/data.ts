@@ -14,7 +14,7 @@ export const INITIAL_STYLES = {
   inputWidth: '200',
   inputHeight: '20',
   inputRequired: '',
-  inputBorderStyle: 'insent',
+  inputBorder: 'insent',
   inputFontSize: '14',
   inputFontWeight: 'normal',
   inputColor: COLORS.fontColor,
@@ -33,7 +33,7 @@ export const INITIAL_STYLES = {
   textareaWidth: '200',
   textareaHeight: '30',
   textareaRequired: '',
-  textareaBorderStyle: 'insent',
+  textareaBorder: 'insent',
   textareaFontSize: '14',
   textareaFontWeight: 'normal',
   textareaColor: COLORS.fontColor,
@@ -43,7 +43,7 @@ export const INITIAL_STYLES = {
   selectWidth: '250',
   selectHeight: '20',
   selectRequired: '',
-  selectBorderStyle: 'insent',
+  selectBorder: 'insent',
   selectFontSize: '14',
   selectFontWeight: 'normal',
   selectColor: COLORS.fontColor,
@@ -55,12 +55,22 @@ export const INITIAL_STYLES = {
 }
 
 export const INITIAL_GENERAL_STYLES = {
-  formTitle: 'Form Title',
-  formGeneralFontSize: '14',
-  formGeneralFontWeight: 'normal',
-  formGeneralColor: COLORS.fontColor,
-  formGeneralBcgColor: COLORS.whiteColor,
-  formGeneralBorderColor: COLORS.greyColor,
+  name: 'General styles',
+  title: 'Form Title',
+  fontSize: '14',
+  fontWeight: 'normal',
+  color: COLORS.fontColor,
+  backgroundColor: COLORS.whiteColor,
+  borderColor: COLORS.greyColor,
 }
 
-
+export const MAT_FORM_FIELD_STYLES = ['width', 'border', 'fontSize', 'fontWeight', 'color'];
+export const INPUT_STYLES = ['height'];
+export const TEXTAREA_STYLES = ['height'];
+export const BUTTON_STYLES = ['width', 'height', 'fontSize', 'fontWeight', 'color', 'backgroundColor'];
+export const MAT_LABEL_STYLES = ['color'];
+export const MAT_SELECT_STYLES = ['height'];
+export const MAT_OPTION_STYLES = ['color', 'fontSize'];
+export const CHECKBOX_STYLES = ['width', 'height'];
+export const FORM_GENERAL_STYLES = ['fontSize', 'color', 'backgroundColor', 'borderColor'];
+export const TITLE_GENERAL_STYLES = ['fontSize', 'fontWeight', 'color'];

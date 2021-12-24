@@ -44,7 +44,7 @@ export interface IFormFieldData {
   inputWidth?: string,
   inputHeight?: string,
   inputRequired?: string,
-  inputBorderStyle?: string,
+  inputBorder?: string,
   inputFontSize?: string,
   inputFontWeight?: string,
   inputColor?: string,
@@ -63,7 +63,7 @@ export interface IFormFieldData {
   textareaWidth?: string,
   textareaHeight?: string,
   textareaRequired?: string,
-  textareaBorderStyle?: string,
+  textareaBorder?: string,
   textareaFontSize?: string,
   textareaFontWeight?: string,
   textareaColor?: string,
@@ -73,7 +73,7 @@ export interface IFormFieldData {
   selectWidth?: string,
   selectHeight?: string,
   selectRequired?: string,
-  selectBorderStyle?: string,
+  selectBorder?: string,
   selectFontSize?: string,
   selectFontWeight?: string,
   selectColor?: string,
@@ -81,18 +81,19 @@ export interface IFormFieldData {
   
   checkboxFieldText?: string,
   checkboxLabel?: string,
-  checkboxWidth?: string,
-  checkboxHeight?: string,
   checkboxRequired?: string,
+  [propName: string]: string | string[] | boolean | undefined,
 }
 
 export interface IGeneralStylesData {
-  formTitle?: string,
-  formGeneralFontSize?: string,
-  formGeneralFontWeight?: string,
-  formGeneralColor?: string,
-  formGeneralBcgColor?: string,
-  formGeneralBorderColor?: string,
+  name?: string,
+  title?: string,
+  fontSize?: string,
+  fontWeight?: string,
+  color?: string,
+  backgroundColor?: string,
+  borderColor?: string,
+  [propName: string]: string | undefined,
 }
 
 export interface IFormFieldName {

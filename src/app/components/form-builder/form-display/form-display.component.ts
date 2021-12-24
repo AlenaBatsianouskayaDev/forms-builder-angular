@@ -5,7 +5,7 @@ import { Store, select } from '@ngrx/store';
 import { takeUntil } from 'rxjs/operators';
 
 import { IFormFieldData, IGeneralStylesData } from '../../../reducers/reducers.interfaces';
-import {  COLORS } from '../../../utils/data';
+import * as DATA from '../../../utils/data';
 import * as formBuilderActions from 'src/app/reducers/formBuilder/formBuilder.actions';
 import { getFormElement, getCurrentElementId, getGeneralStyles } from 'src/app/reducers/formBuilder/formBuilder.selectors';
 import { FieldElements } from 'src/app/utils/enums';
@@ -19,7 +19,18 @@ import { CommonService } from 'src/app/services/common.service';
 
 export class FormDisplayComponent implements OnInit {
 
-  public colors = COLORS;
+  public colors = DATA.COLORS;
+  public formFieldStyles = DATA.MAT_FORM_FIELD_STYLES;
+  public inputStyles = DATA.INPUT_STYLES;
+  public textareaStyles = DATA.TEXTAREA_STYLES;
+  public matLabelStyles = DATA.MAT_LABEL_STYLES;
+  public matSelectStyles = DATA.MAT_SELECT_STYLES;
+  public matOptionStyles = DATA.MAT_OPTION_STYLES;
+  public checkboxStyles = DATA.CHECKBOX_STYLES;
+  public buttonStyles = DATA.BUTTON_STYLES;
+  public formGeneralStyles = DATA.FORM_GENERAL_STYLES;
+  public titleGeneralStyles = DATA.TITLE_GENERAL_STYLES;
+
   public droppedElements: IFormFieldData[] = [];
   public shownElements$: Observable<IFormFieldData[]>;
   public generalStyles$: Observable<IGeneralStylesData>;
