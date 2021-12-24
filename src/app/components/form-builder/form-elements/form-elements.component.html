@@ -1,0 +1,9 @@
+<div class="dragDrop__list collectionElements"> 
+  <div 
+    cdkDrag
+    *ngFor="let item of elementsList"
+    class="dragDrop__box collectionElements__item">
+    <div class="dragDrop__customPlaceholder" *cdkDragPlaceholder></div>
+    <h2 class="collectionElements__element">{{ item }}</h2>
+  </div>
+</div>

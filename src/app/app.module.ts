@@ -34,6 +34,7 @@ import { FormBuilderEffects } from './reducers/formBuilder/formBuilder.effects';
 import { FormBuilderComponent } from './components/form-builder/form-builder.component';
 import { ButtonPanelComponent } from './shared/button-panel/button-panel.component';
 import { LocalStorageService } from './services/local-storage.service';
+import { FormElementsComponent } from './components/form-builder/form-elements/form-elements.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { LocalStorageService } from './services/local-storage.service';
     GeneralStylesComponent,
     FormBuilderComponent,
     ButtonPanelComponent,
+    FormElementsComponent,
   ],
   imports: [
     FormsModule,

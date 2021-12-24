@@ -1,4 +1,24 @@
-<div class="formBuilder">
+<div class="formBuilder" >
   <app-form-styles class="formBuilder__item"></app-form-styles>
-  <app-form-display class="formBuilder__item"></app-form-display>
+  
+  <app-form-display 
+    cdkDropList
+    id='droppedElements'
+    [cdkDropListData]="droppedElements"
+    cdkDropListConnectedTo="dragElements"    
+    (cdkDropListDropped)="drop($event)"
+    class="formBuilder__item"
+    (click)=deleteElement($event) 
+    (click)=setActiveElement($event) >
+  </app-form-display>
+  
+  <app-form-elements 
+    cdkDropList
+    id='dragElements'
+    [cdkDropListData]="dragElements"
+    cdkDropListConnectedTo="droppedElements"    
+    (cdkDropListDropped)="drop($event)"
+    class="formBuilder__item"
+    [elementsList]=dragElements>
+  </app-form-elements>
 </div>

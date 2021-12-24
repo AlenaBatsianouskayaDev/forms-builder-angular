@@ -1,15 +1,9 @@
 <div 
-  cdkDropListGroup 
-  class="dragDrop__container" 
-  *ngrxLet="generalStyles$ as generalStyles">
+  *ngrxLet="generalStyles$ as generalStyles"
+  class="dragDrop__container">
   <div 
-    cdkDropList 
     *ngrxLet="shownElements$ as shownElements"
-    [cdkDropListData]="droppedElements" 
     class="dragDrop__list"
-    (cdkDropListDropped)="drop($event)" 
-    (click)=deleteElement($event) 
-    (click)=setActiveElement($event) 
     [ngStyle]="commonService.stylesFactory(generalStyles, formGeneralStyles)">
       <h1 class="dragDrop__header">{{ generalStyles.title }}</h1>
 
@@ -140,18 +134,5 @@
       </div>
   </div>
 
-  <div 
-    class="dragDrop__list collectionElements" 
-    cdkDropList [cdkDropListData]="dragElements"
-    (cdkDropListDropped)="drop($event)">
-    <div 
-      class="dragDrop__box collectionElements__item" 
-      *ngFor="let item of dragElements" 
-      cdkDrag>
-      <div 
-        class="dragDrop__customPlaceholder" 
-        *cdkDragPlaceholder></div>
-      <h2 class="collectionElements__element">{{ item }}</h2>
-    </div>
-  </div>
+  
 </div>
