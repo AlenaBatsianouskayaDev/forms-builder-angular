@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'registration', component: AuthFormComponent },
   { path: '**', redirectTo: "/login"},
   { path: '', redirectTo: "/login", pathMatch: 'full' },
-  
+  //TODO page not found
 ]
 
 @NgModule({

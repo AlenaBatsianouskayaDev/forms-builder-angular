@@ -51,7 +51,7 @@ import { LocalStorageService } from './services/local-storage.service';
     FormSetupCheckboxComponent,
     GeneralStylesComponent,
     FormBuilderComponent,
-    ButtonPanelComponent
+    ButtonPanelComponent,
   ],
   imports: [
     FormsModule,

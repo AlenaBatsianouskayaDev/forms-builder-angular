@@ -3,12 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from "@ngrx/store";
 import { registerRequest } from '../../reducers/auth/auth.actions';
 import { loginRequest } from 'src/app/reducers/auth/auth.actions';
-// import { ActivatedRoute, Event, Router } from '@angular/router';
-// import { Observable, of } from 'rxjs';
-// import { filter } from 'rxjs/operators';
-// import { HttpClient } from '@angular/common/http';
-// import { NavigationEnd } from '@angular/router';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth-form',
@@ -24,20 +19,13 @@ export class AuthFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private store$: Store,
-    // private http: HttpClient,
-    // private route: ActivatedRoute,
-    // private router: Router
+    private router: Router
   ) {
   }
 
   ngOnInit(): void {
-    // this.router.events
-    //   .pipe(filter(e => e instanceof NavigationEnd))
-    //   .subscribe((e: any) => {
-    //     this.currentUrl = e.url;   
-    //     console.log(this.currentUrl)
-//  });
-
+    this.currentUrl = this.router.url;
+        
     this.authForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(5)]],
