@@ -35,6 +35,7 @@ import { FormBuilderComponent } from './components/form-builder/form-builder.com
 import { ButtonPanelComponent } from './shared/button-panel/button-panel.component';
 import { LocalStorageService } from './services/local-storage.service';
 import { FormElementsComponent } from './components/form-builder/form-elements/form-elements.component';
+import { FormSetupBaseClassComponent } from './shared/form-setup-common-class/form-setup-common-class.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { FormElementsComponent } from './components/form-builder/form-elements/f
     FormBuilderComponent,
     ButtonPanelComponent,
     FormElementsComponent,
+    FormSetupBaseClassComponent,
   ],
   imports: [
     FormsModule,
