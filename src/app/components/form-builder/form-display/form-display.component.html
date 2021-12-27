@@ -1,6 +1,7 @@
 <div 
   *ngrxLet="generalStyles$ as generalStyles"
-  class="dragDrop__container">
+  class="dragDrop__container"
+  (click)=deleteElement($event) (click)=setActiveElement($event)>
   <div 
     *ngrxLet="shownElements$ as shownElements"
     class="dragDrop__list"

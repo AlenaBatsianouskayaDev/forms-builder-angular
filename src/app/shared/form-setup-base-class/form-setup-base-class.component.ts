@@ -10,9 +10,9 @@ import { IFormFieldData } from 'src/app/reducers/reducers.interfaces';
 import { INITIAL_STYLES } from 'src/app/utils/data';
 
 @Component({
-  selector: 'app-form-setup-common-class',
-  templateUrl: './form-setup-common-class.component.html',
-  styleUrls: ['./form-setup-common-class.component.scss']
+  selector: 'app-form-setup-base-class',
+  templateUrl: './form-setup-base-class.component.html',
+  styleUrls: ['./form-setup-base-class.component.scss']
 })
   
 export class FormSetupBaseClassComponent implements OnInit {

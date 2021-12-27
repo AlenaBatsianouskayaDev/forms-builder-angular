@@ -32,12 +32,7 @@ export class FormBuilderComponent implements AfterViewInit{
   }
   public dragElements: string[] = this.getDragElements();
   public droppedElements: IFormFieldData[] = [];
-  private prevCurrentElementId: string | undefined;
-  private currentElementId: string;
-  private toDeleteElementId: string;
-  private btnDeleteElAttr: string = '[name="btnDelete"]';
-  private btnEditElAttr: string = '[name="btnEdit"]';
-  private queryIdElAttr: string = '.fieldElement';
+
   public stylesPortal: TemplatePortal;
   public displayPortal: TemplatePortal;
   public elementsPortal: TemplatePortal;
@@ -75,24 +70,5 @@ export class FormBuilderComponent implements AfterViewInit{
       }     
   }
   
-  public deleteElement (event: Event): void {
-    if (!(event.target as Element).closest(this.btnDeleteElAttr)) {
-      return;
-    }
-      this.toDeleteElementId = (event.target as Element).closest(this.queryIdElAttr)!.id; 
-      this.store$.dispatch(formBuilderActions.deleteFormField({ id: this.toDeleteElementId }));
-  }
   
-  public setActiveElement(event: Event): void {
-    if (!(event.target as Element).closest(this.btnEditElAttr)) {
-      return;
-    }
-    this.currentElementId = (event.target as Element).closest(this.queryIdElAttr)!.id;
-    if (this.prevCurrentElementId !== this.currentElementId) {
-      this.store$.dispatch(
-        formBuilderActions.setCurrentField({ id: this.currentElementId })
-      );
-    }
-  }
-
  }

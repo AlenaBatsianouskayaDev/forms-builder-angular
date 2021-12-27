@@ -40,7 +40,7 @@ export const INITIAL_STYLES = {
  
   selectFieldText: 'Field text',
   selectLabel: 'Field label',
-  selectWidth: '250',
+  selectWidth: '220',
   selectHeight: '20',
   selectRequired: '',
   selectBorder: 'insent',
