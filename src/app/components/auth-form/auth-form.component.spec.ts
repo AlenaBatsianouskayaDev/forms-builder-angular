@@ -6,8 +6,9 @@ import { StoreModule } from '@ngrx/store';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 
-fdescribe('AuthFormComponent', () => {
+describe('AuthFormComponent', () => {
   let component: AuthFormComponent;
   let fixture: ComponentFixture<AuthFormComponent>;
   let controlU: AbstractControl | null;
@@ -20,7 +21,9 @@ fdescribe('AuthFormComponent', () => {
         MatFormFieldModule,
         MatInputModule,
         BrowserAnimationsModule,
-        StoreModule.forRoot({}),],
+        RouterTestingModule,
+        StoreModule.forRoot({}),
+        ],
       declarations: [AuthFormComponent]
     })
       .compileComponents();
@@ -29,7 +32,6 @@ fdescribe('AuthFormComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AuthFormComponent);
     component = fixture.componentInstance;
-    
     fixture.detectChanges();
     controlU = component.authForm.get('username')
     controlP = component.authForm.get('password')

@@ -12,7 +12,8 @@
 
 <ng-template #displayPortalContent>
   <app-form-display 
-    cdkDropList id='droppedElements' 
+    cdkDropList 
+    id='droppedElements' 
     [cdkDropListData]="droppedElements"
     cdkDropListConnectedTo="dragElements" 
     (cdkDropListDropped)="drop($event)" 
@@ -22,7 +23,8 @@
 
 <ng-template #elementsPortalContent>
   <app-form-elements 
-    cdkDropList id='dragElements' 
+    cdkDropList 
+    id='dragElements' 
     [cdkDropListData]="dragElements"
     cdkDropListConnectedTo="droppedElements" 
     (cdkDropListDropped)="drop($event)" 

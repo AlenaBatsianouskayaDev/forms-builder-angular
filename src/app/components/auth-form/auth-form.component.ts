@@ -37,8 +37,8 @@ export class AuthFormComponent implements OnInit {
       this.authForm.value
     ))
   }
-
-   public loginUser(): void {
+   
+  public loginUser(): void {
     this.store$.dispatch(loginRequest(
       this.authForm.value
     ));
