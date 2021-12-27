@@ -2,24 +2,20 @@
 
 .dragDrop {
   &__container {
-    margin: 0 25px 25px 0;
-    display: flex;
-    vertical-align: top;
-    justify-content: space-around;
+    // margin: 0 25px 25px 0;
+    // display: flex;
+    // vertical-align: top;
+    // justify-content: space-around;
   }
 
   &__list {
-    width: 400px;
+    width: 380px;
     border: solid 1px $greyColor;
     min-height: 60px;
     display: block;
     background: $whiteColor;
     border-radius: 4px;
     overflow: hidden;
-
-    &:not(:last-child) {
-      margin-right: 20px;
-    }
   }
 
   &__header {

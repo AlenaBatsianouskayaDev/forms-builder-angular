@@ -1,6 +1,13 @@
-import { Component } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  TemplateRef,
+  ViewChild,
+  ViewContainerRef} from '@angular/core';
 import { CdkDragDrop, moveItemInArray, copyArrayItem } from '@angular/cdk/drag-drop';
 import { Store } from '@ngrx/store';
+import { TemplatePortal, CdkPortalOutlet } from '@angular/cdk/portal';
 
 import { IFormFieldData } from '../../reducers/reducers.interfaces';
 import * as formBuilderActions from 'src/app/reducers/formBuilder/formBuilder.actions';
@@ -13,7 +20,11 @@ import { CommonService } from 'src/app/services/common.service';
   styleUrls: ['./form-builder.component.scss']
 })
   
-export class FormBuilderComponent {
+export class FormBuilderComponent implements AfterViewInit{
+
+  @ViewChild('stylesPortalContent') stylesPortalContent: TemplateRef<unknown>;
+  @ViewChild('displayPortalContent') displayPortalContent: TemplateRef<unknown>;
+  @ViewChild('elementsPortalContent') elementsPortalContent: TemplateRef<unknown>;
 
   private getDragElements(): string[] {
     const keys = Object.keys(FieldElements);
@@ -27,11 +38,21 @@ export class FormBuilderComponent {
   private btnDeleteElAttr: string = '[name="btnDelete"]';
   private btnEditElAttr: string = '[name="btnEdit"]';
   private queryIdElAttr: string = '.fieldElement';
+  public stylesPortal: TemplatePortal;
+  public displayPortal: TemplatePortal;
+  public elementsPortal: TemplatePortal;
 
-   constructor(
+  constructor(
     private readonly store$: Store,
-    public commonService: CommonService
-   ) { }
+    public commonService: CommonService,
+    private _viewContainerRef: ViewContainerRef,
+  ) { }
+
+  ngAfterViewInit() {
+    this.stylesPortal = new TemplatePortal(this.stylesPortalContent, this._viewContainerRef);
+    this.displayPortal = new TemplatePortal(this.displayPortalContent, this._viewContainerRef);
+    this.elementsPortal = new TemplatePortal(this.elementsPortalContent, this._viewContainerRef);
+  }
   
   public drop(event: CdkDragDrop<any>): void {
     if (event.previousContainer === event.container) {
