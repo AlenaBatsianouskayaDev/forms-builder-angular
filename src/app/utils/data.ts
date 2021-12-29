@@ -74,3 +74,4 @@ export const MAT_OPTION_STYLES = ['color', 'fontSize'];
 export const CHECKBOX_STYLES = ['width', 'height'];
 export const FORM_GENERAL_STYLES = ['fontSize', 'color', 'backgroundColor', 'borderColor'];
 export const TITLE_GENERAL_STYLES = ['fontSize', 'fontWeight', 'color'];
+

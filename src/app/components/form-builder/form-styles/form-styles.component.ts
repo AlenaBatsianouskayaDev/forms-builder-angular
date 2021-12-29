@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
 import { getCurrentElementName } from '../../../reducers/formBuilder/formBuilder.selectors';
-import { StylesSections } from 'src/app/utils/enums';
+import { AccordionControls } from 'src/app/utils/enums';
 
 @Component({
   selector: 'app-form-styles',
@@ -15,42 +15,12 @@ import { StylesSections } from 'src/app/utils/enums';
 export class FormStylesComponent implements OnInit{
      
   public currentElement$: Observable<string | undefined>;
-  private destroy$: Subject<void> = new Subject();
-  public index = 0;
-  public isOpenGeneralSection: boolean = true;
-  public isOpenElementSection: boolean = false;
-  set generalSection(value: boolean) {
-    this.isOpenGeneralSection = value
-  }
-  set elementsSection(value: boolean) {
-    this.isOpenElementSection = value
-  }
-  public accordionSections(): string[] {
-    const keys = Object.keys(StylesSections);
-    return keys.slice(keys.length / 2);
-  }
+  
+  public accordionControls = AccordionControls;
 
   constructor(private store: Store) { }
 
   ngOnInit(): void {
-    
-    this.currentElement$ = this.store
-      .pipe(
-        select(getCurrentElementName),
-        tap(res => {
-          this.generalSection = !res;
-          this.elementsSection = !!res;
-        }),
-        takeUntil(this.destroy$))
+    this.currentElement$ = this.store.select(getCurrentElementName)
   };
-
-  public onToggle(event: Event): void {
-    this.generalSection = !this.generalSection;
-    this.elementsSection = !!this.elementsSection;
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
 }

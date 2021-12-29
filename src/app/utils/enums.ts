@@ -25,3 +25,14 @@ export enum StylesSections {
   'General Styles',
   'Field Styles',
 }
+
+export const AccordionControls = [
+  {
+    name: 'General styles',
+    isExpanded: true
+  },
+  {
+    name: 'Elements styles',
+    isExpanded: false
+  },
+]
