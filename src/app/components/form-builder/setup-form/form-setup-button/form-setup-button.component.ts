@@ -19,5 +19,7 @@ export class FormSetupButtonComponent extends FormSetupBaseClassComponent {
 
   constructor(
     fb: FormBuilder, store$: Store
-  ) { super(fb, store$) }
+  ) { 
+    super(fb, store$) 
+  }
 }

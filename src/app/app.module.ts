@@ -65,16 +65,27 @@ import { FormSetupBaseClassComponent } from './shared/form-setup-base-class/form
     MaterialModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    StoreModule.forRoot(appReducers, {
-      metaReducers
-    }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreModule.forRoot(
+      appReducers, {
+        metaReducers
+      }),
+    StoreDevtoolsModule.instrument({ 
+      maxAge: 25, 
+      logOnly: environment.production
+      }),
     EffectsModule.forRoot([AuthEffects, FormBuilderEffects]),
     PortalModule,
     ReactiveComponentModule
   ],
   exports: [],
-  providers: [AuthService, CommonService, LocalStorageService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}],
+  providers: [
+    AuthService, 
+    CommonService, 
+    LocalStorageService, 
+    AuthGuard, 
+    {provide: HTTP_INTERCEPTORS, 
+      useClass: TokenInterceptorService, 
+      multi: true}],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
 })
