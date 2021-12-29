@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Store } from "@ngrx/store";
 
-import { FormSetupBaseClassComponent } from 'src/app/shared/form-setup-base-class/form-setup-base-class.component';
+import { FormSetupBaseClass } from 'src/app/shared/form-setup-base-class/form-setup-base-class.class';
 import { FontWeight, BorderStyles } from 'src/app/utils/enums'
 
 @Component({
@@ -11,7 +11,7 @@ import { FontWeight, BorderStyles } from 'src/app/utils/enums'
   styleUrls: ['./form-setup-input.component.scss']
 })
   
-export class FormSetupInputComponent extends FormSetupBaseClassComponent {
+export class FormSetupInputComponent extends FormSetupBaseClass {
 
   public fontWeight(): string[] {
     const keys = Object.keys(FontWeight);

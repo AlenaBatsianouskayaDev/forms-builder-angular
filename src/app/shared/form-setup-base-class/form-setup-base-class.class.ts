@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store, select } from "@ngrx/store";
 import { Subject } from 'rxjs';
@@ -10,11 +10,8 @@ import { IFormFieldData } from 'src/app/reducers/reducers.interfaces';
 import { INITIAL_STYLES } from 'src/app/utils/data';
 import { UnsubscriberBaseClass } from './../unsubscriber-base-class/unsubscriber-base-class.class';
 
-@Component ({
-  template: ''
-})
-
-export class FormSetupBaseClassComponent extends UnsubscriberBaseClass implements OnInit {
+@Injectable()
+export abstract class FormSetupBaseClass extends UnsubscriberBaseClass implements OnInit {
 
   public formElementsStyles: FormGroup;
   public initialSetup: IFormFieldData;
