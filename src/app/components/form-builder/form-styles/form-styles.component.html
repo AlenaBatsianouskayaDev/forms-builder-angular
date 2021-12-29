@@ -1,7 +1,7 @@
 <div class="formStyles">
   <cdk-accordion class="accordion" [multi]="false">
     <cdk-accordion-item 
-      *ngFor='let accordionSection of accordionControls; let index = index'
+      *ngFor='let item of accordionItems(); let index = index'
       #accordionItem="cdkAccordionItem" 
       class="accordion__item" 
       role="button" 
@@ -9,9 +9,9 @@
       [attr.id]="'accordion-header-' + index" 
       [attr.aria-expanded]= "accordionItem.expanded"
       [attr.aria-controls]="'accordion-body-' + index"
-      [expanded]='accordionSection.isExpanded'>
+      [(expanded)]='item === "General styles" ? initialExpandedGeneralItem : initialExpandedElementsItem'>
       <div class="accordion__itemHeader" (click)="accordionItem.toggle()">
-        {{accordionSection.name}}
+        {{item}}
         <span class="accordion__itemDescription">
           Click to {{ accordionItem.expanded ? 'close' : 'open' }}
         </span>
@@ -24,26 +24,26 @@
         [attr.id]="'accordion-body-1'" 
         [attr.aria-labelledby]="'accordion-header-' + index"> 
         <app-general-styles
-        *ngIf="accordionSection.name === 'General styles'" >
+        *ngIf="item === 'General styles'" >
         </app-general-styles>
         <app-form-setup-input 
-          *ngIf="accordionSection.name === 'Elements styles' && 
+          *ngIf="item === 'Elements styles' && 
           currentElement === 'input'" >
         </app-form-setup-input>
         <app-form-setup-button 
-          *ngIf="accordionSection.name === 'Elements styles' && 
+          *ngIf="item === 'Elements styles' && 
           currentElement === 'button'">
         </app-form-setup-button>
         <app-form-setup-textarea 
-          *ngIf="accordionSection.name === 'Elements styles' && 
+          *ngIf="item === 'Elements styles' && 
           currentElement === 'textarea'">
         </app-form-setup-textarea>
         <app-form-setup-select 
-          *ngIf="accordionSection.name === 'Elements styles' && 
+          *ngIf="item === 'Elements styles' && 
           currentElement === 'select'">
         </app-form-setup-select>
         <app-form-setup-checkbox 
-          *ngIf="accordionSection.name === 'Elements styles' && 
+          *ngIf="item === 'Elements styles' && 
           currentElement === 'checkbox'">
         </app-form-setup-checkbox>
       </div>

@@ -34,4 +34,5 @@ export class CommonService {
     }
     return style;
   }
+
 }
