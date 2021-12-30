@@ -67,8 +67,6 @@ export class FormBuilderComponent implements AfterViewInit{
       this.store$.dispatch(formBuilderActions.addFormField(
         { name: this.dragElements[event.previousIndex] } 
       ))
-      }     
+    }     
   }
-  
-  
- }
+}

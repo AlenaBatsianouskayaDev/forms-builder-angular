@@ -112,6 +112,3 @@ export interface IFormFieldOrder {
 export interface IFormFieldForDelete {
   id: string, 
 }
-
-
-

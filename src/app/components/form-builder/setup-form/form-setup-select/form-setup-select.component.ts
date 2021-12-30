@@ -25,4 +25,3 @@ export class FormSetupSelectComponent extends FormSetupBaseClass {
     fb: FormBuilder, store$: Store
   ) { super(fb, store$) }
 }
-

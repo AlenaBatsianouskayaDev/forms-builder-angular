@@ -45,7 +45,3 @@ export const addFullFormData = createAction(
   '[FORMBUILDER] addFullFormData',
   props< IFormBuilderState >()
 )
-
-
-
-

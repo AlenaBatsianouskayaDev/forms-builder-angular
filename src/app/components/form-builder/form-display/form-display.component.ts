@@ -65,5 +65,4 @@ export class FormDisplayComponent implements OnInit {
       );
     }
   }
-
 }
