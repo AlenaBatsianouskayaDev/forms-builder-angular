@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store, select } from "@ngrx/store";
 import { Subject } from 'rxjs';
@@ -8,23 +8,20 @@ import { addFormFieldStyles } from 'src/app/reducers/formBuilder/formBuilder.act
 import { getCurrentElementStyles } from 'src/app/reducers/formBuilder/formBuilder.selectors'
 import { IFormFieldData } from 'src/app/reducers/reducers.interfaces';
 import { INITIAL_STYLES } from 'src/app/utils/data';
+import { UnsubscriberBaseClass } from './../unsubscriber-base-class/unsubscriber-base-class.class';
 
-@Component({
-  selector: 'app-form-setup-base-class',
-  templateUrl: './form-setup-base-class.component.html',
-  styleUrls: ['./form-setup-base-class.component.scss']
-})
-  
-export class FormSetupBaseClassComponent implements OnInit {
+@Injectable()
+export abstract class FormSetupBaseClass extends UnsubscriberBaseClass implements OnInit {
 
   public formElementsStyles: FormGroup;
-  private initialSetup: IFormFieldData;
-  private destroy$: Subject<void> = new Subject();
+  public initialSetup: IFormFieldData;
   
   constructor(
-    protected fb: FormBuilder,
-    protected store$: Store
-  ) { }
+    public fb: FormBuilder,
+    public store$: Store,
+  ) { 
+    super()
+  }
 
   ngOnInit(): void {
     this.store$.pipe(
@@ -89,10 +86,5 @@ export class FormSetupBaseClassComponent implements OnInit {
       .subscribe(value => {
         this.store$.dispatch(addFormFieldStyles(value));
       });    
-  }
- 
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 }

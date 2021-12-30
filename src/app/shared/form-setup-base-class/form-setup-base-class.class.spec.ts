@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AbstractControl, ReactiveFormsModule } from '@angular/forms';
-import { FormSetupBaseClassComponent } from './form-setup-base-class.component';
+import { FormSetupBaseClass } from './form-setup-base-class.class';
 import { StoreModule } from '@ngrx/store';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -15,8 +15,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { PortalModule } from '@angular/cdk/portal';
 
 fdescribe('FormSetupCommonClassComponent', () => {
-  let component: FormSetupBaseClassComponent;
-  let fixture: ComponentFixture<FormSetupBaseClassComponent>;
+  let component: FormSetupBaseClass;
+  let fixture: ComponentFixture<FormSetupBaseClass>;
   let controlInputFieldText: AbstractControl | null;
 
   beforeEach(async () => {
@@ -35,13 +35,12 @@ fdescribe('FormSetupCommonClassComponent', () => {
         MatIconModule,
         StoreModule.forRoot({}),
       ],
-      declarations: [ FormSetupBaseClassComponent ]
+      declarations: [ FormSetupBaseClass ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormSetupBaseClassComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     controlInputFieldText = component.formElementsStyles.get('inputFieldText')

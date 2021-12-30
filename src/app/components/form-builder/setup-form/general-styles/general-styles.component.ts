@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store, select } from "@ngrx/store";
 import { Subject } from 'rxjs';
@@ -9,26 +9,28 @@ import { getGeneralStyles } from 'src/app/reducers/formBuilder/formBuilder.selec
 import { IGeneralStylesData } from 'src/app/reducers/reducers.interfaces';
 import { INITIAL_GENERAL_STYLES } from 'src/app/utils/data';
 import { FontWeight } from 'src/app/utils/enums'
+import { UnsubscriberBaseClass } from 'src/app/shared/unsubscriber-base-class/unsubscriber-base-class.class';
 
 @Component({
   selector: 'app-general-styles',
   templateUrl: './general-styles.component.html',
   styleUrls: ['./general-styles.component.scss']
 })
-export class GeneralStylesComponent implements OnInit {
+export class GeneralStylesComponent extends UnsubscriberBaseClass implements OnInit {
 
   public formGeneralStyles: FormGroup;
   private initialSetup: IGeneralStylesData;
-  private destroy$: Subject<void> = new Subject();
   public fontWeight(): string[] {
     const keys = Object.keys(FontWeight);
     return keys.slice(keys.length / 2);
   }
 
-  constructor(
+  constructor( 
     private fb: FormBuilder,
-    private store$: Store
-  ) { }
+    private store$: Store,
+  ) { 
+    super()
+  }
 
   ngOnInit(): void {
     this.store$.pipe(
@@ -56,10 +58,5 @@ export class GeneralStylesComponent implements OnInit {
       .subscribe(value => {
         this.store$.dispatch(addGeneralStylesData(value));
       });    
-  }
- 
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 }

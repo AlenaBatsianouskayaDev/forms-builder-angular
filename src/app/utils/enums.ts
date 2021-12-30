@@ -25,3 +25,9 @@ export enum StylesSections {
   'General Styles',
   'Field Styles',
 }
+
+export enum AccordionItems {
+  'General styles',
+  'Elements styles'
+}
+  

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Store } from "@ngrx/store";
 
-import { FormSetupBaseClassComponent } from 'src/app/shared/form-setup-base-class/form-setup-base-class.component';
+import { FormSetupBaseClass } from 'src/app/shared/form-setup-base-class/form-setup-base-class.class';
 import { FontWeight, BorderStyles } from 'src/app/utils/enums'
 
 @Component({
@@ -10,7 +10,7 @@ import { FontWeight, BorderStyles } from 'src/app/utils/enums'
   templateUrl: './form-setup-select.component.html',
   styleUrls: ['./form-setup-select.component.scss']
 })
-export class FormSetupSelectComponent extends FormSetupBaseClassComponent {
+export class FormSetupSelectComponent extends FormSetupBaseClass {
 
   public fontWeight(): string[] {
     const keys = Object.keys(FontWeight);
@@ -25,4 +25,3 @@ export class FormSetupSelectComponent extends FormSetupBaseClassComponent {
     fb: FormBuilder, store$: Store
   ) { super(fb, store$) }
 }
-

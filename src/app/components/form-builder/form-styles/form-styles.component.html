@@ -1,57 +1,51 @@
-<div class="formStyles" >
+<div class="formStyles">
   <cdk-accordion class="accordion" [multi]="false">
     <cdk-accordion-item 
+      *ngFor='let item of accordionItems(); let index = index'
       #accordionItem="cdkAccordionItem" 
       class="accordion__item" 
       role="button" 
       tabindex="0"
-      [attr.id]="'accordion-header-0'" 
-      [attr.aria-expanded]= "isOpenGeneralSection"
-      [attr.aria-controls]="'accordion-body-' + index">
-    <div class="accordion__itemHeader" (click)="onToggle($event)">
-      General Styles
-      <span class="accordion__itemDescription">
-        Click to {{ isOpenGeneralSection ? 'close' : 'open' }}
-      </span>
-    </div>
-
-    <div class="accordion__itemBody " 
-      role="region" 
-      [style.display]="isOpenGeneralSection ? '' : 'none'"
-      [attr.id]="'accordion-body-1'" 
-      [attr.aria-labelledby]="'accordion-header-' + index"> 
-      <app-general-styles></app-general-styles>
-    </div>
-    </cdk-accordion-item>
-
-    <cdk-accordion-item 
-      #accordionItem="cdkAccordionItem"
-      class="accordion__item" 
-      role="button" 
-      tabindex="0" 
-      [attr.id]="'accordion-header-' + index"
-      [attr.aria-expanded]="isOpenElementSection" 
-      [attr.aria-controls]="'accordion-body-' + index">
-      <div class="accordion__itemHeader" (click)="onToggle($event)">
-        Element Styles
+      [attr.id]="'accordion-header-' + index" 
+      [attr.aria-expanded]= "accordionItem.expanded"
+      [attr.aria-controls]="'accordion-body-' + index"
+      [(expanded)]='item === "General styles" ? initialExpandedGeneralItem : initialExpandedElementsItem'>
+      <div class="accordion__itemHeader" (click)="accordionItem.toggle()">
+        {{item}}
         <span class="accordion__itemDescription">
-          Click to {{ isOpenElementSection ? 'close' : 'open' }}
+          Click to {{ accordionItem.expanded ? 'close' : 'open' }}
         </span>
       </div>
-    
-      <div
-      *ngIf="currentElement$ | ngrxPush as currentElement"  
-      class="accordion__itemBody " 
+
+      <div class="accordion__itemBody"
+        *ngrxLet='currentElement$ let currentElement' 
         role="region" 
-        [style.display]="isOpenElementSection ? '' : 'none'"
-        [attr.id]="'accordion-body-' + index" 
-        [attr.aria-labelledby]="'accordion-header-' + index">
-        <app-form-setup-input *ngIf="currentElement === 'input'"></app-form-setup-input>
-        <app-form-setup-button *ngIf="currentElement === 'button'"></app-form-setup-button>
-        <app-form-setup-textarea *ngIf="currentElement === 'textarea'">
+        [style.display]="accordionItem.expanded ? '' : 'none'"
+        [attr.id]="'accordion-body-1'" 
+        [attr.aria-labelledby]="'accordion-header-' + index"> 
+        <app-general-styles
+        *ngIf="item === 'General styles'" >
+        </app-general-styles>
+        
+        <app-form-setup-input 
+          *ngIf="item === 'Elements styles' && 
+          currentElement === 'input'" >
+        </app-form-setup-input>
+        <app-form-setup-button 
+          *ngIf="item === 'Elements styles' && 
+          currentElement === 'button'">
+        </app-form-setup-button>
+        <app-form-setup-textarea 
+          *ngIf="item === 'Elements styles' && 
+          currentElement === 'textarea'">
         </app-form-setup-textarea>
-        <app-form-setup-select *ngIf="currentElement === 'select'"></app-form-setup-select>
-        <app-form-setup-checkbox *ngIf="currentElement === 'checkbox'">
+        <app-form-setup-select 
+          *ngIf="item === 'Elements styles' && 
+          currentElement === 'select'">
+        </app-form-setup-select>
+        <app-form-setup-checkbox 
+          *ngIf="item === 'Elements styles' && 
+          currentElement === 'checkbox'">
         </app-form-setup-checkbox>
       </div>
     </cdk-accordion-item>

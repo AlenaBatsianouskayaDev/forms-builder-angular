@@ -1,7 +1,7 @@
 import {
   AfterViewInit,
   Component,
-  ElementRef,
+  Input,
   TemplateRef,
   ViewChild,
   ViewContainerRef} from '@angular/core';
@@ -67,8 +67,6 @@ export class FormBuilderComponent implements AfterViewInit{
       this.store$.dispatch(formBuilderActions.addFormField(
         { name: this.dragElements[event.previousIndex] } 
       ))
-      }     
+    }     
   }
-  
-  
- }
+}

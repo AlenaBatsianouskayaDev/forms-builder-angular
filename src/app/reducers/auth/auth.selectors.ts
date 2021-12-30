@@ -23,4 +23,3 @@ export const getError = createSelector(
 export const isLoading = createSelector(
   getFeature, (state: IAuthState) => state.isLoading
 );
-
