@@ -32,13 +32,16 @@ export const INITIAL_GENERAL_STYLES = {
   borderColor: COLORS.greyColor,
 }
 
-export const MAT_FORM_FIELD_STYLES = ['width', 'border', 'fontSize', 'fontWeight', 'color'];
-export const INPUT_STYLES = ['height'];
-export const TEXTAREA_STYLES = ['height'];
-export const BUTTON_STYLES = ['width', 'height', 'fontSize', 'fontWeight', 'color', 'backgroundColor'];
-export const MAT_LABEL_STYLES = ['color'];
-export const MAT_SELECT_STYLES = ['height'];
-export const MAT_OPTION_STYLES = ['color', 'fontSize'];
-export const CHECKBOX_STYLES = ['width', 'height'];
-export const FORM_GENERAL_STYLES = ['fontSize', 'color', 'backgroundColor', 'borderColor'];
-export const TITLE_GENERAL_STYLES = ['fontSize', 'fontWeight', 'color'];
+export const STYLES_TYPES_FOR_ELEMENTS = {
+  MAT_FORM_FIELD_STYLES: ['width', 'border', 'fontSize', 'fontWeight', 'color'],
+  MAT_LABEL_STYLES: ['color'],
+  MAT_SELECT_STYLES: ['height'],
+  MAT_OPTION_STYLES: ['color', 'fontSize'],  
+  CHECKBOX_STYLES: ['width', 'height'],
+  BUTTON_STYLES: ['width', 'height', 'fontSize', 'fontWeight', 'color', 'backgroundColor'],
+  TEXTAREA_STYLES: ['height'],
+  INPUT_STYLES: ['height'],
+  FORM_GENERAL_STYLES: ['fontSize', 'color', 'backgroundColor', 'borderColor'],
+  TITLE_GENERAL_STYLES: ['fontSize', 'fontWeight', 'color'],
+}
+
