@@ -19,10 +19,6 @@ export class CommonService {
       }, {})
   }
 
-  private capitalizeFirstLetter(string: string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
   private addingPx(style: string): string {
     if (style === 'height' ||
         style === 'width' ||
