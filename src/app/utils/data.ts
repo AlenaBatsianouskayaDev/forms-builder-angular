@@ -5,53 +5,21 @@ export const COLORS = {
   greyColor: '#d3d3d3'
 }
 
-export const INITIAL_STYLES = {
+export const INITIAL_ELEMENTS_STYLES = {
   isCurrentElement: false,
-      
-  inputFieldText: 'Field text',
-  inputLabel: 'Field label',
-  inputPlaceholder: 'Placeholder text',
-  inputWidth: '200',
-  inputHeight: '20',
-  inputRequired: '',
-  inputBorder: 'insent',
-  inputFontSize: '14',
-  inputFontWeight: 'normal',
-  inputColor: COLORS.fontColor,
-  
-  buttonText: 'Button',
-  buttonWidth: '100',
-  buttonHeight: '40',
-  buttonFontSize: '14',
-  buttonFontWeight: 'normal',
-  buttonColor: COLORS.whiteColor,
-  buttonBackgroundColor: COLORS.backgroundElementColor,
-  
-  textareaFieldText: 'Field text',
-  textareaLabel: 'Field label',
-  textareaPlaceholder: 'Placeholder text',
-  textareaWidth: '200',
-  textareaHeight: '30',
-  textareaRequired: '',
-  textareaBorder: 'insent',
-  textareaFontSize: '14',
-  textareaFontWeight: 'normal',
-  textareaColor: COLORS.fontColor,
- 
-  selectFieldText: 'Field text',
-  selectLabel: 'Field label',
-  selectWidth: '220',
-  selectHeight: '20',
-  selectRequired: '',
-  selectBorder: 'insent',
-  selectFontSize: '14',
-  selectFontWeight: 'normal',
-  selectColor: COLORS.fontColor,
-  selectOptions: ['option1', 'option2', 'option3'], ///add to form control
-
-  checkboxFieldText: 'Field text',
-  checkboxLabel: 'Field label',
-  checkboxRequired: '',
+  fieldText: 'Field text',
+  label: 'Field label',
+  text: 'Button',
+  placeholder: 'Placeholder text',
+  width: '200',
+  height: '40',
+  required: '',
+  border: 'insent',
+  fontSize: '14',
+  fontWeight: 'normal',
+  color: COLORS.fontColor,
+  backgroundColor: COLORS.backgroundElementColor,
+  options: ['option1', 'option2', 'option3'], ///add to form control
 }
 
 export const INITIAL_GENERAL_STYLES = {

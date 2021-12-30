@@ -3,7 +3,7 @@ import { createReducer, on } from "@ngrx/store";
 import { CommonService } from "src/app/services/common.service";
 import * as formBuilderActions from "./formBuilder.actions";
 import { IFormBuilderState } from '../reducers.interfaces';
-import { INITIAL_STYLES, INITIAL_GENERAL_STYLES } from "src/app/utils/data";
+import { INITIAL_ELEMENTS_STYLES, INITIAL_GENERAL_STYLES } from "src/app/utils/data";
 
 
 export const initialFormBuilderState: IFormBuilderState = {
@@ -20,7 +20,7 @@ export const formBuilderReducers = createReducer(
       components: [...state.components,
         { name,
           id: commonService.generateId(),
-          ...INITIAL_STYLES,
+          ...INITIAL_ELEMENTS_STYLES,
         }]
     })
   }),

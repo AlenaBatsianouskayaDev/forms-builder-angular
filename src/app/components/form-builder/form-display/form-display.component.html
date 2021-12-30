@@ -25,18 +25,18 @@
             <p 
               class="fieldElement__fieldText"
               [ngStyle]="commonService.stylesFactory(generalStyles, titleGeneralStyles)">
-              {{item.inputFieldText }}</p>
+              {{item.fieldText }}</p>
             <mat-form-field 
               class="example-full-width" 
               appearance="fill" 
-              [attr.required]="item.selectRequired"
+              [attr.required]="item.required"
               [ngStyle]="commonService.stylesFactory(item, formFieldStyles)">
-              <mat-label [ngStyle]="commonService.stylesFactory(item, matLabelStyles)" class="fieldElement__label">{{ item.inputLabel }}</mat-label>
+              <mat-label [ngStyle]="commonService.stylesFactory(item, matLabelStyles)" class="fieldElement__label">{{ item.label }}</mat-label>
               <input 
                 class="fieldElement__input" 
                 name="input" 
                 matInput 
-                placeholder={{item.inputPlaceholder}}
+                placeholder={{item.placeholder}}
                 [ngStyle]="commonService.stylesFactory(item, inputStyles)">
             </mat-form-field>
           </div>
@@ -52,18 +52,18 @@
             <p 
               class="fieldElement__fieldText"
               [ngStyle]="commonService.stylesFactory(generalStyles, titleGeneralStyles)">
-              {{item.textareaFieldText }}</p>
+              {{item.fieldText }}</p>
             <mat-form-field 
               class="example-full-width" 
               appearance="fill" 
-              [attr.required]="item.selectRequired"
+              [attr.required]="item.required"
               [ngStyle]="commonService.stylesFactory(item, formFieldStyles)">
-              <mat-label [ngStyle]="commonService.stylesFactory(item, matLabelStyles)" class="fieldElement__label">{{ item.textareaLabel }}</mat-label>
+              <mat-label [ngStyle]="commonService.stylesFactory(item, matLabelStyles)" class="fieldElement__label">{{ item.label }}</mat-label>
               <textarea 
                 class="fieldElement__input" 
                 name="input" 
                 matInput 
-                placeholder={{item.inputPlaceholder}}
+                placeholder={{item.placeholder}}
                 [ngStyle]="commonService.stylesFactory(item, textareaStyles)"></textarea>
             </mat-form-field>
           </div>
@@ -79,18 +79,18 @@
             <p 
               class="fieldElement__fieldText"
               [ngStyle]="commonService.stylesFactory(generalStyles, titleGeneralStyles)">
-              {{item.selectFieldText }}</p>
+              {{item.fieldText }}</p>
             <mat-form-field 
               appearance="fill" 
-              [attr.required]="item.selectRequired"
+              [attr.required]="item.required"
               [ngStyle]="commonService.stylesFactory(item, formFieldStyles)">
-              <mat-label [ngStyle]="commonService.stylesFactory(item, matLabelStyles)">{{ item.selectLabel }}</mat-label>
+              <mat-label [ngStyle]="commonService.stylesFactory(item, matLabelStyles)">{{ item.label }}</mat-label>
               <mat-select 
                 class="fieldElement__input" 
                 name="select"
                 [ngStyle]="commonService.stylesFactory(item, matSelectStyles)">
                 <mat-option 
-                  *ngFor="let option of item.selectOptions" 
+                  *ngFor="let option of item.options" 
                   [value]="option" 
                   [ngStyle]="commonService.stylesFactory(item, matOptionStyles)">
                   {{ option }}
@@ -110,11 +110,11 @@
             <p 
               class="fieldElement__fieldText"
               [ngStyle]="commonService.stylesFactory(generalStyles, titleGeneralStyles)">
-              {{item.checkboxFieldText }}</p>
+              {{item.fieldText }}</p>
             <mat-checkbox 
               name="checkbox"
               [ngStyle]="commonService.stylesFactory(item, checkboxStyles)" 
-              [attr.required]="item.selectRequired">{{ item.checkboxLabel }}</mat-checkbox>
+              [attr.required]="item.required">{{ item.label }}</mat-checkbox>
           </div>
           <app-button-panel></app-button-panel>
         </div>
@@ -128,7 +128,8 @@
           <button 
             mat-flat-button name="button"
             [ngStyle]="commonService.stylesFactory(item, buttonStyles)">{{
-            item.buttonText }}</button>
+            item.text }}
+          </button>
           </div>
           <app-button-panel></app-button-panel>
         </div>

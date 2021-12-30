@@ -14,11 +14,8 @@ export class CommonService {
   public stylesFactory(item: IGeneralStylesData | IFormFieldData, styles: string[]): IFieldStyles {
     return [...styles]
       .reduce((acc, style: string): IFieldStyles => {
-        const capitalizedStyle: string = this.capitalizeFirstLetter(style);
         const styleKey = this.addingPx(style);
-        return (item.name === 'General styles') ?
-          ({ ...acc, [styleKey]: item[`${style}`]}) :
-          ({ ...acc, [styleKey]: item[`${item.name}${capitalizedStyle}`] })
+        return ({ ...acc, [styleKey]: item[`${style}`]}) 
       }, {})
   }
 

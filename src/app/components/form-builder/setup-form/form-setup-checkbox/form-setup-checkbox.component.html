@@ -4,7 +4,7 @@
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Field description or question</mat-label>
-          <input matInput type="text" placeholder="Enter your text" formControlName="checkboxFieldText">
+          <input matInput type="text" placeholder="Enter your text" formControlName="fieldText">
         </mat-form-field>
       </div>
     </mat-grid-tile>
@@ -13,7 +13,7 @@
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Field label</mat-label>
-          <input matInput type="text" placeholder="Enter your text" formControlName="checkboxLabel">
+          <input matInput type="text" placeholder="Enter your text" formControlName="label">
         </mat-form-field>
       </div>
     </mat-grid-tile>
@@ -21,7 +21,7 @@
   
   <div class="formElementsStyles__item radioBtn">
     <p class="formElementsStyles__label radioBtn__label">Required field</p>
-    <fieldset class="radioBtn__fieldset" formControlName="checkboxRequired" ngDefaultControl>
+    <fieldset class="radioBtn__fieldset" formControlName="required" ngDefaultControl>
       <mat-radio-button class="radioBtn__button" name="Required" value="required">Required</mat-radio-button>
       <mat-radio-button class="radioBtn__button" name="Required" value="" checked>Not Required</mat-radio-button>
     </fieldset>

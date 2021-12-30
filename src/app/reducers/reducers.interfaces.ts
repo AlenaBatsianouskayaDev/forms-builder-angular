@@ -33,59 +33,27 @@ export interface IFormBuilderState {
 }
 
 export interface IFormFieldData {
+  [propName: string]: string | string[] | boolean | undefined,
   isCurrentElement?: boolean,
-
   name?: string,
   id?: string,
-
-  inputFieldText?: string,
-  inputLabel?: string,
-  inputPlaceholder?: string,
-  inputWidth?: string,
-  inputHeight?: string,
-  inputRequired?: string,
-  inputBorder?: string,
-  inputFontSize?: string,
-  inputFontWeight?: string,
-  inputColor?: string,
-
-  buttonText?: string,
-  buttonWidth?: string,
-  buttonHeight?: string,
-  buttonFontSize?: string,
-  buttonFontWeight?: string,
-  buttonColor?: string,
-  buttonBackgroundColor?: string,
-
-  textareaFieldText?: string,
-  textareaLabel?: string,
-  textareaPlaceholder?: string,
-  textareaWidth?: string,
-  textareaHeight?: string,
-  textareaRequired?: string,
-  textareaBorder?: string,
-  textareaFontSize?: string,
-  textareaFontWeight?: string,
-  textareaColor?: string,
-
-  selectFieldText?: string;
-  selectLabel?: string,
-  selectWidth?: string,
-  selectHeight?: string,
-  selectRequired?: string,
-  selectBorder?: string,
-  selectFontSize?: string,
-  selectFontWeight?: string,
-  selectColor?: string,
-  selectOptions?: string[],
-  
-  checkboxFieldText?: string,
-  checkboxLabel?: string,
-  checkboxRequired?: string,
-  [propName: string]: string | string[] | boolean | undefined,
+  fieldText?: string,
+  label?: string,
+  text?: string,
+  placeholder?: string,
+  width?: string,
+  height?: string,
+  required?: string,
+  border?: string,
+  fontSize?: string,
+  fontWeight?: string,
+  color?: string,
+  backgroundColor?: string,
+  options?: string[],
 }
 
 export interface IGeneralStylesData {
+  [propName: string]: string | undefined,
   name?: string,
   title?: string,
   fontSize?: string,
@@ -93,7 +61,6 @@ export interface IGeneralStylesData {
   color?: string,
   backgroundColor?: string,
   borderColor?: string,
-  [propName: string]: string | undefined,
 }
 
 export interface IFormFieldName {

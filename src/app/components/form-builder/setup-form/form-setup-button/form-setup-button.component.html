@@ -4,7 +4,7 @@
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Button text</mat-label>
-          <input matInput type="text" placeholder="Enter your text" formControlName="buttonText">
+          <input matInput type="text" placeholder="Enter your text" formControlName="text">
         </mat-form-field>
       </div>
     </mat-grid-tile>
@@ -13,7 +13,7 @@
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Button width</mat-label>
-          <input matInput type="text" placeholder="Enter a number" formControlName="buttonWidth" />
+          <input matInput type="text" placeholder="Enter a number" formControlName="width" />
         </mat-form-field>
       </div>
     </mat-grid-tile>
@@ -22,7 +22,7 @@
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Button height</mat-label>
-          <input matInput type="text" placeholder="Enter a number" formControlName="buttonHeight" />
+          <input matInput type="text" placeholder="Enter a number" formControlName="height" />
         </mat-form-field>
       </div>
     </mat-grid-tile>
@@ -31,7 +31,7 @@
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Font size</mat-label>
-          <input matInput type="text" placeholder="Enter a number" formControlName="buttonFontSize" />
+          <input matInput type="text" placeholder="Enter a number" formControlName="fontSize" />
         </mat-form-field>
       </div>
     </mat-grid-tile>
@@ -40,7 +40,7 @@
       <div class="formElementsStyles__item">
         <mat-form-field appearance="fill">
           <mat-label class="formElementsStyles__label">Font weight</mat-label>
-          <mat-select formControlName="buttonFontWeight">
+          <mat-select formControlName="fontWeight">
             <mat-option *ngFor="let item of fontWeight()" [value]="item">
               {{item}}
             </mat-option>
@@ -52,14 +52,14 @@
     <mat-grid-tile>
       <div class="formElementsStyles__item colorInput">
         <label class="formElementsStyles__label" for="inputBkgColor"> Background color</label>
-        <input class="colorInput__input" type="color" formControlName="buttonBackgroundColor" id="inputBkgColor">
+        <input class="colorInput__input" type="color" formControlName="backgroundColor" id="inputBkgColor">
       </div>
     </mat-grid-tile>
 
     <mat-grid-tile>
       <div class="formElementsStyles__item colorInput">
         <label class="formElementsStyles__label" for=" inputColor"> Font color</label>
-        <input class="colorInput__input" type="color" formControlName="buttonColor" id="inputColor">
+        <input class="colorInput__input" type="color" formControlName="color" id="inputColor">
       </div>
     </mat-grid-tile>
   </mat-grid-list> 

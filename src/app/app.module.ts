@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { AppTopBarComponent } from './components/app-top-bar/app-top-bar.component';
 import { AuthNavComponent } from './components/app-top-bar/auth-nav/auth-nav.component';
 import { AuthFormComponent } from './components/auth-form/auth-form.component';
-import { InputComponent } from './shared/input/input.component';
 import { PortalModule } from '@angular/cdk/portal';
 import { StoreModule } from '@ngrx/store';
 import { appReducers, metaReducers } from './reducers/app.reducers';
@@ -42,7 +41,6 @@ import { FormElementsComponent } from './components/form-builder/form-elements/f
     AppTopBarComponent, 
     AuthNavComponent,
     AuthFormComponent,
-    InputComponent,
     FormSetupInputComponent,
     FormStylesComponent,
     FormDisplayComponent,

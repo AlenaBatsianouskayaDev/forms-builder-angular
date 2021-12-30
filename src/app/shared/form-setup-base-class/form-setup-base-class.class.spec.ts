@@ -17,7 +17,7 @@ import { PortalModule } from '@angular/cdk/portal';
 fdescribe('FormSetupCommonClassComponent', () => {
   let component: FormSetupBaseClass;
   let fixture: ComponentFixture<FormSetupBaseClass>;
-  let controlInputFieldText: AbstractControl | null;
+  let controlFieldText: AbstractControl | null;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -43,7 +43,7 @@ fdescribe('FormSetupCommonClassComponent', () => {
   beforeEach(() => {
     component = fixture.componentInstance;
     fixture.detectChanges();
-    controlInputFieldText = component.formElementsStyles.get('inputFieldText')
+    controlFieldText = component.formElementsStyles.get('fieldText')
   });
 
   it('should create', () => {
