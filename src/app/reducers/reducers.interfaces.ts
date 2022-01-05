@@ -33,7 +33,7 @@ export interface IFormBuilderState {
 }
 
 export interface IFormFieldData {
-  [propName: string]: string | string[] | boolean | undefined,
+  [propName: string]: string | string[] | boolean | undefined | null,
   isCurrentElement?: boolean,
   name?: string,
   id?: string,

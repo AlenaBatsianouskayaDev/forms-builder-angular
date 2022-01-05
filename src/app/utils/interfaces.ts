@@ -8,3 +8,7 @@ export interface IFieldStyles {
   'backgroundColor'?: string,
   'borderColor'?: string,
 }
+
+export interface ICreatedFormControls {
+  [propName: string]: string,
+}

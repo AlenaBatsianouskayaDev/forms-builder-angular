@@ -34,6 +34,11 @@ import { FormBuilderComponent } from './components/form-builder/form-builder.com
 import { ButtonPanelComponent } from './shared/button-panel/button-panel.component';
 import { LocalStorageService } from './services/local-storage.service';
 import { FormElementsComponent } from './components/form-builder/form-elements/form-elements.component';
+import { ButtonComponent } from './shared/button/button.component';
+import { CheckboxComponent } from './shared/checkbox/checkbox.component';
+import { InputComponent } from './shared/input/input.component';
+import { TextareaComponent } from './shared/textarea/textarea.component';
+import { SelectComponent } from './shared/select/select.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +57,11 @@ import { FormElementsComponent } from './components/form-builder/form-elements/f
     FormBuilderComponent,
     ButtonPanelComponent,
     FormElementsComponent,
+    ButtonComponent,
+    CheckboxComponent,
+    InputComponent,
+    TextareaComponent,
+    SelectComponent,
   ],
   imports: [
     FormsModule,

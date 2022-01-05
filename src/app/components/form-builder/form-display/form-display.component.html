@@ -1,20 +1,22 @@
 <div 
   *ngrxLet="generalStyles$ as generalStyles"
   class="dragDrop__container"
-  (click)=deleteElement($event) (click)=setActiveElement($event)>
-  <div 
+  (click)=deleteElement($event) 
+  (click)=setActiveElement($event)>
+  <form 
+    [formGroup]="createdForm"
     *ngrxLet="shownElements$ as shownElements"
     class="dragDrop__list"
     [ngStyle]="commonService.stylesFactory(generalStyles, formGeneralStyles)">
       <h1 class="dragDrop__header">{{ generalStyles.title }}</h1>
-
       <div 
         class="dragDrop__box" 
         *ngFor="let item of shownElements" 
         cdkDrag>
         <div 
           class="dragDrop__customPlaceholder" 
-          *cdkDragPlaceholder></div>
+          *cdkDragPlaceholder>
+        </div>
 
         <div 
           [id]="item.id" 
@@ -25,20 +27,18 @@
             <p 
               class="fieldElement__fieldText"
               [ngStyle]="commonService.stylesFactory(generalStyles, titleGeneralStyles)">
-              {{item.fieldText }}</p>
-            <mat-form-field 
-              class="example-full-width" 
-              appearance="fill" 
-              [attr.required]="item.required"
-              [ngStyle]="commonService.stylesFactory(item, formFieldStyles)">
-              <mat-label [ngStyle]="commonService.stylesFactory(item, matLabelStyles)" class="fieldElement__label">{{ item.label }}</mat-label>
-              <input 
-                class="fieldElement__input" 
-                name="input" 
-                matInput 
-                placeholder={{item.placeholder}}
-                [ngStyle]="commonService.stylesFactory(item, inputStyles)">
-            </mat-form-field>
+              {{item.fieldText }}
+            </p>
+            <app-input
+              formControlName={{item.id}} 
+              class="example-full-width"
+              [componentRequired]="item.required"
+              [componentFieldStyles]="commonService.stylesFactory(item, formFieldStyles)"
+              [componentLabelStyles]="commonService.stylesFactory(item, matLabelStyles)" 
+              [componentLabelText]='item.label'
+              [componentInputPlaceholder]='item.placeholder'
+              [componentInputStyles]="commonService.stylesFactory(item, inputStyles)"> 
+            </app-input>
           </div>
           <app-button-panel></app-button-panel>
         </div>
@@ -53,19 +53,16 @@
               class="fieldElement__fieldText"
               [ngStyle]="commonService.stylesFactory(generalStyles, titleGeneralStyles)">
               {{item.fieldText }}</p>
-            <mat-form-field 
-              class="example-full-width" 
-              appearance="fill" 
-              [attr.required]="item.required"
-              [ngStyle]="commonService.stylesFactory(item, formFieldStyles)">
-              <mat-label [ngStyle]="commonService.stylesFactory(item, matLabelStyles)" class="fieldElement__label">{{ item.label }}</mat-label>
-              <textarea 
-                class="fieldElement__input" 
-                name="input" 
-                matInput 
-                placeholder={{item.placeholder}}
-                [ngStyle]="commonService.stylesFactory(item, textareaStyles)"></textarea>
-            </mat-form-field>
+            <app-textarea
+              formControlName={{item.id}}   
+              class="example-full-width"
+              [componentRequired]="item.required"
+              [componentFieldStyles]="commonService.stylesFactory(item, formFieldStyles)"
+              [componentLabelStyles]="commonService.stylesFactory(item, matLabelStyles)" 
+              [componentLabelText]='item.label'
+              [componentTextareaPlaceholder]='item.placeholder'
+              [componentTextareaStyles]="commonService.stylesFactory(item, inputStyles)">
+            </app-textarea>
           </div>
           <app-button-panel></app-button-panel>
         </div>
@@ -80,24 +77,18 @@
               class="fieldElement__fieldText"
               [ngStyle]="commonService.stylesFactory(generalStyles, titleGeneralStyles)">
               {{item.fieldText }}</p>
-            <mat-form-field 
-              appearance="fill" 
-              [attr.required]="item.required"
-              [ngStyle]="commonService.stylesFactory(item, formFieldStyles)">
-              <mat-label [ngStyle]="commonService.stylesFactory(item, matLabelStyles)">{{ item.label }}</mat-label>
-              <mat-select 
-                class="fieldElement__input" 
-                name="select"
-                [ngStyle]="commonService.stylesFactory(item, matSelectStyles)">
-                <mat-option 
-                  *ngFor="let option of item.options" 
-                  [value]="option" 
-                  [ngStyle]="commonService.stylesFactory(item, matOptionStyles)">
-                  {{ option }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
+            <app-select
+              formControlName={{item.id}}   
+              class="example-full-width"
+              [componentRequired]="item.required"
+              [componentFieldStyles]="commonService.stylesFactory(item, formFieldStyles)"
+              [componentLabelStyles]="commonService.stylesFactory(item, matLabelStyles)" 
+              [componentLabelText]='item.label'
+              [componentSelectStyles]="commonService.stylesFactory(item, matSelectStyles)" 
+              [componentOptionsStyles]="commonService.stylesFactory(item, matOptionStyles)"
+              [values]='item.options'>
+            </app-select>
+            </div>
           <app-button-panel></app-button-panel>
         </div>
 
@@ -109,12 +100,16 @@
           <div class="fieldElement__content">
             <p 
               class="fieldElement__fieldText"
-              [ngStyle]="commonService.stylesFactory(generalStyles, titleGeneralStyles)">
-              {{item.fieldText }}</p>
-            <mat-checkbox 
-              name="checkbox"
-              [ngStyle]="commonService.stylesFactory(item, checkboxStyles)" 
-              [attr.required]="item.required">{{ item.label }}</mat-checkbox>
+              [ngStyle]="commonService.stylesFactory(generalStyles, titleGeneralStyles)"> 
+              {{item.fieldText }}
+            </p>
+            <app-checkbox
+              formControlName={{item.id}}   
+              [componentStyles]="commonService.stylesFactory(item, checkboxStyles)"
+              [componentRequired]="item.required"
+              [componentLabel]="item.label"
+              name="checkbox">
+            </app-checkbox>
           </div>
           <app-button-panel></app-button-panel>
         </div>
@@ -125,14 +120,14 @@
           class="fieldElement" 
           [ngClass] = '{isActiveElement: item.isCurrentElement}'>
           <div class="fieldElement__content">
-          <button 
-            mat-flat-button name="button"
-            [ngStyle]="commonService.stylesFactory(item, buttonStyles)">{{
-            item.text }}
-          </button>
+            <app-button
+              [componentStyles]="commonService.stylesFactory(item, buttonStyles)"
+              [componentText]='item.text'
+              name="button">
+            </app-button>
           </div>
           <app-button-panel></app-button-panel>
         </div>
       </div>
-  </div>
+    </form>
 </div>

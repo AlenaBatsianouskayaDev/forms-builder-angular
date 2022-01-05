@@ -1,0 +1,20 @@
+<mat-form-field 
+  appearance="fill" 
+  [attr.required]="componentRequired"
+  [ngStyle]="componentFieldStyles"
+  class="fieldElement">
+  <mat-label 
+    [ngStyle]="componentLabelStyles" 
+    class="fieldElement__label">
+  {{ componentLabelText }}
+  </mat-label>
+  <textarea 
+    class="fieldElement__textarea" 
+    name="textarea" 
+    matInput 
+    placeholder={{componentTextareaPlaceholder}}
+    [ngStyle]="componentTextareaStyles"
+    value
+    [formControl]='textareaControl'>
+  </textarea>
+</mat-form-field>

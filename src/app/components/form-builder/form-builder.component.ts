@@ -1,7 +1,6 @@
 import {
   AfterViewInit,
   Component,
-  Input,
   TemplateRef,
   ViewChild,
   ViewContainerRef} from '@angular/core';

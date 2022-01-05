@@ -1,7 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store, select } from "@ngrx/store";
-import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { addFormFieldStyles } from 'src/app/reducers/formBuilder/formBuilder.actions';
@@ -55,6 +54,6 @@ export abstract class FormSetupBaseClass extends UnsubscriberBaseClass implement
       .pipe(takeUntil(this.destroy$))
       .subscribe(value => {
         this.store$.dispatch(addFormFieldStyles(value));
-      });    
+      }); 
   }
 }

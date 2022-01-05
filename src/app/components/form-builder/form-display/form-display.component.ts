@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable} from 'rxjs';
-import { Store } from '@ngrx/store';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
 
 import { IFormFieldData, IGeneralStylesData } from '../../../reducers/reducers.interfaces';
+import { ICreatedFormControls } from 'src/app/utils/interfaces';
 import { getFormElement, getGeneralStyles } from 'src/app/reducers/formBuilder/formBuilder.selectors';
 import { CommonService } from 'src/app/services/common.service';
 import { COLORS, STYLES_TYPES_FOR_ELEMENTS } from '../../../utils/data';
@@ -35,15 +37,39 @@ export class FormDisplayComponent implements OnInit {
   private btnDeleteElAttr: string = '[name="btnDelete"]';
   private btnEditElAttr: string = '[name="btnEdit"]';
   private queryIdElAttr: string = '.fieldElement';
+  
+  public createdForm: FormGroup ;
+  public fieldCreatedForm: any; ///TODO change
+  public newObject = {}; ///TODO change
 
   constructor(
     private readonly store$: Store,
-    public commonService: CommonService
+    public commonService: CommonService,
+    public fb: FormBuilder,
   ) { }
    
   ngOnInit(): void {
     this.shownElements$ = this.store$.select(getFormElement);
-    this.generalStyles$ = this.store$.select(getGeneralStyles);
+    this.generalStyles$ = this.store$.select(getGeneralStyles); 
+
+    this.fieldCreatedForm = this.store$
+      .pipe(
+        select(getFormElement))
+      .subscribe(vl => {
+        this.newObject = this.formControlsCreator(vl, 'id');
+        this.createdForm = this.fb.group({...this.newObject});
+        console.dir(this.createdForm)
+      })
+  }
+ 
+  public formControlsCreator (array: IFormFieldData[], key: string): ICreatedFormControls {
+    const initialObject = {};
+    return array.reduce((obj: ICreatedFormControls, item: any) => {
+      return {
+        ...obj,
+        [item[key]]: '',
+      };
+    }, initialObject); ////TODO: move to service
   }
 
   public deleteElement (event: Event): void {

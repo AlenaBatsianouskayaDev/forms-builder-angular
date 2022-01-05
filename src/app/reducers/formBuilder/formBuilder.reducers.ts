@@ -1,5 +1,4 @@
 import { createReducer, on } from "@ngrx/store";
-
 import { CommonService } from "src/app/services/common.service";
 import * as formBuilderActions from "./formBuilder.actions";
 import { IFormBuilderState } from '../reducers.interfaces';
@@ -19,8 +18,8 @@ export const formBuilderReducers = createReducer(
       ...state,
       components: [...state.components,
         { name,
-          id: commonService.generateId(),
           ...INITIAL_ELEMENTS_STYLES,
+          id: commonService.generateId(),
         }]
     })
   }),

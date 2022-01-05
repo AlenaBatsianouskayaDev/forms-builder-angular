@@ -1,0 +1,22 @@
+<mat-form-field 
+  appearance="fill" 
+  [attr.required]="componentRequired"
+  [ngStyle]="componentFieldStyles">
+  <mat-label 
+    [ngStyle]="componentLabelStyles"
+    class="fieldElement__label">
+    {{ componentLabelText }}
+  </mat-label>
+  <mat-select 
+    class="fieldElement__input" 
+    name="select"
+    [ngStyle]="componentSelectStyles"
+    [formControl]='selectControl'>
+    <mat-option 
+      *ngFor='let value of values'
+      [ngStyle]="componentOptionsStyles"
+      [value]="value">
+      {{value}}
+    </mat-option> 
+  </mat-select>
+</mat-form-field>

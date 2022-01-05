@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Store } from '@ngrx/store';
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { of } from 'rxjs';
-import { map, exhaustMap, catchError } from 'rxjs/operators';
+import { map, switchMap, catchError } from 'rxjs/operators';
 
 
 import * as authActions from './auth.actions';
@@ -26,7 +26,7 @@ export class AuthEffects {
   registration$ = createEffect(() =>
     this.actions$.pipe(
       ofType(authActions.registerRequest),
-      exhaustMap((data: IRequestData) =>
+      switchMap((data: IRequestData) =>
         this.authService.registerUser(data).pipe(
         map(({ username, token }) => {
           this.authService.onLoggedIn(token);
@@ -39,7 +39,7 @@ export class AuthEffects {
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(authActions.loginRequest),
-      exhaustMap((data: IRequestData) =>
+      switchMap((data: IRequestData) =>
         this.authService.loginUser(data).pipe(
         map(({ username, token }) => {
           this.authService.onLoggedIn(token);
