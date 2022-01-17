@@ -1,10 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 
 import { IFormFieldData, IGeneralStylesData } from '../../../reducers/reducers.interfaces';
-import { ICreatedFormControls } from 'src/app/utils/interfaces';
 import { getFormElement, getGeneralStyles } from 'src/app/reducers/formBuilder/formBuilder.selectors';
 import { CommonService } from 'src/app/services/common.service';
 import { COLORS, STYLES_TYPES_FOR_ELEMENTS } from '../../../utils/data';
@@ -51,26 +50,22 @@ export class FormDisplayComponent implements OnInit {
   ngOnInit(): void {
     this.shownElements$ = this.store$.select(getFormElement);
     this.generalStyles$ = this.store$.select(getGeneralStyles); 
+    this.createdForm = this.fb.group({});
 
     this.fieldCreatedForm = this.store$
       .pipe(
         select(getFormElement))
-      .subscribe(vl => {
-        this.newObject = this.formControlsCreator(vl, 'id');
-        this.createdForm = this.fb.group({...this.newObject});
-        console.dir(this.createdForm)
-      })
-  }
- 
-  public formControlsCreator (array: IFormFieldData[], key: string): ICreatedFormControls {
-    const initialObject = {};
-    return array.reduce((obj: ICreatedFormControls, item: any) => {
-      return {
-        ...obj,
-        [item[key]]: '',
-      };
-    }, initialObject); ////TODO: move to service
-  }
+      .subscribe(val => {
+        if(val) {
+          val.forEach(item => {
+             return item.required ? 
+              this.createdForm.addControl(item.id!, new FormControl('', Validators.required)) : 
+              this.createdForm.addControl(item.id!, new FormControl(''))
+            })
+          }
+        })
+      console.dir(this.createdForm)
+    }
 
   public deleteElement (event: Event): void {
     if (!(event.target as Element).closest(this.btnDeleteElAttr)) {
